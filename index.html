@@ -546,6 +546,46 @@
 </style>
 </head>
 <body>
+<!-- Under Construction notice (shown on open) -->
+<div id="uc-notice" role="dialog" aria-modal="true" onclick="if(event.target===this)this.classList.add('hide')">
+  <div class="uc-card">
+    <div class="uc-badge">● Under Construction</div>
+    <h2 class="uc-title">Portfolio in Progress</h2>
+    <p class="uc-text">Not all material has been uploaded yet — feel free to browse what's available below.</p>
+    <p class="uc-text">Looking for my <strong>previous portfolio</strong> or a <strong>specific piece</strong>? Reach out and I'll gladly share it with you directly.</p>
+    <div class="uc-actions">
+      <a class="uc-btn uc-wa" href="https://wa.me/639274185581" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="uc-btn" href="mailto:dominicgarcia.creative@gmail.com">Email</a>
+      <a class="uc-btn" href="tel:+639274185581">Call</a>
+    </div>
+    <button class="uc-dismiss" onclick="document.getElementById('uc-notice').classList.add('hide')">Browse Portfolio &rarr;</button>
+  </div>
+</div>
+<style>
+  #uc-notice{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
+    background:rgba(6,6,5,0.88);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);padding:24px;animation:ucFade .45s ease}
+  #uc-notice.hide{display:none}
+  @keyframes ucFade{from{opacity:0}to{opacity:1}}
+  .uc-card{max-width:500px;width:100%;background:#141412;border:1px solid rgba(255,255,255,0.1);border-radius:14px;
+    padding:42px 38px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:ucRise .5s cubic-bezier(.2,.8,.2,1)}
+  @keyframes ucRise{from{transform:translateY(14px);opacity:0}to{transform:translateY(0);opacity:1}}
+  .uc-badge{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.25em;text-transform:uppercase;
+    color:#c8c060;border:1px solid rgba(200,192,96,.35);border-radius:100px;padding:6px 15px;margin-bottom:22px}
+  .uc-title{font-family:var(--font-display);font-size:clamp(26px,5vw,36px);letter-spacing:.02em;color:#f0f0e8;
+    text-transform:uppercase;margin:0 0 16px;line-height:1.05}
+  .uc-text{font-family:var(--font-mono);font-size:12.5px;line-height:1.75;color:#b4b4ac;margin:0 0 13px}
+  .uc-text strong{color:#e8e8e0;font-weight:500}
+  .uc-actions{display:flex;gap:10px;justify-content:center;margin:26px 0 18px;flex-wrap:wrap}
+  .uc-btn{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
+    color:#d4d4cc;border:1px solid rgba(255,255,255,0.16);border-radius:8px;padding:11px 20px;transition:all .2s}
+  .uc-btn:hover{border-color:#c8c060;color:#f0f0e8}
+  .uc-wa{background:#25543f;border-color:#2e6b4f;color:#eaf5ef}
+  .uc-wa:hover{background:#2e6b4f;border-color:#3a8563}
+  .uc-dismiss{margin-top:8px;background:#c8c060;color:#141412;border:none;border-radius:8px;font-family:var(--font-mono);
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:13px 28px;cursor:pointer;transition:opacity .2s}
+  .uc-dismiss:hover{opacity:.85}
+  @media(max-width:520px){.uc-card{padding:34px 22px}}
+</style>
 
 <nav class="topnav">
   <span class="year mono-light">2026</span>
