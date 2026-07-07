@@ -267,6 +267,28 @@
     .dlv-row{display:grid;gap:6px;background:#0a0a0a}
     .dlv-row img{width:100%;height:auto;display:block;cursor:zoom-in}
     @media(max-width:767px){.dlv-row{grid-template-columns:1fr!important}.dlv-bar{flex-wrap:wrap;gap:4px}}
+    /* ── Branding: horizontal logo strip + per-brand kit ── */
+    .brand-picker{background:#0a0a0a}
+    .brand-strip{display:flex;gap:14px;overflow-x:auto;padding:22px 24px 24px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+    .brand-strip::-webkit-scrollbar{height:6px}
+    .brand-strip::-webkit-scrollbar-track{background:transparent}
+    .brand-strip::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:3px}
+    .brand-chip{flex:0 0 auto;width:120px;height:120px;border-radius:16px;background:#141414;
+      border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;
+      cursor:pointer;scroll-snap-align:start;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+      overflow:hidden;position:relative}
+    .brand-chip:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.28)}
+    .brand-chip.active{border-color:#00b5e2;box-shadow:0 0 0 2px rgba(0,181,226,.35)}
+    .brand-chip img{width:100%;height:100%;object-fit:contain;padding:16px;box-sizing:border-box}
+    .brand-chip .bc-empty{color:rgba(255,255,255,.22);font-size:30px;font-weight:200;line-height:1}
+    .brand-chip .bc-name{position:absolute;bottom:0;left:0;right:0;padding:5px 6px;font-family:var(--font-mono);
+      font-size:8px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;text-align:center;
+      color:#c9c9c9;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent)}
+    .brand-kit{display:grid;gap:6px;background:#0a0a0a}
+    .brand-kit img{width:100%;height:auto;display:block;cursor:zoom-in}
+    .brand-kit-empty{padding:64px 24px 72px;text-align:center;color:rgba(255,255,255,.4);
+      font-family:var(--font-mono);font-size:11px;font-weight:300;letter-spacing:.18em;text-transform:uppercase}
+    @media(max-width:767px){.brand-chip{width:92px;height:92px}.brand-strip{padding:16px 16px 18px;gap:10px}}
     @media(max-width:767px){
       .deliverable.half{grid-column:span 2;aspect-ratio:1/1}
     }
@@ -642,6 +664,23 @@
 
   <!-- Folder cards: hover to peek the sheet, click to open -->
   <div class="folder-grid">
+
+    <div class="folder-card reveal" onclick="zoomThenOpen(this, 'branding')">
+      <div class="folder">
+        <div class="folder-bg"></div>
+        <div class="folder-sheet">
+          <div class="folder-sheet-glow"></div>
+        </div>
+        <div class="folder-sheet-label">Branding</div>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ffBrand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ffBrand)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <div class="folder-tab-text">
+          <div class="ft-main">Brand</div>
+          <div class="ft-sub mono-light">Identity</div>
+        </div>
+        <div class="folder-meta"><span class="fm-num">01</span><span class="fm-label mono-light">proj.</span></div>
+        <div class="folder-front-cat mono-extralight">View</div>
+      </div>
+    </div>
 
     <div class="folder-card reveal" onclick="zoomThenOpen(this, 'social-media-ads-design')">
       <div class="folder">
@@ -1077,6 +1116,7 @@
 
 <!-- Hidden data store for all projects -->
 <div id="projectDataStore" style="display:none">
+  <div class="project-data" data-slug="branding" data-name="Branding" data-cat="Brand Identity" data-img="assets/branding-1.jpg" data-show-year="false" data-client-label="Project" data-branding='[{"name":"","logo":"","kit":[]},{"name":"","logo":"","kit":[]},{"name":"","logo":"","kit":[]},{"name":"","logo":"","kit":[]},{"name":"","logo":"","kit":[]},{"name":"","logo":"","kit":[]}]' style="display:none"></div>
   <div class="project-data" data-slug="social-media-ads-design" data-name="Social Media Ads Design" data-cat="Digital" data-img="assets/ad-monday-rise-cover.jpg" data-gallery="assets/ad-monday-rise-cover.jpg|||assets/ad-monday-online-presence.jpg|||assets/ad-monday-digital-experience.jpg|||assets/ad-monday-frame-by-frame.jpg|||assets/ad-monday-lets-rise.jpg|||assets/ad-yuny-three-axis.jpg|||assets/ad-yuny-fitness.jpg|||assets/ad-yuny-partner.jpg|||assets/ad-yuny-battery.jpg|||assets/ad-yuny-avontuur.jpg|||assets/ad-km-snooze-klarna.jpg|||assets/ad-km-mattress-arrived.jpg|||assets/ad-km-columbus-voyage.jpg|||assets/ad-km-ashley-altari.jpg|||assets/ad-pldt-valentines.jpg|||assets/ad-pldt-holideals.jpg|||assets/ad-pldt-dragon.jpg|||assets/ad-tlg-orange.jpg|||assets/ad-tlg-purple.jpg|||assets/ad-tlg-marble.jpg|||assets/ad-tlg-counter.jpg|||assets/ad-km-cyberweek.jpg|||assets/ad-km-blackfriday.jpg|||assets/ad-km-blowout-outdoor.jpg|||assets/ad-km-columbus.jpg|||assets/ad-km-blowout-bedroom.jpg|||assets/ad-666-signup.jpg|||assets/ad-666-reload.jpg|||assets/ad-666-goal.jpg|||assets/ad-666-refer.jpg|||assets/ad-666-welcome-bonus.jpg|||assets/ad-casino-players-red.jpg|||assets/ad-casino-welcome-dark.jpg|||assets/ad-casino-666-best.jpg|||assets/ad-casino-freeplay-green.jpg|||assets/ad-casino-players-gold.jpg|||assets/ad-billfish-headwear.jpg|||assets/ad-billfish-laststanding.jpg|||assets/vx-shoes.jpg|||assets/img-41.jpg|||assets/img-42.jpg|||assets/img-29.jpg" data-show-year="false" data-client-label="Project"></div>
   <div class="project-data" data-slug="simply-nootropics" data-name="Simply Nootropics" data-cat="Health &amp; Wellness" data-img="assets/img-03.jpg" data-hero="assets/img-03.jpg" data-creator="Nick" data-tool="Photoshop + GPTImage" data-cover="assets/logo-simply-nootropics.jpg" data-gallery="assets/img-41.jpg|||assets/img-42.jpg|||assets/img-29.jpg"></div>
   <div class="project-data" data-slug="vermonix" data-name="Vermonix" data-cat="Branding & Packaging" data-img="assets/img-02.jpg" data-hero="assets/img-02.jpg" data-deliverables='[{"img":"assets/vx-logo.jpg","by":"Team","label":"Logo Creation + Branding Kit","tool":"Adobe Illustrator","span":"full","bg":"#0d0d0d","tone":"dark","fit":"contain"},{"img":"assets/vx-box.jpg","by":"Nick","label":"Packaging Material","tool":"Adobe Illustrator","span":"full","bg":"#0d0d0d","tone":"dark","fit":"contain"},{"img":"assets/vx-shoes.jpg","by":"Team","label":"Social Media Ads","tool":"Adobe Photoshop","span":"half","bg":"#ffffff","tone":"light","fit":"contain"},{"img":"assets/vx-cloud-shoe.jpg","by":"Team","label":"Social Media Post","tool":"Adobe Photoshop","span":"half","bg":"#15100a","tone":"dark","fit":"cover"},{"img":"assets/vx-stickers.jpg","by":"Nick","label":"Sticker Design","tool":"Photoshop","span":"full","bg":"#ffffff","tone":"light","fit":"contain","bar":true},{"img":"assets/vx-website.jpg","by":"Nick","label":"Website Design","tool":"Figma","span":"full","bg":"#0d0d0d","tone":"dark","fit":"contain"}]' style="display:none"></div>
@@ -1201,6 +1241,7 @@ function openProject(slug) {
   const tool = dataEl.dataset.tool;
   const galleryData = dataEl.dataset.gallery;
   const deliverables = dataEl.dataset.deliverables;
+  const brandingData = dataEl.dataset.branding;
   const showYear = dataEl.dataset.showYear !== 'false';
   const clientLabel = dataEl.dataset.clientLabel || 'Client';
 
@@ -1251,7 +1292,24 @@ function openProject(slug) {
 
   // Build gallery — pure product/detail tiles only (cover lives in its own banner now)
   const gallery = document.getElementById('projGallery');
-  if (deliverables) {
+  if (brandingData) {
+    const brands = JSON.parse(brandingData);
+    window.__brands = brands;
+    gallery.className = 'project-gallery branding';
+    const chips = brands.map((b, i) => {
+      const inner = b.logo
+        ? `<img src="${b.logo}" alt="${b.name || 'Brand'} logo"/>`
+        : `<span class="bc-empty">+</span>`;
+      const nameTag = b.name ? `<span class="bc-name">${b.name}</span>` : '';
+      return `<div class="brand-chip${i === 0 ? ' active' : ''}" data-idx="${i}" onclick="selectBrand(${i})">${inner}${nameTag}</div>`;
+    }).join('');
+    gallery.innerHTML = `
+      <div class="brand-picker">
+        <div class="brand-strip">${chips}</div>
+      </div>
+      <div class="brand-kit" id="brandKit"></div>`;
+    selectBrand(0);
+  } else if (deliverables) {
     const items = JSON.parse(deliverables);
     gallery.className = 'project-gallery deliverables';
     gallery.innerHTML = items.map(d => {
@@ -1310,6 +1368,22 @@ function openProject(slug) {
     document.querySelectorAll('#page-project .reveal').forEach(el => el.classList.add('visible'));
     triggerReveal();
   }, 100);
+}
+
+function selectBrand(idx) {
+  const brands = window.__brands || [];
+  const b = brands[idx];
+  document.querySelectorAll('.brand-chip').forEach(c =>
+    c.classList.toggle('active', Number(c.dataset.idx) === idx));
+  const kit = document.getElementById('brandKit');
+  if (!kit) return;
+  if (b && b.kit && b.kit.length) {
+    kit.innerHTML = b.kit.map(src =>
+      `<img class="reveal visible" src="${src}" alt="${(b.name||'Brand')} brand kit" onclick="openLightbox(this.src, this.alt)"/>`
+    ).join('');
+  } else {
+    kit.innerHTML = `<div class="brand-kit-empty">Brand kit coming soon</div>`;
+  }
 }
 
 function closeProject() {
