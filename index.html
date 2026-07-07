@@ -283,16 +283,37 @@
       overflow:hidden;position:relative;opacity:.55;transform:scale(.9)}
     .brand-chip:hover{opacity:.85;border-color:rgba(255,255,255,.28)}
     .brand-chip.active{opacity:1;transform:scale(1);border-color:#00b5e2;box-shadow:0 0 0 2px rgba(0,181,226,.35)}
-    .brand-chip img{width:100%;height:100%;object-fit:contain;padding:16px;box-sizing:border-box}
+    .brand-chip img{width:100%;height:100%;object-fit:cover;display:block}
     .brand-chip .bc-empty{color:rgba(255,255,255,.22);font-size:32px;font-weight:200;line-height:1}
-    .brand-chip .bc-name{position:absolute;bottom:0;left:0;right:0;padding:5px 6px;font-family:var(--font-mono);
-      font-size:8px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;text-align:center;
-      color:#c9c9c9;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent)}
     .brand-kit{display:grid;gap:6px;background:#0a0a0a}
     .brand-kit img{width:100%;height:auto;display:block;cursor:zoom-in}
     .brand-kit-empty{padding:64px 24px 72px;text-align:center;color:rgba(255,255,255,.4);
       font-family:var(--font-mono);font-size:11px;font-weight:300;letter-spacing:.18em;text-transform:uppercase}
     @media(max-width:767px){.brand-chip{width:104px;height:104px}.brand-strip{padding:18px calc(50% - 52px) 22px;gap:12px}}
+    /* ── Rich (composed) brand kit ── */
+    .brand-kit-rich{display:block;background:#0a0a0a}
+    .bk{--nv:#07263A;--ink:#051723;--gold:#F1B319;--ice:#DDE7F2}
+    .bk-hero{background:var(--nv);padding:64px 24px 56px;text-align:center}
+    .bk-hero img{max-width:min(520px,82%);height:auto;display:inline-block}
+    .bk-cap{margin-top:26px;font-family:var(--font-mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.42)}
+    .bk-sec{max-width:960px;margin:0 auto;padding:54px 28px;border-bottom:1px solid rgba(255,255,255,.06)}
+    .bk-eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+    .bk-h{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-.01em;line-height:1.05;margin:0 0 14px;color:#fff}
+    .bk-p{font-size:14px;line-height:1.75;color:rgba(255,255,255,.62);max-width:560px;margin:0}
+    .bk-meta{display:flex;flex-wrap:wrap;gap:36px;margin-top:30px}
+    .bk-meta .k{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px}
+    .bk-meta .v{font-family:var(--font-mono);font-size:13px;color:#fff}
+    .bk-swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+    .bk-sw{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+    .bk-sw .chip{height:118px}
+    .bk-sw .info{padding:12px 14px;background:#111}
+    .bk-sw .nm{font-size:12px;color:#fff;font-weight:600}
+    .bk-sw .hex{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;text-transform:uppercase}
+    .bk-type{display:flex;align-items:center;gap:32px;flex-wrap:wrap;margin-top:26px}
+    .bk-type .aa{font-size:104px;font-weight:800;line-height:.9;color:var(--gold)}
+    .bk-type .fname{font-size:20px;font-weight:700;color:#fff;margin-bottom:8px}
+    .bk-type .glyphs{font-family:var(--font-mono);font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.06em;line-height:1.9}
+    @media(max-width:640px){.bk-swatches{grid-template-columns:repeat(2,1fr)}.bk-type .aa{font-size:68px}}
     @media(max-width:767px){
       .deliverable.half{grid-column:span 2;aspect-ratio:1/1}
     }
@@ -1119,8 +1140,50 @@
 </div>
 
 <!-- Hidden data store for all projects -->
+<!-- Example brand-kit templates (rendered into the Branding page when a logo square is selected) -->
+<template id="kit-letsfly">
+  <div class="bk">
+    <div class="bk-hero">
+      <img src="assets/brandkit-letsfly-logo.jpg" alt="Let's Fly VR primary logo"/>
+      <div class="bk-cap">Primary Logo &middot; Virtual Reality</div>
+    </div>
+    <div class="bk-sec">
+      <div class="bk-eyebrow">Overview</div>
+      <h3 class="bk-h">Let&rsquo;s Fly VR</h3>
+      <p class="bk-p">A bold, playful identity for an immersive virtual-reality brand &mdash; pairing an energetic hand-lettered script with an aviator-gold VR headset mark to capture the thrill of taking flight.</p>
+      <div class="bk-meta">
+        <div><div class="k">Client</div><div class="v">Let&rsquo;s Fly VR</div></div>
+        <div><div class="k">Scope</div><div class="v">Full Branding Kit</div></div>
+        <div><div class="k">Year</div><div class="v">2025</div></div>
+        <div><div class="k">Industry</div><div class="v">Virtual Reality</div></div>
+      </div>
+    </div>
+    <div class="bk-sec">
+      <div class="bk-eyebrow">Color Palette</div>
+      <h3 class="bk-h">Four core colors</h3>
+      <div class="bk-swatches">
+        <div class="bk-sw"><div class="chip" style="background:#07263A"></div><div class="info"><div class="nm">Deep Navy</div><div class="hex">#07263A</div></div></div>
+        <div class="bk-sw"><div class="chip" style="background:#051723"></div><div class="info"><div class="nm">Ink</div><div class="hex">#051723</div></div></div>
+        <div class="bk-sw"><div class="chip" style="background:#F1B319"></div><div class="info"><div class="nm">Aviator Gold</div><div class="hex">#F1B319</div></div></div>
+        <div class="bk-sw"><div class="chip" style="background:#DDE7F2"></div><div class="info"><div class="nm">Sky Ice</div><div class="hex">#DDE7F2</div></div></div>
+      </div>
+    </div>
+    <div class="bk-sec">
+      <div class="bk-eyebrow">Typography</div>
+      <h3 class="bk-h">Montserrat</h3>
+      <div class="bk-type">
+        <div class="aa">Aa</div>
+        <div class="spec">
+          <div class="fname">Montserrat &middot; Bold / Regular</div>
+          <div class="glyphs">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>abcdefghijklmnopqrstuvwxyz<br/>0 1 2 3 4 5 6 7 8 9</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <div id="projectDataStore" style="display:none">
-  <div class="project-data" data-slug="branding" data-name="Branding" data-cat="Brand Identity" data-img="assets/branding-1.jpg" data-show-year="false" data-client-label="Project" data-branding='[{"name":"","logo":"","kit":[]},{"name":"","logo":"","kit":[]},{"name":"","logo":"","kit":[]},{"name":"","logo":"","kit":[]},{"name":"","logo":"","kit":[]},{"name":"","logo":"","kit":[]}]' style="display:none"></div>
+  <div class="project-data" data-slug="branding" data-name="Branding" data-cat="Brand Identity" data-img="assets/brand-letsfly.jpg" data-show-year="false" data-client-label="Project" data-branding='[{"name":"Let&rsquo;s Fly VR","logo":"assets/brand-letsfly.jpg","kitTpl":"kit-letsfly"},{"name":"Fourged Group","logo":"assets/brand-fourged.jpg"},{"name":"Cache Lock &amp; Key","logo":"assets/brand-cache.jpg"},{"name":"Adam&rsquo;s Mobile Lube","logo":"assets/brand-adams.jpg"},{"name":"Vermonix Collection","logo":"assets/brand-vermonix.jpg"}]' style="display:none"></div>
   <div class="project-data" data-slug="social-media-ads-design" data-name="Social Media Ads Design" data-cat="Digital" data-img="assets/ad-monday-rise-cover.jpg" data-gallery="assets/ad-monday-rise-cover.jpg|||assets/ad-monday-online-presence.jpg|||assets/ad-monday-digital-experience.jpg|||assets/ad-monday-frame-by-frame.jpg|||assets/ad-monday-lets-rise.jpg|||assets/ad-yuny-three-axis.jpg|||assets/ad-yuny-fitness.jpg|||assets/ad-yuny-partner.jpg|||assets/ad-yuny-battery.jpg|||assets/ad-yuny-avontuur.jpg|||assets/ad-km-snooze-klarna.jpg|||assets/ad-km-mattress-arrived.jpg|||assets/ad-km-columbus-voyage.jpg|||assets/ad-km-ashley-altari.jpg|||assets/ad-pldt-valentines.jpg|||assets/ad-pldt-holideals.jpg|||assets/ad-pldt-dragon.jpg|||assets/ad-tlg-orange.jpg|||assets/ad-tlg-purple.jpg|||assets/ad-tlg-marble.jpg|||assets/ad-tlg-counter.jpg|||assets/ad-km-cyberweek.jpg|||assets/ad-km-blackfriday.jpg|||assets/ad-km-blowout-outdoor.jpg|||assets/ad-km-columbus.jpg|||assets/ad-km-blowout-bedroom.jpg|||assets/ad-666-signup.jpg|||assets/ad-666-reload.jpg|||assets/ad-666-goal.jpg|||assets/ad-666-refer.jpg|||assets/ad-666-welcome-bonus.jpg|||assets/ad-casino-players-red.jpg|||assets/ad-casino-welcome-dark.jpg|||assets/ad-casino-666-best.jpg|||assets/ad-casino-freeplay-green.jpg|||assets/ad-casino-players-gold.jpg|||assets/ad-billfish-headwear.jpg|||assets/ad-billfish-laststanding.jpg|||assets/vx-shoes.jpg|||assets/img-41.jpg|||assets/img-42.jpg|||assets/img-29.jpg" data-show-year="false" data-client-label="Project"></div>
   <div class="project-data" data-slug="simply-nootropics" data-name="Simply Nootropics" data-cat="Health &amp; Wellness" data-img="assets/img-03.jpg" data-hero="assets/img-03.jpg" data-creator="Nick" data-tool="Photoshop + GPTImage" data-cover="assets/logo-simply-nootropics.jpg" data-gallery="assets/img-41.jpg|||assets/img-42.jpg|||assets/img-29.jpg"></div>
   <div class="project-data" data-slug="vermonix" data-name="Vermonix" data-cat="Branding & Packaging" data-img="assets/img-02.jpg" data-hero="assets/img-02.jpg" data-deliverables='[{"img":"assets/vx-logo.jpg","by":"Team","label":"Logo Creation + Branding Kit","tool":"Adobe Illustrator","span":"full","bg":"#0d0d0d","tone":"dark","fit":"contain"},{"img":"assets/vx-box.jpg","by":"Nick","label":"Packaging Material","tool":"Adobe Illustrator","span":"full","bg":"#0d0d0d","tone":"dark","fit":"contain"},{"img":"assets/vx-shoes.jpg","by":"Team","label":"Social Media Ads","tool":"Adobe Photoshop","span":"half","bg":"#ffffff","tone":"light","fit":"contain"},{"img":"assets/vx-cloud-shoe.jpg","by":"Team","label":"Social Media Post","tool":"Adobe Photoshop","span":"half","bg":"#15100a","tone":"dark","fit":"cover"},{"img":"assets/vx-stickers.jpg","by":"Nick","label":"Sticker Design","tool":"Photoshop","span":"full","bg":"#ffffff","tone":"light","fit":"contain","bar":true},{"img":"assets/vx-website.jpg","by":"Nick","label":"Website Design","tool":"Figma","span":"full","bg":"#0d0d0d","tone":"dark","fit":"contain"}]' style="display:none"></div>
@@ -1304,8 +1367,7 @@ function openProject(slug) {
       const inner = b.logo
         ? `<img src="${b.logo}" alt="${b.name || 'Brand'} logo"/>`
         : `<span class="bc-empty">+</span>`;
-      const nameTag = b.name ? `<span class="bc-name">${b.name}</span>` : '';
-      return `<div class="brand-chip${i === 0 ? ' active' : ''}" data-idx="${i}" onclick="selectBrand(${i})">${inner}${nameTag}</div>`;
+      return `<div class="brand-chip${i === 0 ? ' active' : ''}" data-idx="${i}" onclick="selectBrand(${i})">${inner}</div>`;
     }).join('');
     gallery.innerHTML = `
       <div class="brand-picker">
@@ -1390,11 +1452,17 @@ function selectBrand(idx, smooth = true) {
   }
   const kit = document.getElementById('brandKit');
   if (!kit) return;
-  if (b && b.kit && b.kit.length) {
+  const tpl = b && b.kitTpl ? document.getElementById(b.kitTpl) : null;
+  if (tpl) {
+    kit.className = 'brand-kit brand-kit-rich';
+    kit.innerHTML = tpl.innerHTML;
+  } else if (b && b.kit && b.kit.length) {
+    kit.className = 'brand-kit';
     kit.innerHTML = b.kit.map(src =>
       `<img class="reveal visible" src="${src}" alt="${(b.name||'Brand')} brand kit" onclick="openLightbox(this.src, this.alt)"/>`
     ).join('');
   } else {
+    kit.className = 'brand-kit';
     kit.innerHTML = `<div class="brand-kit-empty">Brand kit coming soon</div>`;
   }
 }
