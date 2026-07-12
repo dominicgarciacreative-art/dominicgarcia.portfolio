@@ -314,29 +314,38 @@
     .bk-type .fname{font-size:20px;font-weight:700;color:#fff;margin-bottom:8px}
     .bk-type .glyphs{font-family:var(--font-mono);font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.06em;line-height:1.9}
     @media(max-width:640px){.bk-swatches{grid-template-columns:repeat(2,1fr)}.bk-type .aa{font-size:68px}}
-    /* ── Ad brands: portrait card slider → per-brand ad grid ── */
-    .project-gallery.adbrands{display:block;max-width:1100px;margin:0 auto;padding:0 0 90px}
-    .adbrand-picker{background:#0a0a0a}
-    .adbrand-strip{display:flex;gap:16px;overflow-x:auto;padding:26px 24px 30px;
-      scroll-behavior:smooth;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
-    .adbrand-strip::-webkit-scrollbar{height:6px}
-    .adbrand-strip::-webkit-scrollbar-track{background:transparent}
-    .adbrand-strip::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:3px}
-    .adbrand-card{flex:0 0 auto;width:228px;aspect-ratio:4/5;border-radius:16px;overflow:hidden;
-      position:relative;cursor:pointer;border:1px solid rgba(255,255,255,.08);background:#141414;padding:0;
-      scroll-snap-align:center;transition:transform .25s ease,border-color .2s ease,box-shadow .25s ease}
-    .adbrand-card img{width:100%;height:100%;object-fit:cover;display:block}
-    .adbrand-card::after{content:"";position:absolute;inset:0;pointer-events:none;
-      background:linear-gradient(180deg,rgba(0,0,0,.45),transparent 34%)}
-    .adbrand-card .abc-name{position:absolute;top:12px;left:12px;z-index:2;
-      background:rgba(15,15,15,.82);color:#fff;font-family:var(--font-mono);font-size:10px;
-      letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.14)}
-    .adbrand-card:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.28)}
-    .adbrand-card.active{border-color:#00b5e2;box-shadow:0 0 0 2px rgba(0,181,226,.4)}
-    .adbrand-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#0a0a0a;padding:6px 0 0}
-    .adbrand-grid img{width:100%;aspect-ratio:1;object-fit:contain;background:#111;display:block;cursor:zoom-in}
-    @media(max-width:640px){.adbrand-card{width:170px}.adbrand-strip{padding:18px 16px 22px;gap:12px}}
+    /* ── Ad brands: social-post cards → click opens brand's posts in a modal ── */
+    .project-gallery.adbrands{display:block;max-width:1120px;margin:0 auto;padding:30px 24px 90px}
+    .adpost-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    @media(max-width:900px){.adpost-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.adpost-grid{grid-template-columns:1fr}}
+    .adpost-card{display:flex;flex-direction:column;background:#fff;border-radius:16px;overflow:hidden;
+      cursor:pointer;padding:0;border:0;text-align:left;box-shadow:0 12px 34px rgba(0,0,0,.4);
+      transition:transform .22s ease,box-shadow .22s ease}
+    .adpost-card:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(0,0,0,.55)}
+    .adpost-head{display:flex;align-items:center;gap:11px;padding:13px 15px;background:#fff}
+    .adpost-logo{width:34px;height:34px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;
+      justify-content:center;overflow:hidden;font-family:var(--font-mono);font-weight:700;font-size:11px;
+      letter-spacing:.02em;color:#fff;line-height:1}
+    .adpost-logo img{width:100%;height:100%;object-fit:cover}
+    .adpost-name{font-family:var(--font-mono);font-size:13px;font-weight:600;letter-spacing:.02em;color:#141414}
+    .adpost-media{width:100%;aspect-ratio:1;background:#0a0a0a;overflow:hidden}
+    .adpost-media img{width:100%;height:100%;object-fit:cover;display:block}
+    /* Modal */
+    .admodal{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.84);backdrop-filter:blur(7px);
+      display:none;align-items:center;justify-content:center;padding:26px}
+    .admodal.open{display:flex}
+    .admodal-panel{background:#0e0e0e;border:1px solid rgba(255,255,255,.1);border-radius:18px;
+      max-width:720px;width:100%;max-height:88vh;overflow:hidden;display:flex;flex-direction:column;
+      box-shadow:0 30px 80px rgba(0,0,0,.6)}
+    .admodal-head{display:flex;align-items:center;gap:12px;padding:15px 18px;background:#fff}
+    .admodal-head .adpost-logo{width:38px;height:38px;font-size:12px}
+    .admodal-head .nm{font-family:var(--font-mono);font-weight:600;font-size:14px;color:#141414;flex:1}
+    .admodal-head .cls{border:0;background:#141414;color:#fff;width:32px;height:32px;border-radius:50%;
+      cursor:pointer;font-size:18px;line-height:1;display:flex;align-items:center;justify-content:center}
+    .admodal-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:6px;overflow-y:auto;background:#0a0a0a}
+    .admodal-grid img{width:100%;aspect-ratio:1;object-fit:contain;background:#111;cursor:zoom-in;display:block}
+    @media(max-width:560px){.admodal-grid{grid-template-columns:1fr}}
     @media(max-width:767px){
       .deliverable.half{grid-column:span 2;aspect-ratio:1/1}
     }
@@ -1207,7 +1216,7 @@
 
 <div id="projectDataStore" style="display:none">
   <div class="project-data" data-slug="branding" data-name="Branding" data-cat="Brand Identity" data-img="assets/brand-letsfly.jpg" data-show-year="false" data-client-label="Project" data-branding='[{"name":"Let&rsquo;s Fly VR","logo":"assets/brand-letsfly.jpg","kitTpl":"kit-letsfly"},{"name":"Fourged Group","logo":"assets/brand-fourged.jpg"},{"name":"Cache Lock &amp; Key","logo":"assets/brand-cache.jpg"},{"name":"Adam&rsquo;s Mobile Lube","logo":"assets/brand-adams.jpg"},{"name":"Vermonix Collection","logo":"assets/brand-vermonix.jpg"}]' style="display:none"></div>
-  <div class="project-data" data-slug="social-media-ads-design" data-name="Social Media Ads Design" data-cat="Digital" data-img="assets/ad-monday-rise-cover.jpg" data-adbrands='[{"name":"Monday Media","cover":"assets/ad-monday-rise-cover.jpg","ads":["assets/ad-monday-rise-cover.jpg","assets/ad-monday-online-presence.jpg","assets/ad-monday-digital-experience.jpg","assets/ad-monday-frame-by-frame.jpg","assets/ad-monday-lets-rise.jpg"]},{"name":"YUNY","cover":"assets/ad-yuny-battery.jpg","ads":["assets/ad-yuny-three-axis.jpg","assets/ad-yuny-fitness.jpg","assets/ad-yuny-partner.jpg","assets/ad-yuny-battery.jpg","assets/ad-yuny-avontuur.jpg"]},{"name":"KM Home Furniture","cover":"assets/ad-km-columbus-voyage.jpg","ads":["assets/ad-km-snooze-klarna.jpg","assets/ad-km-mattress-arrived.jpg","assets/ad-km-columbus-voyage.jpg","assets/ad-km-ashley-altari.jpg","assets/ad-km-cyberweek.jpg","assets/ad-km-blackfriday.jpg","assets/ad-km-blowout-outdoor.jpg","assets/ad-km-columbus.jpg","assets/ad-km-blowout-bedroom.jpg"]},{"name":"PLDT Home","cover":"assets/ad-pldt-valentines.jpg","ads":["assets/ad-pldt-valentines.jpg","assets/ad-pldt-holideals.jpg","assets/ad-pldt-dragon.jpg"]},{"name":"This Little Goat","cover":"assets/ad-tlg-orange.jpg","ads":["assets/ad-tlg-orange.jpg","assets/ad-tlg-purple.jpg","assets/ad-tlg-marble.jpg","assets/ad-tlg-counter.jpg"]},{"name":"666 Casino","cover":"assets/ad-casino-welcome-dark.jpg","ads":["assets/ad-666-signup.jpg","assets/ad-666-reload.jpg","assets/ad-666-goal.jpg","assets/ad-666-refer.jpg","assets/ad-666-welcome-bonus.jpg","assets/ad-casino-players-red.jpg","assets/ad-casino-welcome-dark.jpg","assets/ad-casino-666-best.jpg","assets/ad-casino-freeplay-green.jpg","assets/ad-casino-players-gold.jpg"]},{"name":"Billfish","cover":"assets/ad-billfish-headwear.jpg","ads":["assets/ad-billfish-headwear.jpg","assets/ad-billfish-laststanding.jpg"]},{"name":"Simply Nootropics","cover":"assets/img-29.jpg","ads":["assets/img-41.jpg","assets/img-42.jpg","assets/img-29.jpg"]},{"name":"Vermonix","cover":"assets/vx-shoes.jpg","ads":["assets/vx-shoes.jpg"]}]' data-show-year="false" data-client-label="Project"></div>
+  <div class="project-data" data-slug="social-media-ads-design" data-name="Social Media Ads Design" data-cat="Digital" data-img="assets/ad-monday-rise-cover.jpg" data-adbrands='[{"name":"Monday Media","cover":"assets/ad-monday-online-presence.jpg","mono":"M","color":"#1c1c22","ads":["assets/ad-monday-rise-cover.jpg","assets/ad-monday-online-presence.jpg","assets/ad-monday-digital-experience.jpg","assets/ad-monday-frame-by-frame.jpg","assets/ad-monday-lets-rise.jpg"]},{"name":"YUNY","cover":"assets/ad-yuny-fitness.jpg","mono":"Y","color":"#0b0b0b","ads":["assets/ad-yuny-three-axis.jpg","assets/ad-yuny-fitness.jpg","assets/ad-yuny-partner.jpg","assets/ad-yuny-battery.jpg","assets/ad-yuny-avontuur.jpg"]},{"name":"KM Home Furniture","cover":"assets/ad-km-columbus-voyage.jpg","mono":"KM","color":"#17244e","ads":["assets/ad-km-snooze-klarna.jpg","assets/ad-km-mattress-arrived.jpg","assets/ad-km-columbus-voyage.jpg","assets/ad-km-ashley-altari.jpg","assets/ad-km-cyberweek.jpg","assets/ad-km-blackfriday.jpg","assets/ad-km-blowout-outdoor.jpg","assets/ad-km-columbus.jpg","assets/ad-km-blowout-bedroom.jpg"]},{"name":"PLDT Home","cover":"assets/ad-pldt-valentines.jpg","mono":"P","color":"#e2231a","ads":["assets/ad-pldt-valentines.jpg","assets/ad-pldt-holideals.jpg","assets/ad-pldt-dragon.jpg"]},{"name":"This Little Goat","cover":"assets/ad-tlg-orange.jpg","mono":"TG","color":"#d97b1f","ads":["assets/ad-tlg-orange.jpg","assets/ad-tlg-purple.jpg","assets/ad-tlg-marble.jpg","assets/ad-tlg-counter.jpg"]},{"name":"666 Casino","cover":"assets/ad-casino-welcome-dark.jpg","mono":"666","color":"#a3161f","ads":["assets/ad-666-signup.jpg","assets/ad-666-reload.jpg","assets/ad-666-goal.jpg","assets/ad-666-refer.jpg","assets/ad-666-welcome-bonus.jpg","assets/ad-casino-players-red.jpg","assets/ad-casino-welcome-dark.jpg","assets/ad-casino-666-best.jpg","assets/ad-casino-freeplay-green.jpg","assets/ad-casino-players-gold.jpg"]},{"name":"Billfish","cover":"assets/ad-billfish-headwear.jpg","mono":"BF","color":"#123a5c","ads":["assets/ad-billfish-headwear.jpg","assets/ad-billfish-laststanding.jpg"]},{"name":"Simply Nootropics","cover":"assets/img-41.jpg","mono":"SN","color":"#5f97a3","ads":["assets/img-41.jpg","assets/img-42.jpg","assets/img-29.jpg"]},{"name":"Vermonix","cover":"assets/vx-shoes.jpg","mono":"VX","color":"#0a0a0a","ads":["assets/vx-shoes.jpg"],"mtext":"#e6b84a"}]' data-show-year="false" data-client-label="Project"></div>
   <div class="project-data" data-slug="simply-nootropics" data-name="Simply Nootropics" data-cat="Health &amp; Wellness" data-img="assets/img-03.jpg" data-hero="assets/img-03.jpg" data-creator="Nick" data-tool="Photoshop + GPTImage" data-cover="assets/logo-simply-nootropics.jpg" data-gallery="assets/img-41.jpg|||assets/img-42.jpg|||assets/img-29.jpg"></div>
   <div class="project-data" data-slug="vermonix" data-name="Vermonix" data-cat="Branding & Packaging" data-img="assets/img-02.jpg" data-hero="assets/img-02.jpg" data-deliverables='[{"img":"assets/vx-logo.jpg","by":"Team","label":"Logo Creation + Branding Kit","tool":"Adobe Illustrator","span":"full","bg":"#0d0d0d","tone":"dark","fit":"contain"},{"img":"assets/vx-box.jpg","by":"Nick","label":"Packaging Material","tool":"Adobe Illustrator","span":"full","bg":"#0d0d0d","tone":"dark","fit":"contain"},{"img":"assets/vx-shoes.jpg","by":"Team","label":"Social Media Ads","tool":"Adobe Photoshop","span":"half","bg":"#ffffff","tone":"light","fit":"contain"},{"img":"assets/vx-cloud-shoe.jpg","by":"Team","label":"Social Media Post","tool":"Adobe Photoshop","span":"half","bg":"#15100a","tone":"dark","fit":"cover"},{"img":"assets/vx-stickers.jpg","by":"Nick","label":"Sticker Design","tool":"Photoshop","span":"full","bg":"#ffffff","tone":"light","fit":"contain","bar":true},{"img":"assets/vx-website.jpg","by":"Nick","label":"Website Design","tool":"Figma","span":"full","bg":"#0d0d0d","tone":"dark","fit":"contain"}]' style="display:none"></div>
   <div class="project-data" data-slug="packaging" data-name="Packaging" data-cat="Product / Print" data-img="assets/vx-box.jpg" data-deliverables='[{"img":"assets/vx-box.jpg","by":"Nick","label":"Packaging Material","tool":"Adobe Illustrator","span":"full","bg":"#0d0d0d","tone":"dark","fit":"contain"},{"img":"assets/vx-stickers.jpg","by":"Nick","label":"Bottle Packaging","tool":"Photoshop","span":"full","bg":"#ffffff","tone":"light","fit":"contain","bar":true},{"img":"assets/pkg-pennyskin-soap.jpg","by":"Nick","label":"Soap Box Packaging","tool":"Photoshop","span":"full","bg":"#d8d8d8","tone":"light","fit":"contain"},{"img":"assets/pkg-yuny-apex.jpg","by":"Nick","label":"Product Box Packaging","tool":"Photoshop","span":"full","bg":"#ffffff","tone":"light","fit":"contain"}]' style="display:none"></div>
@@ -1387,15 +1396,11 @@ function openProject(slug) {
     const brands = JSON.parse(adBrandsData);
     window.__adbrands = brands;
     gallery.className = 'project-gallery adbrands';
-    const cards = brands.map((b, i) =>
-      `<button class="adbrand-card${i === 0 ? ' active' : ''}" data-idx="${i}" onclick="selectAdBrand(${i})">
-        <span class="abc-name">${b.name}</span>
-        <img src="${b.cover}" alt="${b.name}" loading="lazy"/>
-      </button>`).join('');
-    gallery.innerHTML = `
-      <div class="adbrand-picker"><div class="adbrand-strip">${cards}</div></div>
-      <div class="adbrand-grid" id="adbrandGrid"></div>`;
-    selectAdBrand(0, false);
+    gallery.innerHTML = `<div class="adpost-grid">${brands.map((b, i) =>
+      `<button class="adpost-card reveal" onclick="openAdBrand(${i})">
+        <div class="adpost-head">${adBrandLogo(b)}<span class="adpost-name">${b.name}</span></div>
+        <div class="adpost-media"><img src="${b.cover}" alt="${b.name}" loading="lazy"/></div>
+      </button>`).join('')}</div>`;
   } else if (brandingData) {
     const brands = JSON.parse(brandingData);
     window.__brands = brands;
@@ -1504,25 +1509,29 @@ function selectBrand(idx, smooth = true) {
   }
 }
 
-function selectAdBrand(idx, smooth = true) {
-  const brands = window.__adbrands || [];
-  const b = brands[idx];
-  document.querySelectorAll('.adbrand-card').forEach(c =>
-    c.classList.toggle('active', Number(c.dataset.idx) === idx));
-  const card = document.querySelector(`.adbrand-card[data-idx="${idx}"]`);
-  const strip = card && card.closest('.adbrand-strip');
-  if (card && strip) {
-    const sRect = strip.getBoundingClientRect();
-    const cRect = card.getBoundingClientRect();
-    const target = strip.scrollLeft + (cRect.left - sRect.left) - (strip.clientWidth / 2 - cRect.width / 2);
-    strip.scrollTo({left: target, behavior: smooth ? 'smooth' : 'auto'});
-  }
-  const grid = document.getElementById('adbrandGrid');
-  if (!grid) return;
-  const ads = (b && b.ads) || [];
-  grid.innerHTML = ads.map(src =>
-    `<img class="reveal visible" src="${src}" alt="${(b && b.name) || 'Ad'}" onclick="openLightbox(this.src, this.alt)"/>`
+// Brand avatar: real logo image if provided, else a colored monogram disc
+function adBrandLogo(b) {
+  if (b.logo) return `<span class="adpost-logo"><img src="${b.logo}" alt="${b.name}"/></span>`;
+  const style = `background:${b.color || '#333'}${b.mtext ? ';color:' + b.mtext : ''}`;
+  return `<span class="adpost-logo" style="${style}">${b.mono || ''}</span>`;
+}
+
+function openAdBrand(idx) {
+  const b = (window.__adbrands || [])[idx];
+  if (!b) return;
+  document.getElementById('adModalLogo').outerHTML =
+    adBrandLogo(b).replace('class="adpost-logo"', 'class="adpost-logo" id="adModalLogo"');
+  document.getElementById('adModalName').textContent = b.name;
+  document.getElementById('adModalGrid').innerHTML = (b.ads || []).map(src =>
+    `<img src="${src}" alt="${b.name}" onclick="openLightbox(this.src, this.alt)"/>`
   ).join('');
+  document.getElementById('adModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeAdModal() {
+  document.getElementById('adModal').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 function closeProject() {
@@ -1564,6 +1573,18 @@ document.addEventListener('keydown', (e) => {
   <div id="lightbox-close" onclick="closeLightbox()">&times;</div>
   <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()"/>
   <div id="lightbox-hint">Click anywhere to close</div>
+</div>
+
+<!-- Ad-brand modal: opens a brand's posts in a grid -->
+<div id="adModal" class="admodal" onclick="if(event.target===this)closeAdModal()">
+  <div class="admodal-panel">
+    <div class="admodal-head">
+      <span class="adpost-logo" id="adModalLogo"></span>
+      <span class="nm" id="adModalName"></span>
+      <button class="cls" onclick="closeAdModal()" aria-label="Close">&times;</button>
+    </div>
+    <div class="admodal-grid" id="adModalGrid"></div>
+  </div>
 </div>
 
 </body>
