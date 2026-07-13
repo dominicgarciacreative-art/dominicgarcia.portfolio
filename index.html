@@ -462,15 +462,24 @@
       transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .55s ease;
     }
     .folder-sheet img{width:100%;height:100%;object-fit:cover;display:block}
-    /* Tilted graphic peeking out with real perspective depth, instead of a flat color */
-    .folder-sheet-photo{
+    .folder-sheet.stack{overflow:visible}
+    /* Stack of tilted graphics peeking out with real perspective depth, instead of a flat color.
+       At rest only the front card shows; on hover the other two fade in and fan out sideways. */
+    .folder-sheet-card{
       position:absolute;inset:0;
-      transform:rotateX(12deg) rotateY(-16deg) scale(1.28);
-      transform-origin:50% 35%;
-      transition:transform .55s cubic-bezier(.22,1,.36,1);
+      border-radius:10px;
+      overflow:hidden;
+      box-shadow:0 12px 26px rgba(0,0,0,0.5);
+      transform-origin:50% 38%;
+      transition:transform .55s cubic-bezier(.22,1,.36,1),opacity .55s ease;
     }
-    .folder-sheet-photo img{width:100%;height:100%;object-fit:cover;display:block}
-    .folder-card:hover .folder-sheet-photo{transform:rotateX(5deg) rotateY(-7deg) scale(1.14)}
+    .folder-sheet-card img{width:100%;height:100%;object-fit:cover;display:block}
+    .folder-sheet-card.c1{transform:rotateX(12deg) rotateY(-16deg) scale(1.28);z-index:3}
+    .folder-sheet-card.c2{transform:rotateX(12deg) rotateY(-16deg) scale(1.24) translate(3%,3%) rotate(-3deg);z-index:2;opacity:0}
+    .folder-sheet-card.c3{transform:rotateX(12deg) rotateY(-16deg) scale(1.2) translate(6%,6%) rotate(-6deg);z-index:1;opacity:0}
+    .folder-card:hover .folder-sheet-card.c1{transform:rotateX(6deg) rotateY(-9deg) scale(1.05) translate(-13%,-4%) rotate(-9deg)}
+    .folder-card:hover .folder-sheet-card.c2{transform:rotateX(6deg) rotateY(-9deg) scale(1.05) translate(1%,3%) rotate(1deg);opacity:1}
+    .folder-card:hover .folder-sheet-card.c3{transform:rotateX(6deg) rotateY(-9deg) scale(1.05) translate(15%,-3%) rotate(10deg);opacity:1}
     .folder-sheet-glow{
       position:absolute;inset:0;
       background:radial-gradient(circle at 70% 18%,rgba(120,170,255,0.55) 0%,transparent 55%);
@@ -751,8 +760,10 @@
     <div class="folder-card reveal" onclick="zoomThenOpen(this, 'social-media-ads-design')">
       <div class="folder">
         <div class="folder-bg"></div>
-        <div class="folder-sheet">
-          <div class="folder-sheet-photo"><img src="assets/ad-monday-rise-cover.jpg" alt="" /></div>
+        <div class="folder-sheet stack">
+          <div class="folder-sheet-card c3"><img src="assets/ad-cloudshare-nexora-chat.jpg" alt="" /></div>
+          <div class="folder-sheet-card c2"><img src="assets/ad-yuny-fitness.jpg" alt="" /></div>
+          <div class="folder-sheet-card c1"><img src="assets/ad-ff-fall-asleep-3am.jpg" alt="" /></div>
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Social Media<br/>Advertisement</div>
