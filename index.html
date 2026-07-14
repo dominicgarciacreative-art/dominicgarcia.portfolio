@@ -271,12 +271,12 @@
     .project-gallery.branding{display:block;max-width:1100px;margin:0 auto;padding:0 0 90px}
     .brand-picker{background:#0a0a0a;position:relative}
     /* Centered carousel: side padding = 50% minus half a chip so ANY square can slide to the middle */
-    .brand-strip{display:flex;align-items:center;gap:18px;overflow-x:auto;padding:40px calc(50% - 66px) 44px;
+    .brand-strip{display:flex;align-items:center;gap:22px;overflow-x:auto;padding:48px calc(50% - 92px) 52px;
       scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
     .brand-strip::-webkit-scrollbar{height:6px}
     .brand-strip::-webkit-scrollbar-track{background:transparent}
     .brand-strip::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:3px}
-    .brand-chip{--fy:0px;--fr:0deg;flex:0 0 auto;width:132px;height:132px;border-radius:16px;background:#141414;
+    .brand-chip{--fy:0px;--fr:0deg;flex:0 0 auto;width:184px;height:184px;border-radius:20px;background:#141414;
       border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;
       cursor:pointer;scroll-snap-align:center;
       transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .2s ease,box-shadow .3s ease,opacity .3s ease;
@@ -301,7 +301,7 @@
     .brand-kit img{width:100%;height:auto;display:block;cursor:zoom-in}
     .brand-kit-empty{padding:64px 24px 72px;text-align:center;color:rgba(255,255,255,.4);
       font-family:var(--font-mono);font-size:11px;font-weight:300;letter-spacing:.18em;text-transform:uppercase}
-    @media(max-width:767px){.brand-chip{width:104px;height:104px}.brand-strip{padding:18px calc(50% - 52px) 22px;gap:12px}}
+    @media(max-width:767px){.brand-chip{width:140px;height:140px}.brand-strip{padding:30px calc(50% - 70px) 34px;gap:16px}}
     /* ── Rich (composed) brand kit ── */
     .brand-kit-rich{display:block;background:#0a0a0a}
     .bk{--nv:#07263A;--ink:#051723;--gold:#F1B319;--ice:#DDE7F2}
@@ -755,7 +755,10 @@
     <div class="folder-card reveal" onclick="zoomThenOpen(this, 'branding')">
       <div class="folder">
         <div class="folder-bg"></div>
-        <div class="folder-sheet">
+        <div class="folder-sheet stack">
+          <div class="folder-sheet-card c3"><img src="assets/brand-mandialeaf.jpg" alt="" /></div>
+          <div class="folder-sheet-card c2"><img src="assets/brand-brbuilders.jpg" alt="" /></div>
+          <div class="folder-sheet-card c1"><img src="assets/brand-vermonix.jpg" alt="" /></div>
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Branding</div>
