@@ -271,18 +271,30 @@
     .project-gallery.branding{display:block;max-width:1100px;margin:0 auto;padding:0 0 90px}
     .brand-picker{background:#0a0a0a;position:relative}
     /* Centered carousel: side padding = 50% minus half a chip so ANY square can slide to the middle */
-    .brand-strip{display:flex;gap:18px;overflow-x:auto;padding:26px calc(50% - 66px) 30px;
+    .brand-strip{display:flex;align-items:center;gap:18px;overflow-x:auto;padding:40px calc(50% - 66px) 44px;
       scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
     .brand-strip::-webkit-scrollbar{height:6px}
     .brand-strip::-webkit-scrollbar-track{background:transparent}
     .brand-strip::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:3px}
-    .brand-chip{flex:0 0 auto;width:132px;height:132px;border-radius:16px;background:#141414;
+    .brand-chip{--fy:0px;--fr:0deg;flex:0 0 auto;width:132px;height:132px;border-radius:16px;background:#141414;
       border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;
       cursor:pointer;scroll-snap-align:center;
-      transition:transform .25s ease,border-color .2s ease,box-shadow .25s ease,opacity .25s ease;
-      overflow:hidden;position:relative;opacity:.55;transform:scale(.9)}
-    .brand-chip:hover{opacity:.85;border-color:rgba(255,255,255,.28)}
-    .brand-chip.active{opacity:1;transform:scale(1);border-color:#00b5e2;box-shadow:0 0 0 2px rgba(0,181,226,.35)}
+      transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .2s ease,box-shadow .3s ease,opacity .3s ease;
+      overflow:hidden;position:relative;opacity:.55;
+      transform:translateY(var(--fy)) rotate(var(--fr)) scale(.9);
+      box-shadow:0 10px 20px rgba(0,0,0,.4)}
+    .brand-chip:nth-child(6n+1){--fy:-7px;--fr:-2.5deg}
+    .brand-chip:nth-child(6n+2){--fy:9px;--fr:1.8deg}
+    .brand-chip:nth-child(6n+3){--fy:-4px;--fr:2.2deg}
+    .brand-chip:nth-child(6n+4){--fy:6px;--fr:-1.6deg}
+    .brand-chip:nth-child(6n+5){--fy:-10px;--fr:1.2deg}
+    .brand-chip:nth-child(6n+6){--fy:4px;--fr:-2.8deg}
+    .brand-chip:hover{opacity:.85;border-color:rgba(255,255,255,.28);
+      transform:translateY(calc(var(--fy) - 5px)) rotate(var(--fr)) scale(.94);
+      box-shadow:0 16px 28px rgba(0,0,0,.48)}
+    .brand-chip.active{opacity:1;border-color:#00b5e2;
+      transform:translateY(calc(var(--fy) - 10px)) rotate(0deg) scale(1);
+      box-shadow:0 20px 34px rgba(0,0,0,.5),0 0 0 2px rgba(0,181,226,.35)}
     .brand-chip img{width:100%;height:100%;object-fit:cover;display:block}
     .brand-chip .bc-empty{color:rgba(255,255,255,.22);font-size:32px;font-weight:200;line-height:1}
     .brand-kit{display:grid;gap:6px;background:#0a0a0a}
