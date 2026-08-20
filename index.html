@@ -453,11 +453,17 @@
       perspective:1100px;
     }
     .folder{
+      --ft:0deg;--fty:0px;
       position:absolute;
       inset:0;
       transition:transform .5s cubic-bezier(.22,1,.36,1);
+      transform:rotate(var(--ft)) translateY(var(--fty));
     }
-    .folder-card:hover .folder{transform:translateY(-6px)}
+    .folder-card:nth-child(4n+1) .folder{--ft:-1.6deg;--fty:-5px}
+    .folder-card:nth-child(4n+2) .folder{--ft:1.3deg;--fty:7px}
+    .folder-card:nth-child(4n+3) .folder{--ft:-2.1deg;--fty:2px}
+    .folder-card:nth-child(4n+4) .folder{--ft:1.8deg;--fty:-7px}
+    .folder-card:hover .folder{transform:rotate(0deg) translateY(calc(var(--fty) - 8px)) scale(1.015)}
 
     /* The preview sheet that peeks out from inside the folder */
     .folder-sheet{
@@ -528,6 +534,8 @@
       position:absolute;inset:0;z-index:3;
       width:100%;height:100%;
       filter:drop-shadow(0 16px 30px rgba(0,0,0,0.5));
+      backdrop-filter:blur(20px) saturate(180%);
+      -webkit-backdrop-filter:blur(20px) saturate(180%);
       pointer-events:none;
     }
     /* Labels sitting on the folder tab */
@@ -762,7 +770,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Branding</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ffBrand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ffBrand)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ffBrand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ffBrand)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Brand</div>
           <div class="ft-sub mono-light">Identity</div>
@@ -782,7 +790,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Social Media<br/>Advertisement</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff1)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff1)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Graphic</div>
           <div class="ft-sub mono-light">Digital</div>
@@ -799,7 +807,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Packaging</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff2)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff2)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Product</div>
           <div class="ft-sub mono-light">Print</div>
@@ -816,7 +824,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Website<br/>Design</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff5)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff5)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
           <div class="ft-sub mono-light">Web</div>
@@ -833,7 +841,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Social Media<br/>Content</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff6" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff6)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff6)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
           <div class="ft-sub mono-light">Content</div>
@@ -850,7 +858,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Website<br/>Asset</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff7" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff7)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff7" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff7)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
           <div class="ft-sub mono-light">Web</div>
@@ -867,7 +875,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Logo<br/>Branding</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff3)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff3)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Identity</div>
           <div class="ft-sub mono-light">Brand</div>
@@ -884,7 +892,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Thumbnails</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff8" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff8)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff8" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff8)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Video</div>
           <div class="ft-sub mono-light">YouTube</div>
@@ -901,7 +909,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Print<br/>Ads</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff9" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff9)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff9" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff9)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Print</div>
           <div class="ft-sub mono-light">Banner</div>
@@ -918,7 +926,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Shirt<br/>Design</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff10" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff10)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff10" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff10)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Print</div>
           <div class="ft-sub mono-light">Apparel</div>
@@ -935,7 +943,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Menu<br/>Board</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff11" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff11)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff11" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff11)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Print</div>
           <div class="ft-sub mono-light">Menu</div>
@@ -952,7 +960,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">E-book<br/>Cover</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff12" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff12)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff12" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff12)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
           <div class="ft-sub mono-light">Cover</div>
@@ -969,7 +977,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Poster</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff17" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff17)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff17" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff17)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Event</div>
           <div class="ft-sub mono-light">Graphics</div>
@@ -986,7 +994,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Live Stream<br/>Layout</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff14" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff14)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff14" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff14)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Event</div>
           <div class="ft-sub mono-light">Materials</div>
@@ -1003,7 +1011,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Billboard</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff15" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff15)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff15" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff15)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Print</div>
           <div class="ft-sub mono-light">Billboard</div>
@@ -1020,7 +1028,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Vertical<br/>Banner</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff16" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff16)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff16" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff16)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Print</div>
           <div class="ft-sub mono-light">Banner</div>
@@ -1037,7 +1045,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Email<br/>Signatures</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff13" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff13)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff13" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff13)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
           <div class="ft-sub mono-light">Signature</div>
@@ -1054,7 +1062,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Email<br/>Design</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff4)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff4)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
           <div class="ft-sub mono-light">Email</div>
@@ -1071,7 +1079,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Listing<br/>Design</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff18" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff18)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff18" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff18)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
           <div class="ft-sub mono-light">Listing</div>
@@ -1088,7 +1096,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Cover<br/>Photo</div>
-        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff19" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c17"/><stop offset="1" stop-color="#121210"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff19)" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/></svg>
+        <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff19" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff19)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
           <div class="ft-sub mono-light">Cover</div>
