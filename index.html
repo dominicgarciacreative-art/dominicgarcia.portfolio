@@ -46,6 +46,32 @@
     .hero-nav a:hover{color:var(--bright)}
     .hero-nav a .num{color:var(--muted);font-size:10px;font-weight:200}
 
+    /* Pinterest-style moving wall shown behind the hero headline while hovering Works / Brands */
+    .nav-preview{
+      position:fixed;inset:0;
+      display:flex;justify-content:center;align-items:flex-start;gap:14px;
+      padding:0 20px;
+      overflow:hidden;
+      pointer-events:none;
+      opacity:0;
+      transition:opacity .45s ease;
+      z-index:1;
+      background:rgba(8,8,7,0.35);
+      -webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 16%,black 82%,transparent 100%);
+      mask-image:linear-gradient(to bottom,transparent 0%,black 16%,black 82%,transparent 100%);
+    }
+    .nav-preview.show{opacity:1;pointer-events:auto}
+    .nav-preview-col{
+      display:flex;flex-direction:column;gap:14px;
+      width:140px;flex:0 0 auto;margin-top:-50%;
+      animation-name:navScrollUp;animation-timing-function:linear;animation-iteration-count:infinite;
+    }
+    .nav-preview-col-down{animation-name:navScrollDown}
+    .nav-preview-col img{width:100%;border-radius:12px;display:block;box-shadow:0 14px 30px rgba(0,0,0,.55);background:#141412}
+    @keyframes navScrollUp{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+    @keyframes navScrollDown{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+    @media(max-width:900px){.nav-preview{display:none}}
+
     /* PAGE SECTIONS */
     .page-section{display:none}
     .page-section.active{display:block;animation:fadeIn .35s ease}
@@ -730,12 +756,42 @@
   </div>
   <div class="hero-nav-strip">
     <nav class="hero-nav" id="heroNav">
-      <a onclick="showSection('works')"  data-section="works"><span class="num">01 |</span>&nbsp;Works</a>
-      <a onclick="showSection('brands')" data-section="brands"><span class="num">02 |</span>&nbsp;Brands</a>
+      <a onclick="showSection('works')"  data-section="works" onmouseenter="showNavPreview('works')" onmouseleave="hideNavPreviewSoon()"><span class="num">01 |</span>&nbsp;Works</a>
+      <a onclick="showSection('brands')" data-section="brands" onmouseenter="showNavPreview('brands')" onmouseleave="hideNavPreviewSoon()"><span class="num">02 |</span>&nbsp;Brands</a>
       <a onclick="showSection('about')"  data-section="about"><span class="num">03 |</span>&nbsp;About Me</a>
     </nav>
   </div>
 </header>
+
+            <div class="nav-preview" id="navPreview-works" data-for="works" onmouseenter="clearNavPreviewTimer()" onmouseleave="hideNavPreviewSoon()">
+        <div class="nav-preview-col nav-preview-col-up" style="animation-duration:20s"><img src="assets/ad-monday-rise-cover.jpg" alt="" loading="lazy"/><img src="assets/billboard-pldt.jpg" alt="" loading="lazy"/><img src="assets/branding-1.jpg" alt="" loading="lazy"/><img src="assets/cover-auscryptocon-sydney.jpg" alt="" loading="lazy"/><img src="assets/ebook-ultimate-entrepreneur.jpg" alt="" loading="lazy"/><img src="assets/ad-monday-rise-cover.jpg" alt="" loading="lazy"/><img src="assets/billboard-pldt.jpg" alt="" loading="lazy"/><img src="assets/branding-1.jpg" alt="" loading="lazy"/><img src="assets/cover-auscryptocon-sydney.jpg" alt="" loading="lazy"/><img src="assets/ebook-ultimate-entrepreneur.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-down" style="animation-duration:23s"><img src="assets/cover-auscryptocon-sydney.jpg" alt="" loading="lazy"/><img src="assets/ebook-ultimate-entrepreneur.jpg" alt="" loading="lazy"/><img src="assets/email-km-clearance.jpg" alt="" loading="lazy"/><img src="assets/img-02.jpg" alt="" loading="lazy"/><img src="assets/img-03.jpg" alt="" loading="lazy"/><img src="assets/cover-auscryptocon-sydney.jpg" alt="" loading="lazy"/><img src="assets/ebook-ultimate-entrepreneur.jpg" alt="" loading="lazy"/><img src="assets/email-km-clearance.jpg" alt="" loading="lazy"/><img src="assets/img-02.jpg" alt="" loading="lazy"/><img src="assets/img-03.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-up" style="animation-duration:26s"><img src="assets/img-02.jpg" alt="" loading="lazy"/><img src="assets/img-03.jpg" alt="" loading="lazy"/><img src="assets/img-32.jpg" alt="" loading="lazy"/><img src="assets/img-33.jpg" alt="" loading="lazy"/><img src="assets/img-34.jpg" alt="" loading="lazy"/><img src="assets/img-02.jpg" alt="" loading="lazy"/><img src="assets/img-03.jpg" alt="" loading="lazy"/><img src="assets/img-32.jpg" alt="" loading="lazy"/><img src="assets/img-33.jpg" alt="" loading="lazy"/><img src="assets/img-34.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-down" style="animation-duration:29s"><img src="assets/img-33.jpg" alt="" loading="lazy"/><img src="assets/img-34.jpg" alt="" loading="lazy"/><img src="assets/img-35.jpg" alt="" loading="lazy"/><img src="assets/img-36.jpg" alt="" loading="lazy"/><img src="assets/img-37.jpg" alt="" loading="lazy"/><img src="assets/img-33.jpg" alt="" loading="lazy"/><img src="assets/img-34.jpg" alt="" loading="lazy"/><img src="assets/img-35.jpg" alt="" loading="lazy"/><img src="assets/img-36.jpg" alt="" loading="lazy"/><img src="assets/img-37.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-up" style="animation-duration:32s"><img src="assets/img-36.jpg" alt="" loading="lazy"/><img src="assets/img-37.jpg" alt="" loading="lazy"/><img src="assets/img-38.jpg" alt="" loading="lazy"/><img src="assets/img-39.jpg" alt="" loading="lazy"/><img src="assets/img-40.jpg" alt="" loading="lazy"/><img src="assets/img-36.jpg" alt="" loading="lazy"/><img src="assets/img-37.jpg" alt="" loading="lazy"/><img src="assets/img-38.jpg" alt="" loading="lazy"/><img src="assets/img-39.jpg" alt="" loading="lazy"/><img src="assets/img-40.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-down" style="animation-duration:35s"><img src="assets/img-39.jpg" alt="" loading="lazy"/><img src="assets/img-40.jpg" alt="" loading="lazy"/><img src="assets/list-shirtplanet-streetwear.jpg" alt="" loading="lazy"/><img src="assets/live-donghub.jpg" alt="" loading="lazy"/><img src="assets/menu-affordameals.jpg" alt="" loading="lazy"/><img src="assets/img-39.jpg" alt="" loading="lazy"/><img src="assets/img-40.jpg" alt="" loading="lazy"/><img src="assets/list-shirtplanet-streetwear.jpg" alt="" loading="lazy"/><img src="assets/live-donghub.jpg" alt="" loading="lazy"/><img src="assets/menu-affordameals.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-up" style="animation-duration:22s"><img src="assets/live-donghub.jpg" alt="" loading="lazy"/><img src="assets/menu-affordameals.jpg" alt="" loading="lazy"/><img src="assets/poster-iam-raquel.jpg" alt="" loading="lazy"/><img src="assets/print-pldt-1.jpg" alt="" loading="lazy"/><img src="assets/satyn-3.jpg" alt="" loading="lazy"/><img src="assets/live-donghub.jpg" alt="" loading="lazy"/><img src="assets/menu-affordameals.jpg" alt="" loading="lazy"/><img src="assets/poster-iam-raquel.jpg" alt="" loading="lazy"/><img src="assets/print-pldt-1.jpg" alt="" loading="lazy"/><img src="assets/satyn-3.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-down" style="animation-duration:25s"><img src="assets/print-pldt-1.jpg" alt="" loading="lazy"/><img src="assets/satyn-3.jpg" alt="" loading="lazy"/><img src="assets/shirt-mike-barron.jpg" alt="" loading="lazy"/><img src="assets/sig-jmec-1.jpg" alt="" loading="lazy"/><img src="assets/smc-acc-everybody.jpg" alt="" loading="lazy"/><img src="assets/print-pldt-1.jpg" alt="" loading="lazy"/><img src="assets/satyn-3.jpg" alt="" loading="lazy"/><img src="assets/shirt-mike-barron.jpg" alt="" loading="lazy"/><img src="assets/sig-jmec-1.jpg" alt="" loading="lazy"/><img src="assets/smc-acc-everybody.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-up" style="animation-duration:28s"><img src="assets/sig-jmec-1.jpg" alt="" loading="lazy"/><img src="assets/smc-acc-everybody.jpg" alt="" loading="lazy"/><img src="assets/thumb-rampage.jpg" alt="" loading="lazy"/><img src="assets/vbanner-affordameals.jpg" alt="" loading="lazy"/><img src="assets/vx-box.jpg" alt="" loading="lazy"/><img src="assets/sig-jmec-1.jpg" alt="" loading="lazy"/><img src="assets/smc-acc-everybody.jpg" alt="" loading="lazy"/><img src="assets/thumb-rampage.jpg" alt="" loading="lazy"/><img src="assets/vbanner-affordameals.jpg" alt="" loading="lazy"/><img src="assets/vx-box.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-down" style="animation-duration:31s"><img src="assets/vbanner-affordameals.jpg" alt="" loading="lazy"/><img src="assets/vx-box.jpg" alt="" loading="lazy"/><img src="assets/web-unagency.jpg" alt="" loading="lazy"/><img src="assets/yuny-post-sand.jpg" alt="" loading="lazy"/><img src="assets/yuny-web-koop.jpg" alt="" loading="lazy"/><img src="assets/vbanner-affordameals.jpg" alt="" loading="lazy"/><img src="assets/vx-box.jpg" alt="" loading="lazy"/><img src="assets/web-unagency.jpg" alt="" loading="lazy"/><img src="assets/yuny-post-sand.jpg" alt="" loading="lazy"/><img src="assets/yuny-web-koop.jpg" alt="" loading="lazy"/></div>
+      </div>
+      <div class="nav-preview" id="navPreview-brands" data-for="brands" onmouseenter="clearNavPreviewTimer()" onmouseleave="hideNavPreviewSoon()">
+        <div class="nav-preview-col nav-preview-col-up" style="animation-duration:20s"><img src="assets/brand-adams.jpg" alt="" loading="lazy"/><img src="assets/brand-bluefox.jpg" alt="" loading="lazy"/><img src="assets/brand-brbuilders.jpg" alt="" loading="lazy"/><img src="assets/brand-cache.jpg" alt="" loading="lazy"/><img src="assets/brand-fourged.jpg" alt="" loading="lazy"/><img src="assets/brand-adams.jpg" alt="" loading="lazy"/><img src="assets/brand-bluefox.jpg" alt="" loading="lazy"/><img src="assets/brand-brbuilders.jpg" alt="" loading="lazy"/><img src="assets/brand-cache.jpg" alt="" loading="lazy"/><img src="assets/brand-fourged.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-down" style="animation-duration:23s"><img src="assets/brand-cache.jpg" alt="" loading="lazy"/><img src="assets/brand-fourged.jpg" alt="" loading="lazy"/><img src="assets/brand-kadiwa.jpg" alt="" loading="lazy"/><img src="assets/brand-letsfly.jpg" alt="" loading="lazy"/><img src="assets/brand-mandialeaf.jpg" alt="" loading="lazy"/><img src="assets/brand-cache.jpg" alt="" loading="lazy"/><img src="assets/brand-fourged.jpg" alt="" loading="lazy"/><img src="assets/brand-kadiwa.jpg" alt="" loading="lazy"/><img src="assets/brand-letsfly.jpg" alt="" loading="lazy"/><img src="assets/brand-mandialeaf.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-up" style="animation-duration:26s"><img src="assets/brand-letsfly.jpg" alt="" loading="lazy"/><img src="assets/brand-mandialeaf.jpg" alt="" loading="lazy"/><img src="assets/brand-mehrfinanz.jpg" alt="" loading="lazy"/><img src="assets/brand-pflegerleicht.jpg" alt="" loading="lazy"/><img src="assets/brand-rocketdonut.jpg" alt="" loading="lazy"/><img src="assets/brand-letsfly.jpg" alt="" loading="lazy"/><img src="assets/brand-mandialeaf.jpg" alt="" loading="lazy"/><img src="assets/brand-mehrfinanz.jpg" alt="" loading="lazy"/><img src="assets/brand-pflegerleicht.jpg" alt="" loading="lazy"/><img src="assets/brand-rocketdonut.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-down" style="animation-duration:29s"><img src="assets/brand-pflegerleicht.jpg" alt="" loading="lazy"/><img src="assets/brand-rocketdonut.jpg" alt="" loading="lazy"/><img src="assets/brand-roli.jpg" alt="" loading="lazy"/><img src="assets/brand-scaled.jpg" alt="" loading="lazy"/><img src="assets/brand-vermonix.jpg" alt="" loading="lazy"/><img src="assets/brand-pflegerleicht.jpg" alt="" loading="lazy"/><img src="assets/brand-rocketdonut.jpg" alt="" loading="lazy"/><img src="assets/brand-roli.jpg" alt="" loading="lazy"/><img src="assets/brand-scaled.jpg" alt="" loading="lazy"/><img src="assets/brand-vermonix.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-up" style="animation-duration:32s"><img src="assets/brand-scaled.jpg" alt="" loading="lazy"/><img src="assets/brand-vermonix.jpg" alt="" loading="lazy"/><img src="assets/brand-adams.jpg" alt="" loading="lazy"/><img src="assets/brand-bluefox.jpg" alt="" loading="lazy"/><img src="assets/brand-brbuilders.jpg" alt="" loading="lazy"/><img src="assets/brand-scaled.jpg" alt="" loading="lazy"/><img src="assets/brand-vermonix.jpg" alt="" loading="lazy"/><img src="assets/brand-adams.jpg" alt="" loading="lazy"/><img src="assets/brand-bluefox.jpg" alt="" loading="lazy"/><img src="assets/brand-brbuilders.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-down" style="animation-duration:35s"><img src="assets/brand-bluefox.jpg" alt="" loading="lazy"/><img src="assets/brand-brbuilders.jpg" alt="" loading="lazy"/><img src="assets/brand-cache.jpg" alt="" loading="lazy"/><img src="assets/brand-fourged.jpg" alt="" loading="lazy"/><img src="assets/brand-kadiwa.jpg" alt="" loading="lazy"/><img src="assets/brand-bluefox.jpg" alt="" loading="lazy"/><img src="assets/brand-brbuilders.jpg" alt="" loading="lazy"/><img src="assets/brand-cache.jpg" alt="" loading="lazy"/><img src="assets/brand-fourged.jpg" alt="" loading="lazy"/><img src="assets/brand-kadiwa.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-up" style="animation-duration:22s"><img src="assets/brand-fourged.jpg" alt="" loading="lazy"/><img src="assets/brand-kadiwa.jpg" alt="" loading="lazy"/><img src="assets/brand-letsfly.jpg" alt="" loading="lazy"/><img src="assets/brand-mandialeaf.jpg" alt="" loading="lazy"/><img src="assets/brand-mehrfinanz.jpg" alt="" loading="lazy"/><img src="assets/brand-fourged.jpg" alt="" loading="lazy"/><img src="assets/brand-kadiwa.jpg" alt="" loading="lazy"/><img src="assets/brand-letsfly.jpg" alt="" loading="lazy"/><img src="assets/brand-mandialeaf.jpg" alt="" loading="lazy"/><img src="assets/brand-mehrfinanz.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-down" style="animation-duration:25s"><img src="assets/brand-mandialeaf.jpg" alt="" loading="lazy"/><img src="assets/brand-mehrfinanz.jpg" alt="" loading="lazy"/><img src="assets/brand-pflegerleicht.jpg" alt="" loading="lazy"/><img src="assets/brand-rocketdonut.jpg" alt="" loading="lazy"/><img src="assets/brand-roli.jpg" alt="" loading="lazy"/><img src="assets/brand-mandialeaf.jpg" alt="" loading="lazy"/><img src="assets/brand-mehrfinanz.jpg" alt="" loading="lazy"/><img src="assets/brand-pflegerleicht.jpg" alt="" loading="lazy"/><img src="assets/brand-rocketdonut.jpg" alt="" loading="lazy"/><img src="assets/brand-roli.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-up" style="animation-duration:28s"><img src="assets/brand-rocketdonut.jpg" alt="" loading="lazy"/><img src="assets/brand-roli.jpg" alt="" loading="lazy"/><img src="assets/brand-scaled.jpg" alt="" loading="lazy"/><img src="assets/brand-vermonix.jpg" alt="" loading="lazy"/><img src="assets/brand-adams.jpg" alt="" loading="lazy"/><img src="assets/brand-rocketdonut.jpg" alt="" loading="lazy"/><img src="assets/brand-roli.jpg" alt="" loading="lazy"/><img src="assets/brand-scaled.jpg" alt="" loading="lazy"/><img src="assets/brand-vermonix.jpg" alt="" loading="lazy"/><img src="assets/brand-adams.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-down" style="animation-duration:31s"><img src="assets/brand-vermonix.jpg" alt="" loading="lazy"/><img src="assets/brand-adams.jpg" alt="" loading="lazy"/><img src="assets/brand-bluefox.jpg" alt="" loading="lazy"/><img src="assets/brand-brbuilders.jpg" alt="" loading="lazy"/><img src="assets/brand-cache.jpg" alt="" loading="lazy"/><img src="assets/brand-vermonix.jpg" alt="" loading="lazy"/><img src="assets/brand-adams.jpg" alt="" loading="lazy"/><img src="assets/brand-bluefox.jpg" alt="" loading="lazy"/><img src="assets/brand-brbuilders.jpg" alt="" loading="lazy"/><img src="assets/brand-cache.jpg" alt="" loading="lazy"/></div>
+      </div>
+        <div class="nav-preview-col nav-preview-col-down" style="animation-duration:26s"><img src="assets/brand-bluefox.jpg" alt="" loading="lazy"/><img src="assets/brand-letsfly.jpg" alt="" loading="lazy"/><img src="assets/brand-roli.jpg" alt="" loading="lazy"/><img src="assets/brand-bluefox.jpg" alt="" loading="lazy"/><img src="assets/brand-letsfly.jpg" alt="" loading="lazy"/><img src="assets/brand-roli.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-up" style="animation-duration:30s"><img src="assets/brand-brbuilders.jpg" alt="" loading="lazy"/><img src="assets/brand-mandialeaf.jpg" alt="" loading="lazy"/><img src="assets/brand-scaled.jpg" alt="" loading="lazy"/><img src="assets/brand-brbuilders.jpg" alt="" loading="lazy"/><img src="assets/brand-mandialeaf.jpg" alt="" loading="lazy"/><img src="assets/brand-scaled.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-down" style="animation-duration:34s"><img src="assets/brand-cache.jpg" alt="" loading="lazy"/><img src="assets/brand-mehrfinanz.jpg" alt="" loading="lazy"/><img src="assets/brand-vermonix.jpg" alt="" loading="lazy"/><img src="assets/brand-cache.jpg" alt="" loading="lazy"/><img src="assets/brand-mehrfinanz.jpg" alt="" loading="lazy"/><img src="assets/brand-vermonix.jpg" alt="" loading="lazy"/></div>
+        <div class="nav-preview-col nav-preview-col-up" style="animation-duration:24s"><img src="assets/brand-fourged.jpg" alt="" loading="lazy"/><img src="assets/brand-pflegerleicht.jpg" alt="" loading="lazy"/><img src="assets/brand-fourged.jpg" alt="" loading="lazy"/><img src="assets/brand-pflegerleicht.jpg" alt="" loading="lazy"/></div>
+      </div>
 
 <!-- WORKS -->
 <div id="page-works" class="page-section">
@@ -1816,7 +1872,24 @@
 <script>
 const PAGE_IDS = {'works':'page-works','brands':'page-brands','about':'page-about','project':'page-project'};
 
+let navPreviewTimer = null;
+function showNavPreview(id) {
+  clearNavPreviewTimer();
+  document.querySelectorAll('.nav-preview').forEach(p => p.classList.remove('show'));
+  const el = document.getElementById('navPreview-' + id);
+  if (el) el.classList.add('show');
+}
+function clearNavPreviewTimer() {
+  clearTimeout(navPreviewTimer);
+}
+function hideNavPreviewSoon() {
+  navPreviewTimer = setTimeout(() => {
+    document.querySelectorAll('.nav-preview').forEach(p => p.classList.remove('show'));
+  }, 180);
+}
+
 function showSection(name) {
+  document.querySelectorAll('.nav-preview').forEach(p => p.classList.remove('show'));
   // Hide all pages
   Object.values(PAGE_IDS).forEach(id => {
     const el = document.getElementById(id);
