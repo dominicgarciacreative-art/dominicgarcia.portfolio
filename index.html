@@ -23,28 +23,28 @@
     .mono-extralight{font-weight:200}.mono-light{font-weight:300}.mono-medium{font-weight:500}
 
     /* NAV */
-    nav.topnav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:18px 40px;background:linear-gradient(to bottom,rgba(12,12,10,0.8) 0%,transparent 100%)}
-    .year{font-size:15px;font-weight:300;color:var(--dim);letter-spacing:.1em}
-    .contact-btn{border:1px solid var(--border);border-radius:99px;padding:10px 26px;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--bg);background:var(--bright);cursor:pointer;transition:background .2s,color .2s}
+    nav.topnav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:18px 40px;background:#ffffff;border-bottom:1px solid rgba(20,20,18,0.08)}
+    .year{font-size:15px;font-weight:300;color:rgba(20,20,18,0.55);letter-spacing:.1em}
+    .contact-btn{border:1px solid #141412;border-radius:99px;padding:10px 26px;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#f5f5f0;background:#141412;cursor:pointer;transition:opacity .2s}
+    .contact-btn:hover{opacity:.82}
     .contact-btn:hover{background:var(--accent);color:var(--bg)}
 
     /* HERO */
-    .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;overflow:hidden;text-align:center}
-    .hero-composite{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:0}
-    .hero-fade{position:absolute;bottom:0;left:0;right:0;height:300px;background:linear-gradient(to top,var(--bg) 0%,rgba(12,12,10,0.6) 50%,transparent 100%);z-index:1;pointer-events:none}
-    .hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,transparent 35%,rgba(12,12,10,0.5) 100%);z-index:1;pointer-events:none}
+    .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;overflow:hidden;text-align:center;background:#ffffff}
+    .hero-composite,.hero-fade,.hero-vignette{display:none}
     .hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%;padding-bottom:32px}
-    .hero-name{font-family:var(--font-display);font-size:clamp(34px,7.5vw,92px);letter-spacing:.03em;color:var(--bright);line-height:.95;text-transform:uppercase;margin-bottom:10px;text-shadow:0 2px 20px rgba(0,0,0,0.6)}
-    .hero-subtitle{font-size:10px;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:rgba(180,180,172,0.85);margin-bottom:0;padding:0 20px}
+    .hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,20,18,0.45);margin-bottom:18px}
+    .hero-name{font-family:var(--font-display);font-size:clamp(34px,7.5vw,92px);letter-spacing:.03em;color:#141412;line-height:.95;text-transform:uppercase;margin-bottom:14px}
+    .hero-subtitle{font-size:10px;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:rgba(20,20,18,0.5);margin-bottom:0;padding:0 20px}
 
     /* Glass nav strip */
-    .hero-nav-strip{position:relative;z-index:2;width:100%;padding:18px 40px;background:rgba(255,255,255,0.025);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:none;display:flex;justify-content:center}
-    .hero-nav-strip::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) 50%,rgba(255,255,255,0) 100%)}
+    .hero-nav-strip{position:relative;z-index:2;width:100%;padding:18px 40px;background:transparent;border:none;display:flex;justify-content:center}
+    .hero-nav-strip::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(20,20,18,0) 0%,rgba(20,20,18,0.16) 50%,rgba(20,20,18,0) 100%)}
     .hero-nav{display:flex;gap:0;background:transparent;border:none;max-width:500px;width:100%;justify-content:space-around}
-    .hero-nav a{font-size:11px;font-weight:300;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:10px 16px;border:none;display:flex;align-items:center;gap:6px;white-space:nowrap;cursor:pointer;transition:color .2s}
-    .hero-nav a.active{color:var(--bright);border-bottom:1px solid rgba(255,255,255,0.35)}
-    .hero-nav a:hover{color:var(--bright)}
-    .hero-nav a .num{color:var(--muted);font-size:10px;font-weight:200}
+    .hero-nav a{font-size:11px;font-weight:300;letter-spacing:.14em;text-transform:uppercase;color:rgba(20,20,18,0.5);padding:10px 16px;border:none;display:flex;align-items:center;gap:6px;white-space:nowrap;cursor:pointer;transition:color .2s}
+    .hero-nav a.active{color:#141412;border-bottom:1px solid rgba(20,20,18,0.4)}
+    .hero-nav a:hover{color:#141412}
+    .hero-nav a .num{color:rgba(20,20,18,0.32);font-size:10px;font-weight:200}
 
     /* PAGE SECTIONS */
     .page-section{display:none}
@@ -663,11 +663,13 @@
 </style>
 </head>
 <body>
-<!-- Under Construction notice (shown on open) -->
-<div id="uc-notice" role="dialog" aria-modal="true" onclick="if(event.target===this)this.classList.add('hide')">
-  <div class="uc-card">
-    <img class="uc-sign" src="assets/warning-sign.svg" alt="Under Construction"/>
-    <div class="uc-badge">● Under Construction</div>
+<!-- Portfolio-under-construction pill notification -->
+<div id="uc-notice">
+  <button class="uc-pill" onclick="document.getElementById('uc-panel').classList.toggle('show')" aria-expanded="false" aria-controls="uc-panel">
+    <span class="uc-dot"></span>Portfolio Under Construction
+  </button>
+  <div id="uc-panel" class="uc-panel" role="dialog">
+    <button class="uc-close" onclick="document.getElementById('uc-panel').classList.remove('show')" aria-label="Close">&times;</button>
     <h2 class="uc-title">Portfolio in Progress</h2>
     <p class="uc-text">Not all material has been uploaded yet — feel free to browse what's available below.</p>
     <p class="uc-text">Browse my <a class="uc-link" href="https://docs.google.com/presentation/d/1H1xydUEJzwq0EE1MfHpOYOw2Ds_JTVdIXon6wDATrdE/edit?slide=id.g2cf5203a1cb_0_84#slide=id.g2cf5203a1cb_0_84" target="_blank" rel="noopener">previous portfolio (2024)</a>, or looking for a <strong>specific piece</strong>? Reach out and I'll gladly share it with you directly.</p>
@@ -676,43 +678,52 @@
       <a class="uc-btn" href="mailto:dominicgarcia.creative@gmail.com">Email</a>
       <a class="uc-btn" href="tel:+639274185581">Call</a>
     </div>
-    <button class="uc-dismiss" onclick="document.getElementById('uc-notice').classList.add('hide')">Browse Portfolio &rarr;</button>
   </div>
 </div>
 <style>
-  #uc-notice{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
-    background:rgba(6,6,5,0.88);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);padding:24px;animation:ucFade .45s ease}
-  #uc-notice.hide{display:none}
-  @keyframes ucFade{from{opacity:0}to{opacity:1}}
-  .uc-card{position:relative;overflow:hidden;max-width:500px;width:100%;background:#141412;border:1px solid rgba(255,255,255,0.1);border-radius:14px;
-    padding:54px 38px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:ucRise .5s cubic-bezier(.2,.8,.2,1)}
-  @keyframes ucRise{from{transform:translateY(14px);opacity:0}to{transform:translateY(0);opacity:1}}
-  /* Hazard caution-tape strips (top + bottom) */
-  .uc-card::before,.uc-card::after{content:"";position:absolute;left:0;right:0;height:14px;z-index:2;
-    background:repeating-linear-gradient(-45deg,#f5c518 0 15px,#141210 15px 30px);
-    box-shadow:0 0 0 1px rgba(0,0,0,.4)}
-  .uc-card::before{top:0}
-  .uc-card::after{bottom:0}
-  .uc-badge{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.25em;text-transform:uppercase;
-    color:#c8c060;border:1px solid rgba(200,192,96,.35);border-radius:100px;padding:6px 15px;margin-bottom:22px}
-  .uc-title{font-family:var(--font-display);font-size:clamp(26px,5vw,36px);letter-spacing:.02em;color:#f0f0e8;
-    text-transform:uppercase;margin:0 0 16px;line-height:1.05}
-  .uc-text{font-family:var(--font-mono);font-size:12.5px;line-height:1.75;color:#b4b4ac;margin:0 0 13px}
+  #uc-notice{position:fixed;top:80px;right:24px;z-index:9999;font-family:var(--font-mono)}
+  .uc-pill{display:flex;align-items:center;gap:8px;background:#141412;border:1px solid rgba(255,255,255,0.12);
+    border-radius:100px;padding:9px 18px 9px 14px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:#e8e8e0;cursor:pointer;box-shadow:0 12px 28px rgba(0,0,0,.28);transition:border-color .2s}
+  .uc-pill:hover{border-color:rgba(200,192,96,.5)}
+  .uc-dot{width:7px;height:7px;border-radius:50%;background:#f5c518;flex:0 0 auto;
+    box-shadow:0 0 0 0 rgba(245,197,24,.5);animation:ucPulse 2.2s infinite}
+  @keyframes ucPulse{0%{box-shadow:0 0 0 0 rgba(245,197,24,.45)}70%{box-shadow:0 0 0 7px rgba(245,197,24,0)}100%{box-shadow:0 0 0 0 rgba(245,197,24,0)}}
+  .uc-panel{position:absolute;top:calc(100% + 10px);right:0;width:320px;max-width:calc(100vw - 48px);
+    background:#141412;border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:26px 22px 22px;
+    box-shadow:0 24px 60px rgba(0,0,0,.45);opacity:0;pointer-events:none;transform:translateY(-8px);
+    transition:opacity .25s ease,transform .25s ease}
+  .uc-panel.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+  .uc-close{position:absolute;top:12px;right:12px;width:26px;height:26px;border-radius:50%;border:none;
+    background:rgba(255,255,255,0.08);color:#d4d4cc;font-size:16px;line-height:1;cursor:pointer;transition:background .2s}
+  .uc-close:hover{background:rgba(255,255,255,0.16)}
+  .uc-title{font-family:var(--font-display);font-size:19px;letter-spacing:.02em;color:#f0f0e8;
+    text-transform:uppercase;margin:0 26px 12px 0;line-height:1.1}
+  .uc-text{font-family:var(--font-mono);font-size:11.5px;line-height:1.65;color:#b4b4ac;margin:0 0 11px}
   .uc-text strong{color:#e8e8e0;font-weight:500}
-  .uc-sign{width:108px;height:auto;display:block;margin:2px auto 18px;filter:drop-shadow(0 6px 16px rgba(245,197,24,.18)) drop-shadow(0 4px 14px rgba(0,0,0,.5))}
   .uc-link{color:#c8c060;text-decoration:underline;text-underline-offset:3px;font-weight:500}
   .uc-link:hover{color:#e0d878}
-  .uc-actions{display:flex;gap:10px;justify-content:center;margin:26px 0 18px;flex-wrap:wrap}
-  .uc-btn{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
-    color:#d4d4cc;border:1px solid rgba(255,255,255,0.16);border-radius:8px;padding:11px 20px;transition:all .2s}
+  .uc-actions{display:flex;gap:8px;justify-content:flex-start;margin:16px 0 0;flex-wrap:wrap}
+  .uc-btn{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;
+    color:#d4d4cc;border:1px solid rgba(255,255,255,0.16);border-radius:7px;padding:9px 14px;transition:all .2s}
   .uc-btn:hover{border-color:#c8c060;color:#f0f0e8}
   .uc-wa{background:#25543f;border-color:#2e6b4f;color:#eaf5ef}
   .uc-wa:hover{background:#2e6b4f;border-color:#3a8563}
-  .uc-dismiss{margin-top:8px;background:#c8c060;color:#141412;border:none;border-radius:8px;font-family:var(--font-mono);
-    font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:13px 28px;cursor:pointer;transition:opacity .2s}
-  .uc-dismiss:hover{opacity:.85}
-  @media(max-width:520px){.uc-card{padding:34px 22px}}
+  @media(max-width:520px){
+    #uc-notice{right:14px;top:72px}
+    .uc-pill{font-size:9px;padding:8px 14px 8px 12px}
+    .uc-panel{width:min(320px,calc(100vw - 28px))}
+  }
 </style>
+<script>
+  document.addEventListener('click', function(e){
+    var notice = document.getElementById('uc-notice');
+    var panel = document.getElementById('uc-panel');
+    if (notice && panel && panel.classList.contains('show') && !notice.contains(e.target)) {
+      panel.classList.remove('show');
+    }
+  });
+</script>
 
 <nav class="topnav">
   <span class="year mono-light">2026</span>
@@ -725,7 +736,8 @@
   <div class="hero-vignette"></div>
   <div class="hero-fade"></div>
   <div class="hero-content">
-    <div class="hero-name">Dominic Garcia</div>
+    <div class="hero-eyebrow mono-light">Dominic Garcia</div>
+    <div class="hero-name">Welcome to<br/>My Portfolio</div>
     <div class="hero-subtitle mono-light">Creative Designer&nbsp;·&nbsp;AI Creative System&nbsp;·&nbsp;Video Editor</div>
   </div>
   <div class="hero-nav-strip">
