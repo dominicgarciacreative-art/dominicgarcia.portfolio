@@ -39,12 +39,19 @@
       box-shadow:0 18px 36px rgba(0,0,0,.22);transform:translateX(var(--x)) rotate(var(--r));z-index:var(--z);
       transition:transform .3s cubic-bezier(.22,1,.36,1)}
     .hero-fan:hover .hero-fan-card{transform:translateX(var(--x)) rotate(var(--r)) translateY(-8px)}
+    .hero-fan-tag{position:absolute;z-index:10;font-family:var(--font-mono);font-size:11px;font-weight:600;
+      color:#fff;padding:8px 16px;border-radius:100px 100px 100px 4px;box-shadow:0 10px 22px rgba(0,0,0,.22);
+      white-space:nowrap;animation:heroTagFloat 3.4s ease-in-out infinite}
+    .hero-fan-tag-1{top:-14px;left:20px;background:#2f6fed;animation-delay:0s}
+    .hero-fan-tag-2{top:-10px;right:12px;background:#1fa971;border-radius:100px 100px 4px 100px;animation-delay:1.2s}
+    @keyframes heroTagFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+    @media(max-width:767px){.hero-fan-tag{font-size:9px;padding:6px 12px}}
     @media(max-width:767px){
       .hero-fan{height:105px;transform:scale(.72)}
     }
     .hero-para strong{font-weight:700}
     .hero-serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
-    .hero-inline-icon{display:inline-block;width:1.9em;height:1.3em;border-radius:50%;object-fit:cover;vertical-align:middle;margin:0 0.04em;transform:translateY(-0.1em);box-shadow:0 4px 12px rgba(0,0,0,.18)}
+    .hero-inline-icon{display:inline-block;width:1.9em;height:1.3em;border-radius:0.4em;object-fit:cover;vertical-align:middle;margin:0 0.04em;transform:translateY(-0.1em);box-shadow:0 4px 12px rgba(0,0,0,.18)}
 
     /* Glass nav strip */
     .hero-nav-strip{position:relative;z-index:2;width:100%;padding:18px 40px;background:transparent;border:none;display:flex;justify-content:center}
@@ -760,6 +767,8 @@
       <img class="hero-fan-card" src="assets/ad-bosch-tmdi-mega-sale.jpg" alt="" style="--r:3deg;--x:33px;--z:3"/>
       <img class="hero-fan-card" src="assets/ad-cloudshare-nexora-chat.jpg" alt="" style="--r:9deg;--x:100px;--z:2"/>
       <img class="hero-fan-card" src="assets/brand-roli.jpg" alt="" style="--r:16deg;--x:165px;--z:1"/>
+      <div class="hero-fan-tag hero-fan-tag-1">@nick.creativemedia</div>
+      <div class="hero-fan-tag hero-fan-tag-2">6+ yrs exp</div>
     </div>
     <button class="hero-cta" onclick="event.stopPropagation();playPresentSound();document.getElementById('uc-panel').classList.add('show')">Present &rarr;</button>
     <div class="hero-cta-note mono-light">or ignore this if you'd rather check it out yourself</div>
