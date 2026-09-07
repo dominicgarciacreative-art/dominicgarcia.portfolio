@@ -34,20 +34,20 @@
     .hero-cta{font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#f5f5f0;background:#141412;border:1px solid #141412;border-radius:100px;padding:14px 34px;cursor:pointer;transition:opacity .2s}
     .hero-cta:hover{opacity:.82}
     .hero-cta-note{font-size:11px;font-weight:300;letter-spacing:.04em;color:rgba(20,20,18,0.4);margin-top:14px}
-    .hero-fan{position:relative;height:150px;width:100%;max-width:600px;margin:8px auto 30px;display:flex;align-items:center;justify-content:center}
-    .hero-fan-card{position:absolute;width:130px;height:130px;object-fit:cover;border-radius:14px;border:3px solid #fff;
+    .hero-fan{position:relative;height:190px;width:100%;max-width:920px;margin:8px auto 30px;display:flex;align-items:center;justify-content:center}
+    .hero-fan-card{position:absolute;width:170px;height:170px;object-fit:cover;border-radius:16px;border:3px solid #fff;
       box-shadow:0 18px 36px rgba(0,0,0,.22);transform:translateX(var(--x)) rotate(var(--r));z-index:var(--z);
       transition:transform .3s cubic-bezier(.22,1,.36,1)}
     .hero-fan:hover .hero-fan-card{transform:translateX(var(--x)) rotate(var(--r)) translateY(-8px)}
     .hero-fan-tag{position:absolute;z-index:10;font-family:var(--font-mono);font-size:11px;font-weight:600;
       color:#fff;padding:8px 16px;border-radius:100px 100px 100px 4px;box-shadow:0 10px 22px rgba(0,0,0,.22);
       white-space:nowrap;animation:heroTagFloat 3.4s ease-in-out infinite}
-    .hero-fan-tag-1{top:-14px;left:20px;background:#2f6fed;animation-delay:0s}
-    .hero-fan-tag-2{top:-10px;right:12px;background:#1fa971;border-radius:100px 100px 4px 100px;animation-delay:1.2s}
+    .hero-fan-tag-1{top:-14px;left:6%;background:#2f6fed;animation-delay:0s}
+    .hero-fan-tag-2{top:-10px;right:4%;background:#1fa971;border-radius:100px 100px 4px 100px;animation-delay:1.2s}
     @keyframes heroTagFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
     @media(max-width:767px){.hero-fan-tag{font-size:9px;padding:6px 12px}}
     @media(max-width:767px){
-      .hero-fan{height:105px;transform:scale(.72)}
+      .hero-fan{height:130px;transform:scale(.42)}
     }
     .hero-para strong{font-weight:700}
     .hero-serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
@@ -548,6 +548,13 @@
       position:absolute;inset:0;z-index:3;
       width:100%;height:100%;
       filter:drop-shadow(0 16px 30px rgba(0,0,0,0.5));
+      pointer-events:none;
+    }
+    /* Uniform frosted glass over the WHOLE card (peek + front face alike) so there's
+       no hard seam between a blurred rectangle and a sharp sliver above it. */
+    .folder-glass{
+      position:absolute;inset:0;z-index:2;
+      border-radius:18px;
       backdrop-filter:blur(14px) saturate(160%);
       -webkit-backdrop-filter:blur(14px) saturate(160%);
       pointer-events:none;
@@ -761,12 +768,14 @@
       a <span class="hero-serif">Creative Designer</span><br/>
       based in <span class="hero-serif">Philippines</span> <img class="hero-inline-icon" src="assets/hero-icon-ph-flag.png" alt="Philippines"/></p>
     <div class="hero-fan">
-      <img class="hero-fan-card" src="assets/ad-monday-rise-cover.jpg" alt="" style="--r:-16deg;--x:-165px;--z:1"/>
-      <img class="hero-fan-card" src="assets/brand-mandialeaf.jpg" alt="" style="--r:-9deg;--x:-100px;--z:2"/>
-      <img class="hero-fan-card" src="assets/ad-satyn-feels-premium.jpg" alt="" style="--r:-3deg;--x:-33px;--z:3"/>
-      <img class="hero-fan-card" src="assets/ad-bosch-tmdi-mega-sale.jpg" alt="" style="--r:3deg;--x:33px;--z:3"/>
-      <img class="hero-fan-card" src="assets/ad-cloudshare-nexora-chat.jpg" alt="" style="--r:9deg;--x:100px;--z:2"/>
-      <img class="hero-fan-card" src="assets/brand-roli.jpg" alt="" style="--r:16deg;--x:165px;--z:1"/>
+      <img class="hero-fan-card" src="assets/ad-monday-rise-cover.jpg" alt="" style="--r:-20deg;--x:-350px;--z:1"/>
+      <img class="hero-fan-card" src="assets/ad-purple7-indoor-meetings.jpg" alt="" style="--r:-14deg;--x:-250px;--z:2"/>
+      <img class="hero-fan-card" src="assets/brand-mandialeaf.jpg" alt="" style="--r:-8deg;--x:-150px;--z:3"/>
+      <img class="hero-fan-card" src="assets/ad-satyn-feels-premium.jpg" alt="" style="--r:-3deg;--x:-50px;--z:4"/>
+      <img class="hero-fan-card" src="assets/ad-bosch-tmdi-mega-sale.jpg" alt="" style="--r:3deg;--x:50px;--z:4"/>
+      <img class="hero-fan-card" src="assets/ad-cloudshare-nexora-chat.jpg" alt="" style="--r:8deg;--x:150px;--z:3"/>
+      <img class="hero-fan-card" src="assets/brand-scaled.jpg" alt="" style="--r:14deg;--x:250px;--z:2"/>
+      <img class="hero-fan-card" src="assets/brand-roli.jpg" alt="" style="--r:20deg;--x:350px;--z:1"/>
       <div class="hero-fan-tag hero-fan-tag-1">@nick.creativemedia</div>
       <div class="hero-fan-tag hero-fan-tag-2">6+ yrs exp</div>
     </div>
@@ -816,6 +825,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Branding</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ffBrand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ffBrand)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Brand</div>
@@ -836,6 +846,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Social Media<br/>Advertisement</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff1)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Graphic</div>
@@ -853,6 +864,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Packaging</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff2)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Product</div>
@@ -870,6 +882,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Website<br/>Design</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff5)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
@@ -887,6 +900,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Social Media<br/>Content</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff6)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
@@ -904,6 +918,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Website<br/>Asset</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff7" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff7)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
@@ -921,6 +936,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Logo<br/>Branding</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff3)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Identity</div>
@@ -938,6 +954,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Thumbnails</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff8" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff8)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Video</div>
@@ -955,6 +972,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Print<br/>Ads</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff9" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff9)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Print</div>
@@ -972,6 +990,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Shirt<br/>Design</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff10" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff10)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Print</div>
@@ -989,6 +1008,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Menu<br/>Board</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff11" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff11)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Print</div>
@@ -1006,6 +1026,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">E-book<br/>Cover</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff12" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff12)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
@@ -1023,6 +1044,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Poster</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff17" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff17)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Event</div>
@@ -1040,6 +1062,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Live Stream<br/>Layout</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff14" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff14)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Event</div>
@@ -1057,6 +1080,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Billboard</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff15" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff15)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Print</div>
@@ -1074,6 +1098,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Vertical<br/>Banner</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff16" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff16)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Print</div>
@@ -1091,6 +1116,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Email<br/>Signatures</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff13" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff13)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
@@ -1108,6 +1134,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Email<br/>Design</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff4)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
@@ -1125,6 +1152,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Listing<br/>Design</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff18" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff18)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
@@ -1142,6 +1170,7 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Cover<br/>Photo</div>
+        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff19" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff19)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
