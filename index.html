@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@200;300;400;500;600&family=Bebas+Neue&family=REM:ital,wght@1,300&display=swap" rel="stylesheet"/>
   <style>
     @import url('https://fonts.cdnfonts.com/css/phonk');
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
       --bg:#0c0c0a;--surface:#141412;--border:rgba(255,255,255,0.08);
@@ -29,13 +30,13 @@
     .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;overflow:hidden;text-align:center;background:#ffffff}
     .hero-composite,.hero-fade,.hero-vignette{display:none}
     .hero-content{position:relative;z-index:2;display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;width:100%}
-    .hero-para{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;font-size:clamp(30px,5.8vw,58px);font-weight:700;line-height:1.4;letter-spacing:0;color:#141412;max-width:1000px;margin:0 auto 32px;padding:0 24px;text-align:center}
-    .hero-cta{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#141412;background:transparent;border:1px solid rgba(20,20,18,0.25);border-radius:100px;padding:12px 26px;cursor:pointer;transition:border-color .2s,background .2s}
-    .hero-cta:hover{border-color:rgba(20,20,18,0.5);background:rgba(20,20,18,0.03)}
+    .hero-para{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;font-size:clamp(30px,5.8vw,58px);font-weight:400;line-height:1.4;letter-spacing:0;color:#141412;max-width:1000px;margin:0 auto 32px;padding:0 24px;text-align:center}
+    .hero-cta{font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#f5f5f0;background:#141412;border:1px solid #141412;border-radius:100px;padding:14px 34px;cursor:pointer;transition:opacity .2s}
+    .hero-cta:hover{opacity:.82}
     .hero-cta-note{font-size:11px;font-weight:300;letter-spacing:.04em;color:rgba(20,20,18,0.4);margin-top:14px}
     .hero-para strong{font-weight:700}
-    .hero-serif{font-family:inherit;font-style:normal;font-weight:900}
-    .hero-inline-icon{display:inline-block;width:1.9em;height:1.9em;border-radius:50%;object-fit:cover;vertical-align:middle;margin:0 0.04em;transform:translateY(-0.1em);box-shadow:0 4px 12px rgba(0,0,0,.18)}
+    .hero-serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+    .hero-inline-icon{display:inline-block;width:1.3em;height:1.3em;border-radius:50%;object-fit:cover;vertical-align:middle;margin:0 0.02em;transform:translateY(-0.1em);box-shadow:0 4px 12px rgba(0,0,0,.18)}
 
     /* Glass nav strip */
     .hero-nav-strip{position:relative;z-index:2;width:100%;padding:18px 40px;background:transparent;border:none;display:flex;justify-content:center}
@@ -149,7 +150,7 @@
     /* ── MOBILE ≤767px ── */
     @media(max-width:767px){
       .hero-para{font-size:clamp(24px,8vw,34px);padding:0 16px}
-      .hero-inline-icon{width:1.5em;height:1.5em}
+      .hero-inline-icon{width:1.15em;height:1.15em}
       .footer-archive-link{font-size:9px}
       footer{padding:28px 20px}
       .hero-nav-strip{padding:12px 16px}
@@ -532,6 +533,8 @@
       position:absolute;inset:0;z-index:3;
       width:100%;height:100%;
       filter:drop-shadow(0 16px 30px rgba(0,0,0,0.5));
+      backdrop-filter:blur(14px) saturate(160%);
+      -webkit-backdrop-filter:blur(14px) saturate(160%);
       pointer-events:none;
     }
     /* Labels sitting on the folder tab */
@@ -742,11 +745,12 @@
     <p class="hero-para">I'm <span class="hero-serif">Nick</span> <img class="hero-inline-icon" src="assets/hero-avatar-nick.png" alt="Nick"/>,<br/>
       a Creative <span class="hero-serif">Designer</span><br/>
       based in <span class="hero-serif">Philippines</span> <img class="hero-inline-icon" src="assets/hero-icon-ph-flag.png" alt="Philippines"/></p>
-    <button class="hero-cta" onclick="event.stopPropagation();document.getElementById('uc-panel').classList.add('show')">Present It To Me &rarr;</button>
+    <button class="hero-cta" onclick="event.stopPropagation();playPresentSound();document.getElementById('uc-panel').classList.add('show')">Present</button>
     <div class="hero-cta-note mono-light">or ignore this if you'd rather check it out yourself</div>
   </div>
   <div class="hero-nav-strip">
     <nav class="hero-nav" id="heroNav">
+      <a onclick="goHome()" data-section="home"><span class="num">00 |</span>&nbsp;Home</a>
       <a onclick="showSection('works')"  data-section="works"><span class="num">01 |</span>&nbsp;Works</a>
       <a onclick="showSection('brands')" data-section="brands"><span class="num">02 |</span>&nbsp;Brands</a>
       <a onclick="showSection('about')"  data-section="about"><span class="num">03 |</span>&nbsp;About Me</a>
@@ -1866,6 +1870,38 @@ function showSection(name) {
     }
   }
   setTimeout(triggerReveal, 120);
+}
+
+function goHome() {
+  Object.values(PAGE_IDS).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  });
+  document.querySelectorAll('.hero-nav a').forEach(a => a.classList.remove('active'));
+  const footerEl = document.getElementById('site-footer');
+  if (footerEl) footerEl.classList.remove('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function playPresentSound() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const now = ctx.currentTime;
+    [523.25, 659.25, 783.99].forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      const start = now + i * 0.09;
+      gain.gain.setValueAtTime(0, start);
+      gain.gain.linearRampToValueAtTime(0.18, start + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.5);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(start);
+      osc.stop(start + 0.55);
+    });
+  } catch (e) { /* audio not available, ignore */ }
 }
 
 // ── PROJECT DETAIL (case-study compilation) ──
