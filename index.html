@@ -25,9 +25,9 @@
     /* HERO */
     .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;overflow:hidden;text-align:center;background:#ffffff}
     .hero-composite,.hero-fade,.hero-vignette{display:none}
-    .hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%;padding-bottom:32px}
+    .hero-content{position:relative;z-index:2;display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;width:100%}
     .hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,20,18,0.45);margin-bottom:18px}
-    .hero-para{font-family:var(--font-mono);font-size:clamp(15px,2.3vw,21px);font-weight:400;line-height:1.65;letter-spacing:.005em;color:#141412;max-width:620px;margin:0 auto 20px;padding:0 24px}
+    .hero-para{font-family:var(--font-mono);font-size:clamp(22px,4vw,38px);font-weight:500;line-height:1.5;letter-spacing:.005em;color:#141412;max-width:820px;margin:0 auto 24px;padding:0 24px;text-align:center}
     .hero-subtitle{font-size:10px;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:rgba(20,20,18,0.5);margin-bottom:0;padding:0 20px}
 
     /* Glass nav strip */
@@ -142,7 +142,7 @@
     /* ── MOBILE ≤767px ── */
     @media(max-width:767px){
       .hero-subtitle{font-size:8px;letter-spacing:.14em}
-      .hero-para{font-size:clamp(14px,4vw,17px);padding:0 16px}
+      .hero-para{font-size:clamp(19px,5.5vw,26px);padding:0 16px}
       .footer-archive-link{font-size:9px}
       footer{padding:28px 20px}
       .hero-nav-strip{padding:12px 16px}
