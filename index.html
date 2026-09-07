@@ -34,17 +34,13 @@
     .hero-cta{font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#f5f5f0;background:#141412;border:1px solid #141412;border-radius:100px;padding:14px 34px;cursor:pointer;transition:opacity .2s}
     .hero-cta:hover{opacity:.82}
     .hero-cta-note{font-size:11px;font-weight:300;letter-spacing:.04em;color:rgba(20,20,18,0.4);margin-top:14px}
-    .hero-fan{position:relative;height:190px;width:100%;max-width:600px;margin:8px auto 30px;display:flex;align-items:center;justify-content:center}
-    .hero-fan-card{position:absolute;width:120px;height:160px;object-fit:cover;border-radius:14px;border:3px solid #fff;
+    .hero-fan{position:relative;height:150px;width:100%;max-width:600px;margin:8px auto 30px;display:flex;align-items:center;justify-content:center}
+    .hero-fan-card{position:absolute;width:130px;height:130px;object-fit:cover;border-radius:14px;border:3px solid #fff;
       box-shadow:0 18px 36px rgba(0,0,0,.22);transform:translateX(var(--x)) rotate(var(--r));z-index:var(--z);
       transition:transform .3s cubic-bezier(.22,1,.36,1)}
     .hero-fan:hover .hero-fan-card{transform:translateX(var(--x)) rotate(var(--r)) translateY(-8px)}
-    .hero-fan-play{position:absolute;z-index:9;width:56px;height:56px;border-radius:50%;background:#ffffff;border:none;
-      display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.3);transition:transform .2s}
-    .hero-fan-play:hover{transform:scale(1.08)}
-    .hero-fan-play svg{width:22px;height:22px}
     @media(max-width:767px){
-      .hero-fan{height:130px;transform:scale(.72)}
+      .hero-fan{height:105px;transform:scale(.72)}
     }
     .hero-para strong{font-weight:700}
     .hero-serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
@@ -764,9 +760,6 @@
       <img class="hero-fan-card" src="assets/ad-bosch-tmdi-mega-sale.jpg" alt="" style="--r:3deg;--x:33px;--z:3"/>
       <img class="hero-fan-card" src="assets/ad-cloudshare-nexora-chat.jpg" alt="" style="--r:9deg;--x:100px;--z:2"/>
       <img class="hero-fan-card" src="assets/brand-roli.jpg" alt="" style="--r:16deg;--x:165px;--z:1"/>
-      <button class="hero-fan-play" onclick="event.stopPropagation();playPresentSound();document.getElementById('uc-panel').classList.add('show')" aria-label="Present">
-        <svg viewBox="0 0 24 24" fill="none"><polygon points="9,7 18,12 9,17" fill="#141412"/></svg>
-      </button>
     </div>
     <button class="hero-cta" onclick="event.stopPropagation();playPresentSound();document.getElementById('uc-panel').classList.add('show')">Present &rarr;</button>
     <div class="hero-cta-note mono-light">or ignore this if you'd rather check it out yourself</div>
