@@ -30,12 +30,12 @@
     .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;overflow:hidden;text-align:center;background:#ffffff}
     .hero-composite,.hero-fade,.hero-vignette{display:none}
     .hero-content{position:relative;z-index:2;display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;width:100%}
-    .hero-para{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;font-size:clamp(30px,5.8vw,58px);font-weight:400;line-height:1.4;letter-spacing:0;color:#141412;max-width:1000px;margin:0 auto 32px;padding:0 24px;text-align:center}
-    .hero-cta{font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#f5f5f0;background:#141412;border:1px solid #141412;border-radius:100px;padding:14px 34px;cursor:pointer;transition:opacity .2s}
+    .hero-para{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;font-size:clamp(36px,6.8vw,70px);font-weight:400;line-height:1.4;letter-spacing:0;color:#141412;max-width:1150px;margin:0 auto 32px;padding:0 24px;text-align:center}
+    .hero-cta{font-family:var(--font-mono);font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#f5f5f0;background:#141412;border:1px solid #141412;border-radius:100px;padding:17px 40px;cursor:pointer;transition:opacity .2s}
     .hero-cta:hover{opacity:.82}
-    .hero-cta-note{font-size:11px;font-weight:300;letter-spacing:.04em;color:rgba(20,20,18,0.4);margin-top:14px}
-    .hero-fan{position:relative;height:190px;width:100%;max-width:920px;margin:8px auto 30px;display:flex;align-items:center;justify-content:center}
-    .hero-fan-card{position:absolute;width:170px;height:170px;object-fit:cover;border-radius:16px;border:3px solid #fff;
+    .hero-cta-note{font-size:12px;font-weight:300;letter-spacing:.04em;color:rgba(20,20,18,0.4);margin-top:16px}
+    .hero-fan{position:relative;height:230px;width:100%;max-width:1080px;margin:8px auto 34px;display:flex;align-items:center;justify-content:center}
+    .hero-fan-card{position:absolute;width:200px;height:200px;object-fit:cover;border-radius:18px;border:3px solid #fff;
       box-shadow:0 18px 36px rgba(0,0,0,.22);transform:translateX(var(--x)) rotate(var(--r));z-index:var(--z);
       transition:transform .3s cubic-bezier(.22,1,.36,1)}
     .hero-fan:hover .hero-fan-card{transform:translateX(var(--x)) rotate(var(--r)) translateY(-8px)}
@@ -47,7 +47,7 @@
     @keyframes heroTagFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
     @media(max-width:767px){.hero-fan-tag{font-size:9px;padding:6px 12px}}
     @media(max-width:767px){
-      .hero-fan{height:130px;transform:scale(.42)}
+      .hero-fan{height:150px;transform:scale(.35)}
     }
     .hero-para strong{font-weight:700}
     .hero-serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
@@ -164,7 +164,7 @@
 
     /* ── MOBILE ≤767px ── */
     @media(max-width:767px){
-      .hero-para{font-size:clamp(24px,8vw,34px);padding:0 16px}
+      .hero-para{font-size:clamp(28px,9vw,40px);padding:0 16px}
       .hero-inline-icon{width:1.65em;height:1.15em}
       .footer-archive-link{font-size:9px}
       footer{padding:28px 20px}
@@ -768,14 +768,14 @@
       a <span class="hero-serif">Creative Designer</span><br/>
       based in <span class="hero-serif">Philippines</span> <img class="hero-inline-icon" src="assets/hero-icon-ph-flag.png" alt="Philippines"/></p>
     <div class="hero-fan">
-      <img class="hero-fan-card" src="assets/ad-monday-rise-cover.jpg" alt="" style="--r:-20deg;--x:-350px;--z:1"/>
-      <img class="hero-fan-card" src="assets/ad-purple7-indoor-meetings.jpg" alt="" style="--r:-14deg;--x:-250px;--z:2"/>
-      <img class="hero-fan-card" src="assets/brand-mandialeaf.jpg" alt="" style="--r:-8deg;--x:-150px;--z:3"/>
-      <img class="hero-fan-card" src="assets/ad-satyn-feels-premium.jpg" alt="" style="--r:-3deg;--x:-50px;--z:4"/>
-      <img class="hero-fan-card" src="assets/ad-bosch-tmdi-mega-sale.jpg" alt="" style="--r:3deg;--x:50px;--z:4"/>
-      <img class="hero-fan-card" src="assets/ad-cloudshare-nexora-chat.jpg" alt="" style="--r:8deg;--x:150px;--z:3"/>
-      <img class="hero-fan-card" src="assets/brand-scaled.jpg" alt="" style="--r:14deg;--x:250px;--z:2"/>
-      <img class="hero-fan-card" src="assets/brand-roli.jpg" alt="" style="--r:20deg;--x:350px;--z:1"/>
+      <img class="hero-fan-card" src="assets/ad-monday-rise-cover.jpg" alt="" style="--r:-20deg;--x:-410px;--z:1"/>
+      <img class="hero-fan-card" src="assets/ad-purple7-indoor-meetings.jpg" alt="" style="--r:-14deg;--x:-292px;--z:2"/>
+      <img class="hero-fan-card" src="assets/brand-mandialeaf.jpg" alt="" style="--r:-8deg;--x:-176px;--z:3"/>
+      <img class="hero-fan-card" src="assets/ad-satyn-feels-premium.jpg" alt="" style="--r:-3deg;--x:-59px;--z:4"/>
+      <img class="hero-fan-card" src="assets/ad-bosch-tmdi-mega-sale.jpg" alt="" style="--r:3deg;--x:59px;--z:4"/>
+      <img class="hero-fan-card" src="assets/ad-cloudshare-nexora-chat.jpg" alt="" style="--r:8deg;--x:176px;--z:3"/>
+      <img class="hero-fan-card" src="assets/brand-scaled.jpg" alt="" style="--r:14deg;--x:292px;--z:2"/>
+      <img class="hero-fan-card" src="assets/brand-roli.jpg" alt="" style="--r:20deg;--x:410px;--z:1"/>
       <div class="hero-fan-tag hero-fan-tag-1">@nick.creativemedia</div>
       <div class="hero-fan-tag hero-fan-tag-2">6+ yrs exp</div>
     </div>
