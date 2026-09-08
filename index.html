@@ -550,14 +550,11 @@
       filter:drop-shadow(0 16px 30px rgba(0,0,0,0.5));
       pointer-events:none;
     }
-    /* Uniform frosted glass over the WHOLE card (peek + front face alike) so there's
-       no hard seam between a blurred rectangle and a sharp sliver above it. */
-    .folder-glass{
-      position:absolute;inset:0;z-index:2;
-      border-radius:18px;
+    /* Frosted glass ONLY on the folder's own silhouette (the <path> itself),
+       not the whole card — the peeking photo/sheet above it stays sharp. */
+    .folder-shape path{
       backdrop-filter:blur(14px) saturate(160%);
       -webkit-backdrop-filter:blur(14px) saturate(160%);
-      pointer-events:none;
     }
     /* Labels sitting on the folder tab */
     .folder-tab-text{
@@ -825,7 +822,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Branding</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ffBrand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ffBrand)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Brand</div>
@@ -846,7 +842,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Social Media<br/>Advertisement</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff1)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Graphic</div>
@@ -864,7 +859,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Packaging</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff2)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Product</div>
@@ -882,7 +876,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Website<br/>Design</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff5)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
@@ -900,7 +893,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Social Media<br/>Content</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff6)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
@@ -918,7 +910,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Website<br/>Asset</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff7" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff7)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
@@ -936,7 +927,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Logo<br/>Branding</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff3)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Identity</div>
@@ -954,7 +944,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Thumbnails</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff8" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff8)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Video</div>
@@ -972,7 +961,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Print<br/>Ads</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff9" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff9)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Print</div>
@@ -990,7 +978,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Shirt<br/>Design</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff10" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff10)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Print</div>
@@ -1008,7 +995,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Menu<br/>Board</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff11" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff11)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Print</div>
@@ -1026,7 +1012,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">E-book<br/>Cover</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff12" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff12)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
@@ -1044,7 +1029,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Poster</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff17" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff17)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Event</div>
@@ -1062,7 +1046,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Live Stream<br/>Layout</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff14" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff14)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Event</div>
@@ -1080,7 +1063,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Billboard</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff15" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff15)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Print</div>
@@ -1098,7 +1080,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Vertical<br/>Banner</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff16" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff16)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Print</div>
@@ -1116,7 +1097,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Email<br/>Signatures</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff13" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff13)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
@@ -1134,7 +1114,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Email<br/>Design</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff4)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
@@ -1152,7 +1131,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Listing<br/>Design</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff18" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff18)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
@@ -1170,7 +1148,6 @@
           <div class="folder-sheet-glow"></div>
         </div>
         <div class="folder-sheet-label">Cover<br/>Photo</div>
-        <div class="folder-glass"></div>
         <svg class="folder-shape" viewBox="0 0 1000 920" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ff19" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c3c36" stop-opacity="0.72"/><stop offset="0.5" stop-color="#181815" stop-opacity="0.55"/><stop offset="1" stop-color="#0a0a08" stop-opacity="0.74"/></linearGradient></defs><path d="M0 189 Q0 165 24 165 L406 165 Q430 165 430 189 L430 276 Q430 300 454 300 L970 300 Q1000 300 1000 330 L1000 890 Q1000 920 970 920 L30 920 Q0 920 0 890 Z" fill="url(#ff19)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/></svg>
         <div class="folder-tab-text">
           <div class="ft-main">Digital</div>
