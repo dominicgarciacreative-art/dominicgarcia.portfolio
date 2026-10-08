@@ -730,9 +730,103 @@
       #lightbox{padding:16px}
       #lightbox-close{top:14px;right:16px;width:38px;height:38px;font-size:18px}
     }
-</style>
+
+    /* ══════════ HOME — sections below the hero ══════════ */
+    /* Home is all white, like the hero. The palette is flipped here only, so Works / Brands / About stay dark. */
+    body.on-home{background:#ffffff}
+    #page-home,body.on-home #site-footer{
+      --bg:#ffffff;--surface:#f6f6f2;--border:rgba(20,20,18,0.12);
+      --muted:#8e8e86;--dim:#6a6a62;--text:#33332f;--bright:#141412;--accent:#2f8f0b;
+      background:#ffffff;color:var(--text);
+    }
+    /* Image tiles keep their dark caption gradient and light text */
+    #page-home .work-card,#page-home .brand-card{--bright:#f0f0e8;--dim:#c4c4bc;--accent:#8cf03c}
+    #page-home .video-standby{background:radial-gradient(ellipse at 50% 40%,#fafaf7 0%,#eeeee9 80%)}
+    #page-home .hm-video.ready .video-standby{background:linear-gradient(to top,rgba(8,8,6,.8) 0%,rgba(8,8,6,.25) 60%,rgba(8,8,6,.35) 100%)}
+    #page-home .hm-video{background-color:#f4f4f0}
+    body.on-home #site-footer .send-btn:hover{background:#8cf03c;color:#141412}
+    .hm-rule{border:none;border-top:1px solid var(--border);max-width:1100px;margin:0 auto}
+    .hm-display{font-family:'Archivo',var(--font-display),sans-serif;font-weight:900;font-stretch:125%;letter-spacing:-.02em;color:var(--bright)}
+
+    /* Positioning statement */
+    .hm-statement{font-size:clamp(17px,2.3vw,29px);font-weight:300;line-height:1.55;color:var(--text);max-width:940px}
+    .hm-statement strong{color:var(--bright);font-weight:500;background:linear-gradient(transparent 64%,#8cf03c 64%,#8cf03c 92%,transparent 92%)}
+
+    /* Meet Nick — intro video */
+    .hm-video{position:relative;aspect-ratio:16/9;width:100%;overflow:hidden;background:#0a0a08;border:1px solid var(--border);border-radius:4px;background-size:cover;background-position:center}
+    .hm-video .video-standby-icon{transition:border-color .3s,color .3s,transform .3s}
+    .hm-video.ready{cursor:pointer}
+    .hm-video.ready .video-standby-icon{border-color:#f0f0e8;color:#f0f0e8}
+    .hm-video.ready .video-standby-label{color:#f0f0e8}
+    .hm-video.ready .video-standby-sub{color:#d4d4cc}
+    .hm-video.ready:hover .video-standby-icon{border-color:#8cf03c;color:#8cf03c;transform:scale(1.06)}
+    .hm-video video,.hm-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+    .hm-video-meta{display:flex;justify-content:space-between;gap:16px;margin-top:14px;font-size:10px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+    /* Three pillars */
+    .hm-pillars-head{font-size:clamp(24px,3.5vw,46px);line-height:1;margin-bottom:44px;max-width:780px}
+    .hm-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .hm-pillar{position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:26px 24px 24px;transition:opacity .6s ease,transform .6s ease,border-color .25s}
+    .hm-pillar:hover{border-color:#141412}
+    .hm-pillar:nth-child(2){transition-delay:.08s}
+    .hm-pillar:nth-child(3){transition-delay:.16s}
+    .hm-pillar-top{display:flex;justify-content:space-between;align-items:flex-start;height:54px;margin-bottom:22px}
+    .hm-pillar-num{font-size:10px;font-weight:200;letter-spacing:.2em;color:var(--muted)}
+    .hm-doodle{width:50px;height:50px;overflow:visible;flex-shrink:0}
+    .hm-doodle path{fill:none;stroke:#8cf03c;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:0}
+    .hm-pillar.visible .hm-doodle path{animation:doodleDraw .9s ease both}
+    .hm-pillar-title{font-size:clamp(26px,2.9vw,36px);line-height:1}
+    .hm-pillar-tag{font-family:var(--font-rem);font-style:italic;font-weight:300;font-size:17px;color:var(--accent);margin-top:8px}
+    .hm-pillar-block{margin-top:22px;padding-top:18px;border-top:1px solid var(--border)}
+    .hm-pillar-block.grow{flex:1}
+    .hm-pillar-label{font-size:9px;font-weight:200;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+    .hm-pillar-why{font-size:12px;font-weight:300;line-height:1.75;color:var(--text)}
+    .hm-chips{display:flex;flex-wrap:wrap;gap:6px}
+    .hm-chips span{font-size:10px;font-weight:300;color:var(--dim);border:1px solid var(--border);border-radius:99px;padding:4px 10px;white-space:nowrap}
+
+    /* A quick look — selected work */
+    .hm-quick{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+    .hm-quick .work-card{aspect-ratio:4/3}
+    .hm-quick .work-card img.top{object-position:top}
+    .hm-quick .work-card-cat{font-size:9px;color:var(--accent)}
+    .hm-more{display:flex;justify-content:center;margin-top:36px}
+    .hm-btn{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--bright);background:transparent;border:1px solid rgba(20,20,18,.28);border-radius:100px;padding:14px 30px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+    .hm-btn:hover{background:var(--bright);color:var(--bg);border-color:var(--bright)}
+
+    /* Brands */
+    .hm-brands{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+    .hm-brands .brand-card{aspect-ratio:3/4}
+    .hm-brands .brand-card-title{font-size:clamp(14px,1.5vw,18px)}
+
+    /* Proof strip */
+    .hm-stats{display:grid;grid-template-columns:repeat(3,1fr)}
+    .hm-stat{padding:4px 28px;border-left:1px solid var(--border)}
+    .hm-stat:first-child{padding-left:0;border-left:none}
+    .hm-stat-num{font-size:clamp(46px,6.4vw,84px);line-height:.95}
+    .hm-stat-num .punct{font-size:.7em}
+    .hm-stat-label{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--bright);margin-top:14px}
+    .hm-stat-sub{font-size:11px;font-weight:300;color:var(--dim);margin-top:4px}
+
+    @media(max-width:900px){
+      .hm-pillars{grid-template-columns:1fr}
+      .hm-pillar-block.grow{flex:none}
+      .hm-brands{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:767px){
+      .hm-pillars-head{margin-bottom:28px}
+      .hm-quick{grid-template-columns:1fr 1fr}
+      .hm-video-meta{flex-direction:column;gap:4px}
+      .hm-stats{grid-template-columns:1fr}
+      .hm-stat{padding:22px 0;border-left:none;border-top:1px solid var(--border)}
+      .hm-stat:first-child{padding-top:0;border-top:none}
+      .hm-stat:last-child{padding-bottom:0}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .hm-pillar.visible .hm-doodle path{animation:none;stroke-dashoffset:0;opacity:1}
+    }
+  </style>
 </head>
-<body>
+<body class="on-home">
 <!-- Portfolio-under-construction pill notification -->
 <div id="uc-notice">
   <button class="uc-pill" onclick="document.getElementById('uc-panel').classList.toggle('show')" aria-expanded="false" aria-controls="uc-panel">
@@ -864,6 +958,182 @@
     </div>
     <button class="present-cta" onclick="document.getElementById('present-modal').classList.remove('show');showSection('works')">See Full Works &rarr;</button>
   </div>
+</div>
+
+<!-- HOME — everything below the hero on the landing view -->
+<div id="page-home" class="page-section active">
+
+  <!-- 1 · Positioning line -->
+  <div class="section-wrap">
+    <div class="section-label mono-extralight">The Studio</div>
+    <p class="hm-statement reveal">I build brands from the ground up: the <strong>identity</strong>, the <strong>content</strong>, and the <strong>systems</strong> that keep both consistent.</p>
+  </div>
+  <hr class="hm-rule"/>
+
+  <!-- 2 · Meet Nick — intro video
+       TO GO LIVE: put your video path or YouTube link in data-video, and a thumbnail of you in data-poster.
+         data-video="assets/meet-nick.mp4"              (file in your assets folder, keep it under ~25MB)
+         data-video="https://youtu.be/XXXXXXXXXXX"      (or a YouTube link)
+         data-poster="assets/meet-nick-poster.jpg"      (16:9 thumbnail)
+       Leave data-video empty and it stays on the "Coming Soon" standby. -->
+  <div class="section-wrap">
+    <div class="section-label mono-extralight">Meet Nick</div>
+    <div class="hm-video reveal" id="meetNick" data-video="" data-poster="">
+      <div class="video-standby">
+        <div class="video-standby-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <div class="video-standby-label mono-extralight">Meet Nick</div>
+        <div class="video-standby-sub mono-light" id="meetNickSub">0:45 &middot; Coming Soon</div>
+      </div>
+    </div>
+    <div class="hm-video-meta">
+      <span>Who I am &middot; how I work</span>
+      <span>Dominic &ldquo;Nick&rdquo; Garcia &middot; Quezon City, PH</span>
+    </div>
+  </div>
+  <hr class="hm-rule"/>
+
+  <!-- 3 · Three pillars -->
+  <div class="section-wrap">
+    <div class="section-label mono-extralight">What I build, and why</div>
+    <h2 class="hm-display hm-pillars-head reveal">Every project stands on three things<span class="punct">.</span></h2>
+    <div class="hm-pillars">
+
+      <div class="hm-pillar reveal">
+        <div class="hm-pillar-top">
+          <span class="hm-pillar-num">01</span>
+          <svg class="hm-doodle" viewBox="0 0 60 60" aria-hidden="true"><path pathLength="1" style="animation-delay:.15s" d="M31 3 L29 57"/><path pathLength="1" style="animation-delay:.3s" d="M5 20 L55 40"/><path pathLength="1" style="animation-delay:.45s" d="M6 41 L54 19"/><path pathLength="1" style="animation-delay:.6s" d="M15 6 L45 54"/></svg>
+        </div>
+        <h3 class="hm-display hm-pillar-title">Identity</h3>
+        <div class="hm-pillar-tag">the long game</div>
+        <div class="hm-pillar-block grow">
+          <div class="hm-pillar-label">Why</div>
+          <p class="hm-pillar-why">A business grows when people recognize it and trust it. Identity is what makes that possible years from now, not just at launch.</p>
+        </div>
+        <div class="hm-pillar-block">
+          <div class="hm-pillar-label">What</div>
+          <div class="hm-chips"><span>Logos</span><span>Brand kits</span><span>Packaging</span><span>Visual systems</span></div>
+        </div>
+      </div>
+
+      <div class="hm-pillar reveal">
+        <div class="hm-pillar-top">
+          <span class="hm-pillar-num">02</span>
+          <svg class="hm-doodle" viewBox="0 0 40 40" aria-hidden="true"><path pathLength="1" style="animation-delay:.25s" d="M4 22 C 12 22, 18 16, 18 8"/><path pathLength="1" style="animation-delay:.45s" d="M4 36 C 22 36, 34 24, 34 6"/></svg>
+        </div>
+        <h3 class="hm-display hm-pillar-title">Content</h3>
+        <div class="hm-pillar-tag">the connection</div>
+        <div class="hm-pillar-block grow">
+          <div class="hm-pillar-label">Why</div>
+          <p class="hm-pillar-why">A brand only works if its audience understands it. Content is how they get what you offer and why it matters to them.</p>
+        </div>
+        <div class="hm-pillar-block">
+          <div class="hm-pillar-label">What</div>
+          <div class="hm-chips"><span>Social ads</span><span>Email</span><span>Listings</span><span>Thumbnails</span><span>Print</span><span>Video</span></div>
+        </div>
+      </div>
+
+      <div class="hm-pillar reveal">
+        <div class="hm-pillar-top">
+          <span class="hm-pillar-num">03</span>
+          <svg class="hm-doodle" viewBox="0 0 60 60" aria-hidden="true"><path pathLength="1" style="animation-delay:.25s" d="M3 26 L21 26"/><path pathLength="1" style="animation-delay:.4s" d="M8 42 L24 42"/><path pathLength="1" style="animation-delay:.55s" d="M10 10 C 28 6, 44 16, 55 30"/><path pathLength="1" style="animation-delay:.85s" d="M38 35 L57 32 L52 13"/></svg>
+        </div>
+        <h3 class="hm-display hm-pillar-title">Systems</h3>
+        <div class="hm-pillar-tag">the speed</div>
+        <div class="hm-pillar-block grow">
+          <div class="hm-pillar-label">Why</div>
+          <p class="hm-pillar-why">The brands that win move fast without looking sloppy. Systems let you produce more and stay consistent.</p>
+        </div>
+        <div class="hm-pillar-block">
+          <div class="hm-pillar-label">What</div>
+          <div class="hm-chips"><span>AI creative systems</span><span>Brand guidelines</span><span>Templates</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <hr class="hm-rule"/>
+
+  <!-- 4 · A quick look — six pieces tagged by pillar -->
+  <div class="section-wrap">
+    <div class="section-label mono-extralight">A quick look</div>
+    <div class="hm-quick">
+      <div class="work-card reveal" onclick="openLightbox('assets/brandkit-letsfly-logo.jpg','Lets Fly logo')">
+        <img src="assets/brandkit-letsfly-logo.jpg" alt="Lets Fly logo" loading="lazy"/>
+        <div class="work-card-info"><div class="work-card-cat mono-extralight">01 &middot; Identity</div><div class="work-card-title">Logo</div></div>
+      </div>
+      <div class="work-card reveal" onclick="openLightbox('assets/ad-yuny-fitness.jpg','Yuny social ad')">
+        <img src="assets/ad-yuny-fitness.jpg" alt="Yuny social ad" loading="lazy"/>
+        <div class="work-card-info"><div class="work-card-cat mono-extralight">02 &middot; Content</div><div class="work-card-title">Social Ad</div></div>
+      </div>
+      <div class="work-card reveal" onclick="openLightbox('assets/web-unagency.jpg','UnAgency website design')">
+        <img class="top" src="assets/web-unagency.jpg" alt="UnAgency website design" loading="lazy"/>
+        <div class="work-card-info"><div class="work-card-cat mono-extralight">02 &middot; Content</div><div class="work-card-title">Website</div></div>
+      </div>
+      <div class="work-card reveal" onclick="openLightbox('assets/brandkit-mandialeaf-logo.jpg','Mandia Leaf brand identity')">
+        <img src="assets/brandkit-mandialeaf-logo.jpg" alt="Mandia Leaf brand identity" loading="lazy"/>
+        <div class="work-card-info"><div class="work-card-cat mono-extralight">01 &middot; Identity</div><div class="work-card-title">Brand Identity</div></div>
+      </div>
+      <div class="work-card reveal" onclick="openLightbox('assets/thumb-rampage.jpg','Sunday Rampage thumbnail')">
+        <img src="assets/thumb-rampage.jpg" alt="Sunday Rampage thumbnail" loading="lazy"/>
+        <div class="work-card-info"><div class="work-card-cat mono-extralight">02 &middot; Content</div><div class="work-card-title">Thumbnail</div></div>
+      </div>
+      <div class="work-card reveal" onclick="openLightbox('assets/billboard-pldt.jpg','PLDT Home billboard')">
+        <img class="top" src="assets/billboard-pldt.jpg" alt="PLDT Home billboard" loading="lazy"/>
+        <div class="work-card-info"><div class="work-card-cat mono-extralight">02 &middot; Content</div><div class="work-card-title">Billboard</div></div>
+      </div>
+    </div>
+    <div class="hm-more"><button class="hm-btn" onclick="showSection('works')">See full works &rarr;</button></div>
+  </div>
+  <hr class="hm-rule"/>
+
+  <!-- 5 · Brands -->
+  <div class="section-wrap">
+    <div class="section-label mono-extralight">Brands</div>
+    <div class="hm-brands">
+      <div class="brand-card reveal" onclick="zoomThenOpen(this, 'vermonix')">
+        <img src="assets/img-02.jpg" alt="Vermonix" loading="lazy"/>
+        <div class="brand-card-info"><div class="brand-card-cat mono-extralight">E-Commerce</div><div class="brand-card-title">Vermonix</div></div>
+      </div>
+      <div class="brand-card reveal" onclick="zoomThenOpen(this, 'simply-nootropics')">
+        <img src="assets/img-03.jpg" alt="Simply Nootropics" loading="lazy"/>
+        <div class="brand-card-info"><div class="brand-card-cat mono-extralight">Health &amp; Wellness</div><div class="brand-card-title">Simply Nootropics</div></div>
+      </div>
+      <div class="brand-card reveal" onclick="zoomThenOpen(this, 'yuny')">
+        <img src="assets/yuny-post-sand.jpg" alt="Yuny" loading="lazy"/>
+        <div class="brand-card-info"><div class="brand-card-cat mono-extralight">Tech &amp; Wearables</div><div class="brand-card-title">Yuny</div></div>
+      </div>
+      <div class="brand-card reveal" onclick="zoomThenOpen(this, 'satyn')">
+        <img src="assets/satyn-3.jpg" alt="Satyn" loading="lazy"/>
+        <div class="brand-card-info"><div class="brand-card-cat mono-extralight">Apparel &amp; Hair Care</div><div class="brand-card-title">Satyn</div></div>
+      </div>
+    </div>
+  </div>
+  <hr class="hm-rule"/>
+
+  <!-- 6 · Proof strip -->
+  <div class="section-wrap">
+    <div class="section-label mono-extralight">In numbers</div>
+    <div class="hm-stats">
+      <div class="hm-stat reveal">
+        <div class="hm-display hm-stat-num">6<span class="punct">+</span></div>
+        <div class="hm-stat-label">Years designing</div>
+        <div class="hm-stat-sub">Freelancing since May 2020</div>
+      </div>
+      <div class="hm-stat reveal">
+        <div class="hm-display hm-stat-num">500<span class="punct">+</span></div>
+        <div class="hm-stat-label">Projects released</div>
+        <div class="hm-stat-sub">Across identity, content and systems</div>
+      </div>
+      <div class="hm-stat reveal">
+        <div class="hm-display hm-stat-num">30<span class="punct">+</span></div>
+        <div class="hm-stat-label">Clients served</div>
+        <div class="hm-stat-sub">Australia &middot; New Zealand &middot; US &middot; Europe</div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- WORKS -->
@@ -1918,7 +2188,7 @@
 </div>
 
 <!-- Persistent Contact + Footer — shown below all 3 pages -->
-<div id="site-footer">
+<div id="site-footer" class="active">
   <div class="contact-section" id="contact">
     <div class="contact-cta reveal">
       <div class="cta-eyebrow mono-extralight">Say Hello!</div>
@@ -1943,7 +2213,7 @@
 </div>
 
 <script>
-const PAGE_IDS = {'works':'page-works','brands':'page-brands','about':'page-about','project':'page-project'};
+const PAGE_IDS = {'home':'page-home','works':'page-works','brands':'page-brands','about':'page-about','project':'page-project'};
 
 function showSection(name) {
   // Hide all pages
@@ -1951,6 +2221,9 @@ function showSection(name) {
     const el = document.getElementById(id);
     if (el) el.classList.remove('active');
   });
+
+  // Home is the white view; every other page keeps the dark one
+  document.body.classList.toggle('on-home', name === 'home');
 
   // Nav active state
   document.querySelectorAll('.hero-nav a').forEach(a => {
@@ -1986,9 +2259,14 @@ function goHome() {
     if (el) el.classList.remove('active');
   });
   document.querySelectorAll('.hero-nav a').forEach(a => a.classList.remove('active'));
+  // Home has its own content below the hero, plus the shared contact + footer
+  const homeEl = document.getElementById('page-home');
+  if (homeEl) homeEl.classList.add('active');
+  document.body.classList.add('on-home');
   const footerEl = document.getElementById('site-footer');
-  if (footerEl) footerEl.classList.remove('active');
+  if (footerEl) footerEl.classList.add('active');
   window.scrollTo({top: 0, behavior: 'smooth'});
+  setTimeout(triggerReveal, 120);
 }
 
 function playPresentSound() {
@@ -2029,6 +2307,7 @@ function openProject(slug) {
 
   // Remember where we came from
   const activePageEl = document.querySelector('.page-section.active');
+  if (activePageEl && activePageEl.id === 'page-home') lastListPage = 'home';
   if (activePageEl && activePageEl.id === 'page-works') lastListPage = 'works';
   if (activePageEl && activePageEl.id === 'page-brands') lastListPage = 'brands';
 
@@ -2247,6 +2526,44 @@ function triggerReveal() {
 }
 
 triggerReveal();
+
+// ── HOME: "Meet Nick" intro video ──
+// Stays on the Coming Soon standby until data-video is filled in on #meetNick.
+(function () {
+  const box = document.getElementById('meetNick');
+  if (!box) return;
+  const src = (box.dataset.video || '').trim();
+  const poster = (box.dataset.poster || '').trim();
+  if (!src) return;
+  box.classList.add('ready');
+  if (poster) box.style.backgroundImage = 'url("' + poster + '")';
+  const sub = document.getElementById('meetNickSub');
+  if (sub) sub.textContent = 'Play · 0:45';
+  box.addEventListener('click', function () {
+    if (box.classList.contains('playing')) return;
+    box.classList.add('playing');
+    const yt = src.match(/(?:youtu\.be\/|[?&]v=|\/embed\/|\/shorts\/)([\w-]{11})/);
+    let player;
+    if (yt) {
+      player = document.createElement('iframe');
+      player.src = 'https://www.youtube-nocookie.com/embed/' + yt[1] + '?autoplay=1&rel=0';
+      player.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      player.allowFullscreen = true;
+      player.title = 'Meet Nick';
+    } else {
+      player = document.createElement('video');
+      player.src = src;
+      player.controls = true;
+      player.autoplay = true;
+      player.playsInline = true;
+      if (poster) player.poster = poster;
+    }
+    box.innerHTML = '';
+    box.style.backgroundImage = '';
+    box.classList.remove('ready');
+    box.appendChild(player);
+  });
+})();
 
 // ── LIGHTBOX ──
 function openLightbox(src, alt) {
