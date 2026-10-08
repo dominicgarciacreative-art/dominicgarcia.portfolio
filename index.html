@@ -785,7 +785,7 @@
     .hm-chips span{font-size:10px;font-weight:300;color:var(--dim);border:1px solid var(--border);border-radius:99px;padding:4px 10px;white-space:nowrap}
 
     /* A quick look — selected work */
-    .hm-quick{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+    .hm-quick{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}
     .hm-quick .work-card{aspect-ratio:4/3}
     .hm-quick .work-card img.top{object-position:top}
     .hm-quick .work-card-cat{font-size:9px;color:var(--accent)}
@@ -812,9 +812,11 @@
       .hm-pillar-block.grow{flex:none}
       .hm-brands{grid-template-columns:1fr 1fr}
     }
+    @media(max-width:560px){
+      .hm-quick{grid-template-columns:1fr}
+    }
     @media(max-width:767px){
       .hm-pillars-head{margin-bottom:28px}
-      .hm-quick{grid-template-columns:1fr 1fr}
       .hm-video-meta{flex-direction:column;gap:4px}
       .hm-stats{grid-template-columns:1fr}
       .hm-stat{padding:22px 0;border-left:none;border-top:1px solid var(--border)}
@@ -1055,33 +1057,25 @@
   </div>
   <hr class="hm-rule"/>
 
-  <!-- 4 · A quick look — six pieces tagged by pillar -->
+  <!-- 4 · A quick look — one block per service -->
   <div class="section-wrap">
     <div class="section-label mono-extralight">A quick look</div>
     <div class="hm-quick">
-      <div class="work-card reveal" onclick="openLightbox('assets/brandkit-letsfly-logo.jpg','Lets Fly logo')">
-        <img src="assets/brandkit-letsfly-logo.jpg" alt="Lets Fly logo" loading="lazy"/>
-        <div class="work-card-info"><div class="work-card-cat mono-extralight">01 &middot; Identity</div><div class="work-card-title">Logo</div></div>
+      <div class="work-card reveal" onclick="openLightbox('assets/thumb-rampage.jpg','Video editing: Sunday Rampage thumbnail and edit')">
+        <img src="assets/thumb-rampage.jpg" alt="Video editing: Sunday Rampage" loading="lazy"/>
+        <div class="work-card-info"><div class="work-card-cat mono-extralight">01 &middot; Motion</div><div class="work-card-title">Video Editing</div></div>
       </div>
-      <div class="work-card reveal" onclick="openLightbox('assets/ad-yuny-fitness.jpg','Yuny social ad')">
-        <img src="assets/ad-yuny-fitness.jpg" alt="Yuny social ad" loading="lazy"/>
-        <div class="work-card-info"><div class="work-card-cat mono-extralight">02 &middot; Content</div><div class="work-card-title">Social Ad</div></div>
+      <div class="work-card reveal" onclick="openLightbox('assets/brandkit-letsfly-logo.jpg','Graphic design: Lets Fly logo')">
+        <img src="assets/brandkit-letsfly-logo.jpg" alt="Graphic design: Lets Fly logo" loading="lazy"/>
+        <div class="work-card-info"><div class="work-card-cat mono-extralight">02 &middot; Design</div><div class="work-card-title">Graphic Design</div></div>
       </div>
-      <div class="work-card reveal" onclick="openLightbox('assets/web-unagency.jpg','UnAgency website design')">
-        <img class="top" src="assets/web-unagency.jpg" alt="UnAgency website design" loading="lazy"/>
-        <div class="work-card-info"><div class="work-card-cat mono-extralight">02 &middot; Content</div><div class="work-card-title">Website</div></div>
+      <div class="work-card reveal" onclick="openLightbox('assets/home-ai-automation.jpg','AI automation: Nitron, AI bots that work like staff')">
+        <img src="assets/home-ai-automation.jpg" alt="AI automation: Nitron AI bots" loading="lazy"/>
+        <div class="work-card-info"><div class="work-card-cat mono-extralight">03 &middot; Automation</div><div class="work-card-title">AI Automation</div></div>
       </div>
-      <div class="work-card reveal" onclick="openLightbox('assets/brandkit-mandialeaf-logo.jpg','Mandia Leaf brand identity')">
-        <img src="assets/brandkit-mandialeaf-logo.jpg" alt="Mandia Leaf brand identity" loading="lazy"/>
-        <div class="work-card-info"><div class="work-card-cat mono-extralight">01 &middot; Identity</div><div class="work-card-title">Brand Identity</div></div>
-      </div>
-      <div class="work-card reveal" onclick="openLightbox('assets/thumb-rampage.jpg','Sunday Rampage thumbnail')">
-        <img src="assets/thumb-rampage.jpg" alt="Sunday Rampage thumbnail" loading="lazy"/>
-        <div class="work-card-info"><div class="work-card-cat mono-extralight">02 &middot; Content</div><div class="work-card-title">Thumbnail</div></div>
-      </div>
-      <div class="work-card reveal" onclick="openLightbox('assets/billboard-pldt.jpg','PLDT Home billboard')">
-        <img class="top" src="assets/billboard-pldt.jpg" alt="PLDT Home billboard" loading="lazy"/>
-        <div class="work-card-info"><div class="work-card-cat mono-extralight">02 &middot; Content</div><div class="work-card-title">Billboard</div></div>
+      <div class="work-card reveal" onclick="openLightbox('assets/home-dashboards.jpg','Dashboards: a studio desk built for a creative team (sample data)')">
+        <img class="top" src="assets/home-dashboards.jpg" alt="Dashboards: studio desk with sample data" loading="lazy"/>
+        <div class="work-card-info"><div class="work-card-cat mono-extralight">04 &middot; Software</div><div class="work-card-title">Dashboards</div></div>
       </div>
     </div>
     <div class="hm-more"><button class="hm-btn" onclick="showSection('works')">See full works &rarr;</button></div>
