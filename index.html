@@ -549,10 +549,6 @@
       transition:transform .5s cubic-bezier(.22,1,.36,1);
       transform:rotate(var(--ft)) translateY(var(--fty));
     }
-    .folder-card:nth-child(4n+1) .folder{--ft:-1.6deg;--fty:-5px}
-    .folder-card:nth-child(4n+2) .folder{--ft:1.3deg;--fty:7px}
-    .folder-card:nth-child(4n+3) .folder{--ft:-2.1deg;--fty:2px}
-    .folder-card:nth-child(4n+4) .folder{--ft:1.8deg;--fty:-7px}
     .folder-card:hover .folder{transform:rotate(0deg) translateY(calc(var(--fty) - 8px)) scale(1.015)}
 
     /* The preview sheet that peeks out from inside the folder */
@@ -2647,40 +2643,36 @@ document.addEventListener('keydown', (e) => {
   html.has-ruler::-webkit-scrollbar{width:0;height:0;display:none}
   html.has-ruler .hero-nav-strip{padding-right:100px}
   #ruler{position:fixed;top:0;right:0;bottom:0;width:120px;z-index:40;overflow:hidden;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;
-    --rl-ink:20,20,18;--rl-bg:255,255,255;display:none}
+    --rl-ink:255,255,255;mix-blend-mode:difference;display:none}
   html.has-ruler #ruler{display:block}
-  body:not(.on-home) #ruler{--rl-ink:240,240,232;--rl-bg:12,12,10}
   #ruler.drag{cursor:grabbing}
-  .rl-glass{position:absolute;inset:0;pointer-events:none;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);background:rgba(var(--rl-bg),.55);
-    -webkit-mask-image:linear-gradient(to left,#000 40%,rgba(0,0,0,.5) 62%,rgba(0,0,0,.12) 82%,transparent);mask-image:linear-gradient(to left,#000 40%,rgba(0,0,0,.5) 62%,rgba(0,0,0,.12) 82%,transparent)}
   .rl-track{position:absolute;left:0;right:0;top:0;will-change:transform}
   .rl-minor,.rl-mid{position:absolute;right:0}
-  .rl-minor{width:7px;background-image:repeating-linear-gradient(to bottom,rgba(var(--rl-ink),.38) 0,rgba(var(--rl-ink),.38) 1px,transparent 1px,transparent var(--rl-p5))}
-  .rl-mid{width:13px;background-image:repeating-linear-gradient(to bottom,rgba(var(--rl-ink),.6) 0,rgba(var(--rl-ink),.6) 1px,transparent 1px,transparent var(--rl-p1))}
+  .rl-minor{width:7px;background-image:repeating-linear-gradient(to bottom,rgba(var(--rl-ink),.5) 0,rgba(var(--rl-ink),.5) 1px,transparent 1px,transparent var(--rl-p5))}
+  .rl-mid{width:13px;background-image:repeating-linear-gradient(to bottom,rgba(var(--rl-ink),.8) 0,rgba(var(--rl-ink),.8) 1px,transparent 1px,transparent var(--rl-p1))}
   .rl-big{position:absolute;right:0;width:22px;height:1px;background:rgb(var(--rl-ink))}
-  .rl-num{position:absolute;right:28px;transform:translateY(-50%);font-family:var(--font-mono);font-size:9px;font-weight:400;letter-spacing:.06em;color:rgba(var(--rl-ink),.55)}
+  .rl-num{position:absolute;right:28px;transform:translateY(-50%);font-family:var(--font-mono);font-size:9px;font-weight:400;letter-spacing:.06em;color:rgba(var(--rl-ink),.8)}
   .rl-sec{position:absolute;right:48px;transform:translateY(-100%);writing-mode:vertical-rl;text-orientation:mixed;rotate:180deg;transform-origin:center;white-space:nowrap;
-    font-family:var(--font-mono);font-size:9px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgb(var(--rl-ink));cursor:pointer;padding:4px 2px;opacity:.85}
-  .rl-sec:hover{opacity:1;color:#2f8f0b}
-  body:not(.on-home) .rl-sec:hover{color:#8cf03c}
+    font-family:var(--font-mono);font-size:9px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgb(var(--rl-ink));cursor:pointer;padding:4px 2px;opacity:.8}
+  .rl-sec:hover{opacity:1}
+  #rlMark{position:fixed;top:0;right:0;bottom:0;width:120px;z-index:41;pointer-events:none;display:none}
+  html.has-ruler #rlMark{display:block}
   .rl-marker{position:absolute;right:0;left:0;height:0;pointer-events:none}
   .rl-marker i{position:absolute;right:0;top:-1.5px;width:38px;height:3px;background:#8cf03c;box-shadow:0 0 0 1px rgba(20,20,18,.85)}
-  .rl-read{position:absolute;right:72px;top:-9px;display:flex;align-items:center;gap:1px;height:18px;padding:0 6px;border-radius:99px;background:#141412;color:#f0f0e8;font-family:var(--font-mono);font-size:10px;font-weight:600;line-height:1}
-  body:not(.on-home) .rl-read{background:#f0f0e8;color:#141412}
+  .rl-read{position:absolute;right:72px;top:-9px;display:flex;align-items:center;gap:1px;height:18px;padding:0 6px;border-radius:99px;background:#141412;color:#f0f0e8;border:1px solid rgba(255,255,255,.4);font-family:var(--font-mono);font-size:10px;font-weight:600;line-height:1}
   .ruler-digits{display:inline-flex;height:1em;overflow:hidden;line-height:1}
   .ruler-col{display:flex;flex-direction:column;transition:transform .28s cubic-bezier(.2,.9,.2,1)}
   .ruler-col span{display:block;height:1em}
 </style>
 <div id="ruler" role="scrollbar" aria-controls="main" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Page position">
-  <div class="rl-glass"></div>
   <div class="rl-track" id="rlTrack"></div>
-  <div class="rl-marker" id="rlMarker"><i></i><div class="rl-read"><span class="ruler-digits" id="rlDigits"></span><span>%</span></div></div>
 </div>
+<div id="rlMark"><div class="rl-marker" id="rlMarker"><i></i><div class="rl-read"><span class="ruler-digits" id="rlDigits"></span><span>%</span></div></div></div>
 <script>
 (function(){
   var mq = window.matchMedia('(min-width: 900px) and (hover: hover)');
   var ruler = document.getElementById('ruler'), track = document.getElementById('rlTrack'),
-      marker = document.getElementById('rlMarker'), digits = document.getElementById('rlDigits');
+      marker = document.getElementById('rlMarker'), markWrap = document.getElementById('rlMark'), digits = document.getElementById('rlDigits');
   var root = document.documentElement, S = 0, M = 0, built = false;
   for (var i = 0; i < 3; i++) {
     var col = document.createElement('span'); col.className = 'ruler-col';
@@ -2696,7 +2688,7 @@ document.addEventListener('keydown', (e) => {
     if (!mq.matches) { root.classList.remove('has-ruler'); return; }
     root.classList.add('has-ruler');
     S = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-    if (S < 40) { ruler.style.display = 'none'; return; } else ruler.style.display = '';
+    if (S < 40) { ruler.style.display = 'none'; markWrap.style.display = 'none'; return; } else { ruler.style.display = ''; markWrap.style.display = ''; }
     M = Math.round(window.innerHeight * 0.42);
     var total = S + window.innerHeight;
     track.style.height = total + 'px';
