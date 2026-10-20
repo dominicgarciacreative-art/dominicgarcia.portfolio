@@ -686,6 +686,37 @@
 
     .folder-card.zooming .folder{transform:scale(1.06) translateY(-6px)}
 
+    /* ── Frosted-glass folders on a light dotted stage (Works) ── */
+    .folder-grid{max-width:1120px;margin:18px auto 80px;padding:36px;border-radius:30px;
+      background-color:#efefed;background-image:radial-gradient(rgba(20,20,18,.14) 1px,transparent 1.4px);background-size:16px 16px;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 30px 70px rgba(0,0,0,.45)}
+    .folder-bg{background:transparent;border-color:transparent}
+    .folder-shape{filter:drop-shadow(0 16px 24px rgba(40,44,70,.3)) drop-shadow(0 1px 1px rgba(40,44,70,.25))}
+    .folder-shape stop:nth-child(1){stop-color:#fff;stop-opacity:.8}
+    .folder-shape stop:nth-child(2){stop-color:#f2f2f5;stop-opacity:.58}
+    .folder-shape stop:nth-child(3){stop-color:#fff;stop-opacity:.72}
+    .folder-shape path{stroke:rgba(255,255,255,.95);stroke-width:2;backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%)}
+    .folder-tab-text .ft-main,.folder-meta .fm-num{color:#17171a;text-shadow:none}
+    .folder-tab-text .ft-sub,.folder-meta .fm-label{color:rgba(23,23,26,.55)}
+    .folder-front-cat{right:14px;bottom:14px;width:auto;padding:7px 12px;border-radius:11px;background:linear-gradient(180deg,#2a2a2e,#0f0f12);color:#fff;
+      font-size:9px;font-weight:500;letter-spacing:.18em;box-shadow:0 6px 12px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.18)}
+    .folder-sheet:not(.stack){box-shadow:0 8px 20px rgba(30,30,50,.18)}
+    .folder-sheet:not(.stack) .folder-sheet-glow{display:none}
+    .folder-sheet-label{color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.35)}
+    .folder-card:nth-child(6n+1) .folder-sheet:not(.stack){background:radial-gradient(70% 90% at 15% 25%,#ee5a34 0%,transparent 62%),radial-gradient(80% 90% at 85% 15%,#1f4aa8 0%,transparent 60%),linear-gradient(135deg,#232a4a,#b8402c)}
+    .folder-card:nth-child(6n+2) .folder-sheet:not(.stack){background:radial-gradient(70% 90% at 80% 25%,#ffb347 0%,transparent 60%),radial-gradient(80% 90% at 15% 20%,#7a3ff0 0%,transparent 62%),linear-gradient(135deg,#3b2480,#e0614a)}
+    .folder-card:nth-child(6n+3) .folder-sheet:not(.stack){background:radial-gradient(70% 90% at 20% 25%,#27c2c9 0%,transparent 60%),radial-gradient(80% 90% at 85% 20%,#ee5aa0 0%,transparent 62%),linear-gradient(135deg,#124a63,#8a3a8a)}
+    .folder-card:nth-child(6n+4) .folder-sheet:not(.stack){background:radial-gradient(70% 90% at 80% 25%,#f2c14e 0%,transparent 60%),radial-gradient(80% 90% at 15% 25%,#c4452a 0%,transparent 62%),linear-gradient(135deg,#4a2a18,#d98a2b)}
+    .folder-card:nth-child(6n+5) .folder-sheet:not(.stack){background:radial-gradient(70% 90% at 25% 25%,#45d0a0 0%,transparent 60%),radial-gradient(80% 90% at 85% 20%,#2f6fed 0%,transparent 62%),linear-gradient(135deg,#0f3b4a,#3b6fb6)}
+    .folder-card:nth-child(6n+6) .folder-sheet:not(.stack){background:radial-gradient(70% 90% at 20% 25%,#ff6a4d 0%,transparent 60%),radial-gradient(80% 90% at 85% 20%,#2a2a40 0%,transparent 62%),linear-gradient(135deg,#1b1b22,#9c2e3c)}
+    .folder-card:nth-child(6n) .folder-shape stop:nth-child(1){stop-color:#1c1c20;stop-opacity:.7}
+    .folder-card:nth-child(6n) .folder-shape stop:nth-child(2){stop-color:#0c0c0f;stop-opacity:.62}
+    .folder-card:nth-child(6n) .folder-shape stop:nth-child(3){stop-color:#08080a;stop-opacity:.76}
+    .folder-card:nth-child(6n) .folder-shape path{stroke:rgba(255,255,255,.22)}
+    .folder-card:nth-child(6n) .folder-tab-text .ft-main,.folder-card:nth-child(6n) .folder-meta .fm-num{color:#fff}
+    .folder-card:nth-child(6n) .folder-tab-text .ft-sub,.folder-card:nth-child(6n) .folder-meta .fm-label{color:rgba(255,255,255,.6)}
+    .folder-card:nth-child(6n) .folder-front-cat{background:#f2f2f2;color:#111}
+
     @media(max-width:767px){
       .folder-grid{grid-template-columns:1fr;gap:26px;padding:14px 20px 60px}
       .folder-card{aspect-ratio:1/0.78}
