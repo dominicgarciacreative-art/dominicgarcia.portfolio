@@ -802,7 +802,7 @@
     .hm-statement strong{color:var(--bright);font-weight:500;background:linear-gradient(transparent 64%,#8cf03c 64%,#8cf03c 92%,transparent 92%)}
 
     /* Meet Nick — intro video */
-    .hm-video{position:relative;aspect-ratio:16/9;width:100%;overflow:hidden;background:#0a0a08;border:1px solid var(--border);border-radius:4px;background-size:cover;background-position:center}
+    .hm-video{position:relative;aspect-ratio:3/2;max-width:900px;margin:0 auto;width:100%;overflow:hidden;background:#0a0a08;border:1px solid var(--border);border-radius:4px;background-size:cover;background-position:center}
     .hm-video .video-standby-icon{transition:border-color .3s,color .3s,transform .3s}
     .hm-video.ready{cursor:pointer}
     .hm-video.ready .video-standby-icon{border-color:#f0f0e8;color:#f0f0e8}
@@ -810,7 +810,7 @@
     .hm-video.ready .video-standby-sub{color:#d4d4cc}
     .hm-video.ready:hover .video-standby-icon{border-color:#8cf03c;color:#8cf03c;transform:scale(1.06)}
     .hm-video video,.hm-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
-    .hm-video-meta{display:flex;justify-content:space-between;gap:16px;margin-top:14px;font-size:10px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hm-video-meta{max-width:900px;margin-left:auto!important;margin-right:auto!important;display:flex;justify-content:space-between;gap:16px;margin-top:14px;font-size:10px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
     /* Three pillars */
     .hm-pillars-head{font-size:clamp(24px,3.5vw,46px);line-height:1;margin-bottom:44px;max-width:780px}
@@ -1019,28 +1019,21 @@
 <div class="hm-ticker" aria-hidden="true"><div class="hm-ticker-track"><span>Brand identity</span><span>Logo design</span><span>Social ads</span><span>Video &amp; motion</span><span>Thumbnails</span><span>Websites</span><span>Billboards</span><span>Brand systems</span><span>Content design</span><span>Creative direction</span><span>Brand identity</span><span>Logo design</span><span>Social ads</span><span>Video &amp; motion</span><span>Thumbnails</span><span>Websites</span><span>Billboards</span><span>Brand systems</span><span>Content design</span><span>Creative direction</span></div></div>
 
 
-  <!-- 1 · Positioning line -->
-  <div class="section-wrap">
-    <div class="section-label mono-extralight"><span class="sl-num">01</span>&nbsp;/&nbsp;The Studio</div>
-    <p class="hm-statement reveal">I build brands from the ground up: the <strong>identity</strong>, the <strong>content</strong>, and the <strong>systems</strong> that keep both consistent.</p>
-  </div>
-  <hr class="hm-rule"/>
-
   <!-- 2 · Meet Nick — intro video
        TO GO LIVE: put your video path or YouTube link in data-video, and a thumbnail of you in data-poster.
          data-video="assets/meet-nick.mp4"              (file in your assets folder, keep it under ~25MB)
          data-video="https://youtu.be/XXXXXXXXXXX"      (or a YouTube link)
-         data-poster="assets/meet-nick-poster.jpg"      (16:9 thumbnail)
+         data-poster="assets/meet-nick-poster.jpg"      (thumbnail)
        Leave data-video empty and it stays on the "Coming Soon" standby. -->
   <div class="section-wrap">
-    <div class="section-label mono-extralight"><span class="sl-num">02</span>&nbsp;/&nbsp;Meet Nick</div>
-    <div class="hm-video reveal" id="meetNick" data-video="" data-poster="">
+    <div class="section-label mono-extralight"><span class="sl-num">01</span>&nbsp;/&nbsp;Meet Nick</div>
+    <div class="hm-video reveal" id="meetNick" data-video="assets/meet-nick.mp4" data-poster="assets/meet-nick-poster.jpg">
       <div class="video-standby">
         <div class="video-standby-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
         </div>
         <div class="video-standby-label mono-extralight">Meet Nick</div>
-        <div class="video-standby-sub mono-light" id="meetNickSub">0:45 &middot; Coming Soon</div>
+        <div class="video-standby-sub mono-light" id="meetNickSub">Play &middot; 2:09</div>
       </div>
     </div>
     <div class="hm-video-meta">
@@ -1049,6 +1042,14 @@
     </div>
   </div>
   <hr class="hm-rule"/>
+
+  <!-- 1 · Positioning line -->
+  <div class="section-wrap">
+    <div class="section-label mono-extralight"><span class="sl-num">02</span>&nbsp;/&nbsp;The Studio</div>
+    <p class="hm-statement reveal">I build brands from the ground up: the <strong>identity</strong>, the <strong>content</strong>, and the <strong>systems</strong> that keep both consistent.</p>
+  </div>
+  <hr class="hm-rule"/>
+
 
   <!-- 3 · Three pillars -->
   <div class="section-wrap">
@@ -2599,7 +2600,7 @@ triggerReveal();
   box.classList.add('ready');
   if (poster) box.style.backgroundImage = 'url("' + poster + '")';
   const sub = document.getElementById('meetNickSub');
-  if (sub) sub.textContent = 'Play · 0:45';
+  if (sub) sub.textContent = 'Play · 2:09';
   box.addEventListener('click', function () {
     if (box.classList.contains('playing')) return;
     box.classList.add('playing');
