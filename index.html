@@ -674,7 +674,7 @@
     /* Coming-soon folders: muted sheet, no peek emphasis */
     .folder-card.soon{cursor:default}
     .folder-card.soon .folder-sheet{
-      background:#f1f1f1;
+      background:rgba(255,255,255,.07);
     }
     .folder-card.soon .folder-sheet-glow{display:none}
     .folder-card.soon:hover .folder-sheet{transform:translateY(-12%)}
@@ -688,21 +688,21 @@
 
     /* ── Frosted-glass folders on a light dotted stage (Works) ── */
     .folder-grid{max-width:1120px;margin:18px auto 80px;padding:36px;border-radius:30px;
-      background-color:#0a0a0a;background-image:radial-gradient(rgba(255,255,255,.12) 1px,transparent 1.4px);background-size:16px 16px;
+      background:#0a0a0a;
       box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 30px 70px rgba(0,0,0,.6)}
     .folder-bg{background:transparent;border-color:transparent}
-    .folder-shape{filter:drop-shadow(0 16px 24px rgba(0,0,0,.7)) drop-shadow(0 1px 1px rgba(0,0,0,.5))}
-    .folder-shape stop:nth-child(1){stop-color:#fff;stop-opacity:1}
-    .folder-shape stop:nth-child(2){stop-color:#f6f6f6;stop-opacity:1}
-    .folder-shape stop:nth-child(3){stop-color:#fff;stop-opacity:1}
-    .folder-shape path{stroke:#fff;stroke-width:2;backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%)}
-    .folder-tab-text .ft-main,.folder-meta .fm-num{color:#17171a;text-shadow:none}
-    .folder-tab-text .ft-sub,.folder-meta .fm-label{color:rgba(23,23,26,.55)}
+    .folder-shape{filter:drop-shadow(0 16px 24px rgba(0,0,0,.65))}
+    .folder-shape stop:nth-child(1){stop-color:#fff;stop-opacity:.22}
+    .folder-shape stop:nth-child(2){stop-color:#fff;stop-opacity:.07}
+    .folder-shape stop:nth-child(3){stop-color:#fff;stop-opacity:.14}
+    .folder-shape path{stroke:rgba(255,255,255,.38);stroke-width:1.5;backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%)}
+    .folder-tab-text .ft-main,.folder-meta .fm-num{color:#fff;text-shadow:none}
+    .folder-tab-text .ft-sub,.folder-meta .fm-label{color:rgba(255,255,255,.6)}
     .folder-front-cat{right:14px;bottom:14px;width:auto;padding:7px 12px;border-radius:11px;background:linear-gradient(180deg,#2a2a2e,#0f0f12);color:#fff;
       font-size:9px;font-weight:500;letter-spacing:.18em;box-shadow:0 6px 12px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.18)}
-    .folder-sheet:not(.stack){background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.45)}
+    .folder-sheet:not(.stack){background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);box-shadow:0 8px 20px rgba(0,0,0,.45)}
     .folder-sheet:not(.stack) .folder-sheet-glow{display:none}
-    .folder-sheet-label{color:#17171a;text-shadow:none}
+    .folder-sheet-label{color:#fff;text-shadow:none}
     .folder-sheet:not(.stack) ~ .folder-sheet-label{right:34px}   /* keep dark text on the white sheet, not on the black stage */
     .folder-sheet.stack ~ .folder-sheet-label{color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6)}
 
