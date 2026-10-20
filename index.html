@@ -689,8 +689,8 @@
     /* ── Frosted-glass folders on a light dotted stage (Works) ── */
     .folder-grid{max-width:1120px;margin:18px auto 80px;padding:36px;border-radius:30px;
       background:#0a0a0a;
-      box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 30px 70px rgba(0,0,0,.6)}
-    .folder-bg{background:transparent;border-color:transparent}
+      box-shadow:none}
+    .folder-bg{background:transparent;border:0}
     .folder-shape{filter:drop-shadow(0 16px 24px rgba(0,0,0,.65))}
     .folder-shape stop:nth-child(1){stop-color:#fff;stop-opacity:.22}
     .folder-shape stop:nth-child(2){stop-color:#fff;stop-opacity:.07}
@@ -703,6 +703,12 @@
     .folder-sheet:not(.stack){background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);box-shadow:0 8px 20px rgba(0,0,0,.45)}
     .folder-sheet:not(.stack) .folder-sheet-glow{display:none}
     .folder-sheet-label{color:#fff;text-shadow:none}
+    .folder-card:nth-child(6n+1) .folder-sheet:not(.stack){background:radial-gradient(70% 90% at 15% 25%,#ee5a34 0%,transparent 62%),radial-gradient(80% 90% at 85% 15%,#1f4aa8 0%,transparent 60%),linear-gradient(135deg,#232a4a,#b8402c);border:0}
+    .folder-card:nth-child(6n+2) .folder-sheet:not(.stack){background:radial-gradient(70% 90% at 80% 25%,#ffb347 0%,transparent 60%),radial-gradient(80% 90% at 15% 20%,#7a3ff0 0%,transparent 62%),linear-gradient(135deg,#3b2480,#e0614a);border:0}
+    .folder-card:nth-child(6n+3) .folder-sheet:not(.stack){background:radial-gradient(70% 90% at 20% 25%,#27c2c9 0%,transparent 60%),radial-gradient(80% 90% at 85% 20%,#ee5aa0 0%,transparent 62%),linear-gradient(135deg,#124a63,#8a3a8a);border:0}
+    .folder-card:nth-child(6n+4) .folder-sheet:not(.stack){background:radial-gradient(70% 90% at 80% 25%,#f2c14e 0%,transparent 60%),radial-gradient(80% 90% at 15% 25%,#c4452a 0%,transparent 62%),linear-gradient(135deg,#4a2a18,#d98a2b);border:0}
+    .folder-card:nth-child(6n+5) .folder-sheet:not(.stack){background:radial-gradient(70% 90% at 25% 25%,#45d0a0 0%,transparent 60%),radial-gradient(80% 90% at 85% 20%,#2f6fed 0%,transparent 62%),linear-gradient(135deg,#0f3b4a,#3b6fb6);border:0}
+    .folder-card:nth-child(6n+6) .folder-sheet:not(.stack){background:radial-gradient(70% 90% at 20% 25%,#ff6a4d 0%,transparent 60%),radial-gradient(80% 90% at 85% 20%,#2a2a40 0%,transparent 62%),linear-gradient(135deg,#1b1b22,#9c2e3c);border:0}
     .folder-sheet:not(.stack) ~ .folder-sheet-label{right:34px}   /* keep dark text on the white sheet, not on the black stage */
     .folder-sheet.stack ~ .folder-sheet-label{color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6)}
 
