@@ -2640,5 +2640,121 @@ document.addEventListener('keydown', (e) => {
   </div>
 </div>
 
+
+<!-- Scroll ruler (replaces the scrollbar on desktop) -->
+<style>
+  html.has-ruler{scrollbar-width:none}
+  html.has-ruler::-webkit-scrollbar{width:0;height:0;display:none}
+  html.has-ruler .hero-nav-strip{padding-right:100px}
+  #ruler{position:fixed;top:0;right:0;bottom:0;width:120px;z-index:40;overflow:hidden;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;
+    --rl-ink:20,20,18;--rl-bg:255,255,255;display:none}
+  html.has-ruler #ruler{display:block}
+  body:not(.on-home) #ruler{--rl-ink:240,240,232;--rl-bg:12,12,10}
+  #ruler.drag{cursor:grabbing}
+  .rl-glass{position:absolute;inset:0;pointer-events:none;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);background:rgba(var(--rl-bg),.55);
+    -webkit-mask-image:linear-gradient(to left,#000 40%,rgba(0,0,0,.5) 62%,rgba(0,0,0,.12) 82%,transparent);mask-image:linear-gradient(to left,#000 40%,rgba(0,0,0,.5) 62%,rgba(0,0,0,.12) 82%,transparent)}
+  .rl-track{position:absolute;left:0;right:0;top:0;will-change:transform}
+  .rl-minor,.rl-mid{position:absolute;right:0}
+  .rl-minor{width:7px;background-image:repeating-linear-gradient(to bottom,rgba(var(--rl-ink),.38) 0,rgba(var(--rl-ink),.38) 1px,transparent 1px,transparent var(--rl-p5))}
+  .rl-mid{width:13px;background-image:repeating-linear-gradient(to bottom,rgba(var(--rl-ink),.6) 0,rgba(var(--rl-ink),.6) 1px,transparent 1px,transparent var(--rl-p1))}
+  .rl-big{position:absolute;right:0;width:22px;height:1px;background:rgb(var(--rl-ink))}
+  .rl-num{position:absolute;right:28px;transform:translateY(-50%);font-family:var(--font-mono);font-size:9px;font-weight:400;letter-spacing:.06em;color:rgba(var(--rl-ink),.55)}
+  .rl-sec{position:absolute;right:48px;transform:translateY(-100%);writing-mode:vertical-rl;text-orientation:mixed;rotate:180deg;transform-origin:center;white-space:nowrap;
+    font-family:var(--font-mono);font-size:9px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgb(var(--rl-ink));cursor:pointer;padding:4px 2px;opacity:.85}
+  .rl-sec:hover{opacity:1;color:#2f8f0b}
+  body:not(.on-home) .rl-sec:hover{color:#8cf03c}
+  .rl-marker{position:absolute;right:0;left:0;height:0;pointer-events:none}
+  .rl-marker i{position:absolute;right:0;top:-1.5px;width:38px;height:3px;background:#8cf03c;box-shadow:0 0 0 1px rgba(20,20,18,.85)}
+  .rl-read{position:absolute;right:72px;top:-9px;display:flex;align-items:center;gap:1px;height:18px;padding:0 6px;border-radius:99px;background:#141412;color:#f0f0e8;font-family:var(--font-mono);font-size:10px;font-weight:600;line-height:1}
+  body:not(.on-home) .rl-read{background:#f0f0e8;color:#141412}
+  .ruler-digits{display:inline-flex;height:1em;overflow:hidden;line-height:1}
+  .ruler-col{display:flex;flex-direction:column;transition:transform .28s cubic-bezier(.2,.9,.2,1)}
+  .ruler-col span{display:block;height:1em}
+</style>
+<div id="ruler" role="scrollbar" aria-controls="main" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Page position">
+  <div class="rl-glass"></div>
+  <div class="rl-track" id="rlTrack"></div>
+  <div class="rl-marker" id="rlMarker"><i></i><div class="rl-read"><span class="ruler-digits" id="rlDigits"></span><span>%</span></div></div>
+</div>
+<script>
+(function(){
+  var mq = window.matchMedia('(min-width: 900px) and (hover: hover)');
+  var ruler = document.getElementById('ruler'), track = document.getElementById('rlTrack'),
+      marker = document.getElementById('rlMarker'), digits = document.getElementById('rlDigits');
+  var root = document.documentElement, S = 0, M = 0, built = false;
+  for (var i = 0; i < 3; i++) {
+    var col = document.createElement('span'); col.className = 'ruler-col';
+    col.innerHTML = '0123456789'.split('').map(function(d){ return '<span>' + d + '</span>'; }).join('');
+    digits.appendChild(col);
+  }
+  function setDigits(n) {
+    var str = ('00' + n).slice(-3);
+    [].forEach.call(digits.children, function(c, k){ c.style.transform = 'translateY(-' + (+str[k]) + 'em)'; });
+    if (n < 10) digits.children[0].style.opacity = digits.children[1].style.opacity = 0; else { digits.children[0].style.opacity = n < 100 ? 0 : 1; digits.children[1].style.opacity = 1; }
+  }
+  function build() {
+    if (!mq.matches) { root.classList.remove('has-ruler'); return; }
+    root.classList.add('has-ruler');
+    S = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    if (S < 40) { ruler.style.display = 'none'; return; } else ruler.style.display = '';
+    M = Math.round(window.innerHeight * 0.42);
+    var total = S + window.innerHeight;
+    track.style.height = total + 'px';
+    var html = '';
+    html += '<div class="rl-minor" style="top:' + M + 'px;height:' + (S + 1) + 'px;--rl-p5:' + (S / 500) + 'px"></div>';
+    html += '<div class="rl-mid" style="top:' + M + 'px;height:' + (S + 1) + 'px;--rl-p1:' + (S / 100) + 'px"></div>';
+    for (var p = 0; p <= 100; p += 10) {
+      var y = M + S * p / 100;
+      html += '<div class="rl-big" style="top:' + y + 'px"></div><div class="rl-num" style="top:' + y + 'px">' + p + '</div>';
+    }
+    var secs = [];
+    if (document.body.classList.contains('on-home')) {
+      document.querySelectorAll('#page-home .section-label').forEach(function(el){
+        var t = el.textContent.replace(/^\s*\d+\s*\/\s*/, '').trim();
+        secs.push([t, el.getBoundingClientRect().top + window.scrollY - 40]);
+      });
+      var c = document.getElementById('contact'); if (c) secs.push(['Contact', c.getBoundingClientRect().top + window.scrollY - 20]);
+    }
+    secs.forEach(function(sc){
+      var y = Math.min(Math.max(sc[1], 0), S);
+      html += '<div class="rl-sec" data-y="' + Math.round(y) + '" style="top:' + (M + y - 6) + 'px">' + sc[0] + '</div>';
+    });
+    track.innerHTML = html;
+    marker.style.top = M + 'px';
+    update();
+  }
+  function update() {
+    if (!S) return;
+    var y = window.scrollY;
+    track.style.transform = 'translate3d(0,' + (-y) + 'px,0)';
+    var pct = Math.max(0, Math.min(100, Math.round(y / S * 100)));
+    setDigits(pct);
+    ruler.setAttribute('aria-valuenow', pct);
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){ if (!ticking) { ticking = true; requestAnimationFrame(function(){ ticking = false; update(); }); } }, {passive: true});
+  window.addEventListener('resize', build);
+  mq.addEventListener && mq.addEventListener('change', build);
+  var pend; function later(){ clearTimeout(pend); pend = setTimeout(build, 120); }
+  if (window.ResizeObserver) new ResizeObserver(later).observe(document.body);
+  new MutationObserver(later).observe(document.body, {attributes: true, attributeFilter: ['class']});
+  window.addEventListener('load', build);
+  build();
+
+  var drag = null;
+  ruler.addEventListener('pointerdown', function(e){
+    var sec = e.target.closest && e.target.closest('.rl-sec');
+    if (sec) { window.scrollTo({top: +sec.dataset.y, behavior: 'smooth'}); return; }
+    drag = {y: e.clientY, s: window.scrollY, moved: false};
+    ruler.classList.add('drag'); ruler.setPointerCapture(e.pointerId);
+  });
+  ruler.addEventListener('pointermove', function(e){
+    if (!drag) return;
+    window.scrollTo(0, Math.max(0, Math.min(S, drag.s - (e.clientY - drag.y))));
+  });
+  function end(e){ if (!drag) return; drag = null; ruler.classList.remove('drag'); }
+  ruler.addEventListener('pointerup', end); ruler.addEventListener('pointercancel', end);
+})();
+</script>
 </body>
 </html>
