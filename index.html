@@ -609,8 +609,8 @@
       position:absolute;top:12px;right:14px;left:42%;
       z-index:2;text-align:right;
       font-family:var(--font-display);
-      font-size:clamp(11px,1.12vw,16px);
-      line-height:1.05;letter-spacing:.03em;
+      font-size:clamp(13px,1.5vw,18px);
+      line-height:1.05;letter-spacing:.04em;
       text-transform:uppercase;color:#eef2ff;
       text-shadow:0 2px 10px rgba(0,0,0,0.45);
       pointer-events:none;
@@ -685,26 +685,6 @@
     }
 
     .folder-card.zooming .folder{transform:scale(1.06) translateY(-6px)}
-
-    /* Plain, individually coloured folders — the blue placeholder sheet is gone; real image stacks stay */
-    .folder-sheet:not(.stack){display:none}
-    .folder-card{--c:#d9a72b}
-    .folder-card:nth-child(8n+1){--c:#d9a72b}
-    .folder-card:nth-child(8n+2){--c:#e0584a}
-    .folder-card:nth-child(8n+3){--c:#2fae6a}
-    .folder-card:nth-child(8n+4){--c:#8a5cf0}
-    .folder-card:nth-child(8n+5){--c:#1fb5c9}
-    .folder-card:nth-child(8n+6){--c:#e05aa0}
-    .folder-card:nth-child(8n+7){--c:#ec7a2c}
-    .folder-card:nth-child(8n+8){--c:#8cc63e}
-    .folder-shape stop:nth-child(1){stop-color:color-mix(in srgb,var(--c) 88%,#fff);stop-opacity:.92}
-    .folder-shape stop:nth-child(2){stop-color:color-mix(in srgb,var(--c) 70%,#000);stop-opacity:.9}
-    .folder-shape stop:nth-child(3){stop-color:color-mix(in srgb,var(--c) 42%,#000);stop-opacity:.94}
-    .folder-shape path{stroke:rgba(255,255,255,.3)}
-    .folder-bg{background:color-mix(in srgb,var(--c) 14%,#0a0a08)}
-    .folder-tab-text .ft-main,.folder-meta .fm-num{color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.28)}
-    .folder-tab-text .ft-sub,.folder-meta .fm-label,.folder-front-cat{color:rgba(255,255,255,.78)}
-    .folder-sheet-label{color:color-mix(in srgb,var(--c) 55%,#fff);text-shadow:none}
 
     @media(max-width:767px){
       .folder-grid{grid-template-columns:1fr;gap:26px;padding:14px 20px 60px}
