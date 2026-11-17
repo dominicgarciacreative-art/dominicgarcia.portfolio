@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About — Creatives, Dominic Garcia</title>
+<meta name="description" content="Dominic Garcia — a designer with 6+ years of experience in brand identity, video and motion, and AI creative systems. Based in Quezon City, Philippines.">
+<meta property="og:title" content="About — Dominic Garcia">
+<meta property="og:description" content="A designer with 6+ years of experience who builds brands from the ground up.">
+<meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-page:#e9e9e9;
+  --bg-surface:#f5f5f3;
+  --bg-inverse:#0b0b0b;
+  --text-primary:#0b0b0b;
+  --text-secondary:#5e5e5e;
+  --text-inverse:#f4f4f2;
+  --text-inverse-secondary:#a8a8a8;
+  --border-default:#cfcfcf;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg-page);color:var(--text-primary);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;font-weight:500;line-height:1.3;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block}
+ul,ol{list-style:none}
+:focus-visible{outline:2px solid #6aa6ff;outline-offset:3px}
+.eyebrow{font-size:14px;font-weight:500;line-height:1.3;color:var(--text-secondary);white-space:nowrap}
+.wrap{width:100%;max-width:1360px;margin:0 auto}
+
+/* ============ HEADER ============ */
+.header{display:flex;flex-direction:column;gap:160px;padding-bottom:56px;background:var(--bg-inverse);color:var(--text-inverse);overflow:hidden}
+.nav{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;padding:28px 40px;font-size:15px;white-space:nowrap}
+.nav-links{display:flex;gap:36px}
+.nav-links a{position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.nav-links a:hover::after,.nav-links a[aria-current="page"]::after{transform:scaleX(1)}
+.title{display:flex;align-items:center;gap:40px;padding:0 40px}
+.title span{flex:none;font-weight:600;font-size:min(9.722vw,140px);line-height:1;letter-spacing:-.04em;white-space:nowrap}
+.title i{flex:1 0 0;min-width:1px;height:3px;background:var(--text-inverse)}
+
+/* ============ SUMMARY ============ */
+.summary{padding:160px 40px}
+.summary-in{display:flex;flex-direction:column;align-items:center;gap:40px;max-width:1040px;margin:0 auto}
+.summary p:last-child{font-weight:400;font-size:clamp(24px,3.056vw,44px);line-height:1.22;letter-spacing:-.02em;text-align:center}
+
+/* ============ EXPERIENCE + SIDEBAR ============ */
+.experience{padding:0 40px 160px}
+.exp-grid{display:flex;align-items:flex-start;gap:80px}
+.exp-list{flex:1 0 0;min-width:0;display:flex;flex-direction:column;gap:32px}
+.exp-item{display:flex;align-items:flex-start;gap:40px;padding:32px 0;border-top:1px solid var(--border-default)}
+.exp-when{flex:none;width:140px;font-size:14px;color:var(--text-secondary)}
+.exp-body{flex:1 0 0;min-width:0;display:flex;flex-direction:column;gap:10px}
+.exp-body h3{font-size:22px;font-weight:500;line-height:1.3;letter-spacing:-.01em}
+.exp-body p{font-weight:400;font-size:18px;line-height:1.5;letter-spacing:-.01em;color:var(--text-secondary)}
+.sidebar{flex:none;width:400px;display:flex;flex-direction:column;gap:40px}
+.group{display:flex;flex-direction:column;gap:16px}
+.info{display:flex;flex-direction:column;gap:6px;padding:20px 24px;border-radius:8px;background:var(--bg-surface)}
+.info b{font-weight:500;font-size:18px;letter-spacing:-.01em}
+.info small{font-size:14px;color:var(--text-secondary)}
+.socials{display:flex;align-items:center;gap:20px}
+.socials a{display:block;transition:transform .25s cubic-bezier(.2,.7,.2,1),opacity .2s}
+.socials a:hover{transform:translateY(-2px);opacity:.7}
+.socials.s24 a,.socials.s24 img{width:24px;height:24px}
+.socials.s22 a,.socials.s22 img{width:22px;height:22px}
+
+/* ============ CORE SKILLS ============ */
+.skills{padding:0 40px 120px}
+.skills .wrap,.tools .wrap{display:flex;flex-direction:column;gap:32px}
+.skill-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.skill{display:flex;flex-direction:column;align-items:flex-start;gap:56px;padding:28px;border-radius:8px;background:var(--bg-surface);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.skill:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.07)}
+.skill-ic{width:32px;height:32px;display:grid;place-items:center}
+.skill h3{font-size:22px;font-weight:500;line-height:1.3;letter-spacing:-.01em;white-space:nowrap}
+.skill p{margin-top:6px;font-size:14px;color:var(--text-secondary);white-space:nowrap}
+
+/* ============ TOOLS ============ */
+.tools{padding:0 40px 160px}
+.tool-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tool-col{display:flex;flex-direction:column;gap:8px;min-width:0}
+.tool{display:flex;align-items:center;gap:14px;padding:16px 0;border-top:1px solid var(--border-default);font-size:22px;letter-spacing:-.01em;white-space:nowrap}
+.tool img{flex:none;width:24px;height:24px;object-fit:contain}
+
+/* ============ FOOTER ============ */
+.footer{padding:120px 40px 40px;background:var(--bg-inverse);color:var(--text-inverse)}
+.contact{display:flex;align-items:flex-end;justify-content:space-between;gap:48px}
+.cta{display:flex;flex-direction:column;align-items:flex-start;gap:32px}
+.footer .eyebrow,.detail dt{color:var(--text-inverse-secondary)}
+.cta h2{font-weight:600;font-size:clamp(48px,6.667vw,96px);line-height:1;letter-spacing:-.04em;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px 14px 24px;border-radius:999px;font-size:15px;white-space:nowrap;background:var(--text-inverse);color:var(--text-primary);transition:transform .25s cubic-bezier(.2,.7,.2,1),background .2s}
+.btn:hover{transform:translateY(-2px);background:#fff}
+.btn img{width:6px;height:6px}
+.details{display:flex;flex-direction:column;gap:20px}
+.detail{display:flex;align-items:center;gap:24px}
+.detail dt{flex:none;width:96px;font-size:14px}
+.detail dd{font-size:18px;letter-spacing:-.01em;white-space:nowrap}
+.detail dd a:hover{opacity:.7}
+.footer-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px 24px;padding-top:96px;font-size:14px;color:var(--text-inverse-secondary)}
+.footer-row a:hover{color:var(--text-inverse)}
+
+/* ============ MOTION ============ */
+@media (prefers-reduced-motion:no-preference){
+  .title span{opacity:0;transform:translateY(.25em);animation:up 1s cubic-bezier(.2,.7,.2,1) .15s forwards}
+  .title span:last-child{animation-delay:.28s}
+  .title i{transform:scaleX(0);transform-origin:left;animation:rule 1s cubic-bezier(.2,.7,.2,1) .4s forwards}
+  @keyframes up{to{opacity:1;transform:none}}
+  @keyframes rule{to{transform:none}}
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0) * 70ms)}
+  .rv.in{opacity:1;transform:none}
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1100px){
+  .exp-grid{gap:48px}
+  .sidebar{width:320px}
+  .skill-row{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:1000px){
+  .header{gap:112px}
+  .summary{padding:120px 32px}
+  .experience,.skills,.tools{padding-left:32px;padding-right:32px}
+  .exp-grid{flex-direction:column}
+  .sidebar{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:32px 24px}
+  .contact{flex-direction:column;align-items:flex-start;gap:64px}
+  .footer{padding:96px 32px 32px}
+}
+@media (max-width:759px){
+  .header{gap:72px;padding-bottom:32px}
+  .nav{padding:18px 20px;font-size:13px}
+  .nav-links{gap:18px}
+  .title{gap:16px;padding:0 20px}
+  .title span{font-size:max(44px,14vw)}
+  .title i{height:2px}
+  .summary{padding:88px 20px}
+  .summary-in{gap:28px}
+  .experience{padding:0 20px 96px}
+  .skills{padding:0 20px 88px}
+  .tools{padding:0 20px 96px}
+  .exp-list{gap:20px}
+  .exp-item{flex-direction:column;gap:8px;padding:24px 0}
+  .exp-when{width:auto}
+  .exp-body h3{font-size:19px}
+  .exp-body p{font-size:16px}
+  .sidebar{grid-template-columns:1fr}
+  .skill-row{gap:12px}
+  .skill{gap:36px;padding:20px}
+  .skill h3{font-size:17px;white-space:normal}
+  .skill p{font-size:13px;white-space:normal}
+  .tool-cols{grid-template-columns:1fr;gap:32px}
+  .tool{font-size:19px;padding:14px 0}
+  .footer{padding:72px 20px 28px}
+  .detail{gap:12px}
+  .detail dt{width:76px;font-size:13px}
+  .detail dd{font-size:15px}
+  .footer-row{padding-top:64px;font-size:13px}
+}
+@media (max-width:400px){
+  .detail dd{font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <nav class="nav" aria-label="Primary">
+    <a href="../">Creatives — Dominic</a>
+    <div class="nav-links">
+      <a href="../#projects">Work</a>
+      <a href="../#services">Services</a>
+      <a href="./" aria-current="page">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+  <h1 class="title" aria-label="About me"><span>About</span><i></i><span>Me</span></h1>
+</header>
+
+<main>
+  <section class="summary">
+    <div class="summary-in">
+      <p class="eyebrow rv">( Summary )</p>
+      <p class="rv">A designer with 6+ years of experience who builds brands from the ground up — crafting visual systems, leading creative strategy, and delivering work that cuts through. I operate at the edge of design and AI, building pipelines that are as sharp as the ideas behind them.</p>
+    </div>
+  </section>
+
+  <section class="experience">
+    <div class="wrap exp-grid">
+      <div class="exp-list">
+        <h2 class="eyebrow rv">( Experience )</h2>
+        <ol>
+          <li class="exp-item rv"><span class="exp-when">2026 – Now</span><div class="exp-body"><h3>Freelance</h3><p>Independent work across brand identity, AI-powered guidelines &amp; content systems.</p></div></li>
+          <li class="exp-item rv"><span class="exp-when">2023</span><div class="exp-body"><h3>International Clients</h3><p>Expanded practice to work with clients from Australia, New Zealand &amp; Europe — brand identity, print production, social media marketing, and digital content across different markets and time zones.</p></div></li>
+          <li class="exp-item rv"><span class="exp-when">2021</span><div class="exp-body"><h3>Full-Time · Print &amp; Digital</h3><p>Transitioned into full-time output roles managing production design, campaign artwork, and video editing in high-volume environments.</p></div></li>
+          <li class="exp-item rv"><span class="exp-when">May 2020</span><div class="exp-body"><h3>Freelance Begins</h3><p>Started with logos, social media, and promotional materials — laying the groundwork for a full career in design.</p></div></li>
+        </ol>
+      </div>
+
+      <aside class="sidebar">
+        <div class="group rv">
+          <h2 class="eyebrow">( Based in )</h2>
+          <div class="info"><b>Quezon City</b><small>Philippines · PHT UTC+8</small></div>
+          <div class="info"><b>Caloocan City</b><small>Philippines · PHT UTC+8</small></div>
+        </div>
+        <div class="group rv">
+          <h2 class="eyebrow">( Degree )</h2>
+          <div class="info"><b>BS Psychology</b><small>New Era University</small></div>
+        </div>
+        <div class="group rv">
+          <h2 class="eyebrow">( Socials )</h2>
+          <div class="socials s24">
+            <a href="https://www.instagram.com/nick.creativemedia/" target="_blank" rel="noopener" aria-label="Instagram"><img src="assets/s-instagram.svg" alt=""></a>
+            <a href="https://www.tiktok.com/@nick.creativemedia" target="_blank" rel="noopener" aria-label="TikTok"><img src="assets/s-tiktok.svg" alt=""></a>
+            <a href="https://www.facebook.com/nckdsgn/" target="_blank" rel="noopener" aria-label="Facebook"><img src="assets/s-facebook.svg" alt=""></a>
+            <a href="https://www.linkedin.com/in/dominic-garcia-709a26117/" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="assets/s-linkedin.svg" alt=""></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="skills">
+    <div class="wrap">
+      <h2 class="eyebrow rv">( Core skills )</h2>
+      <ul class="skill-row">
+        <li class="skill rv" style="--d:0"><span class="skill-ic"><img src="assets/sk-brand.svg" alt=""></span><div><h3>Brand Identity</h3><p>Logo &amp; Branding Assets</p></div></li>
+        <li class="skill rv" style="--d:1"><span class="skill-ic"><img src="assets/sk-video.svg" alt=""></span><div><h3>Video &amp; Motion</h3><p>Editing &amp; Motion Graphic</p></div></li>
+        <li class="skill rv" style="--d:2"><span class="skill-ic"><img src="assets/sk-system.svg" alt=""></span><div><h3>System Designer</h3><p>AI Creative Systems</p></div></li>
+        <li class="skill rv" style="--d:3"><span class="skill-ic"><img src="assets/sk-graphic.svg" alt=""></span><div><h3>Graphic Design</h3><p>Print &amp; Digital</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="tools">
+    <div class="wrap">
+      <h2 class="eyebrow rv">( Tools )</h2>
+      <div class="tool-cols">
+        <div class="tool-col rv" style="--d:0">
+          <h3 class="eyebrow">Graphic Design</h3>
+          <ul>
+            <li class="tool"><img src="assets/photoshop.svg" alt="">Photoshop</li>
+            <li class="tool"><img src="assets/illustrator.svg" alt="">Illustrator</li>
+            <li class="tool"><img src="assets/indesign.svg" alt="">InDesign</li>
+            <li class="tool"><img src="assets/figma.svg" alt="">Figma</li>
+            <li class="tool"><img src="assets/canva.svg" alt="">Canva</li>
+          </ul>
+        </div>
+        <div class="tool-col rv" style="--d:1">
+          <h3 class="eyebrow">Video &amp; Motion</h3>
+          <ul>
+            <li class="tool"><img src="assets/premiere.svg" alt="">Premiere</li>
+            <li class="tool"><img src="assets/after-effects.svg" alt="">After Effects</li>
+            <li class="tool"><img src="assets/capcut.svg" alt="">CapCut</li>
+            <li class="tool"><img src="assets/davinci.svg" alt="">DaVinci Resolve</li>
+          </ul>
+        </div>
+        <div class="tool-col rv" style="--d:2">
+          <h3 class="eyebrow">AI Tools</h3>
+          <ul>
+            <li class="tool"><img src="assets/claude.svg" alt="">Claude</li>
+            <li class="tool"><img src="assets/gemini.svg" alt="">Gemini</li>
+            <li class="tool"><img src="assets/chatgpt.svg" alt="">ChatGPT</li>
+            <li class="tool"><img src="assets/higgsfield.svg" alt="">Higgsfield</li>
+            <li class="tool"><img src="assets/leonardo.webp" alt="">Leonardo.AI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div class="cta">
+        <p class="eyebrow">( Say hello! )</p>
+        <h2>Let's build<br>something.</h2>
+        <a class="btn" href="mailto:dominicgarcia.creative@gmail.com"><img src="../assets/dot.svg" alt="">Let's chat</a>
+      </div>
+      <dl class="details">
+        <div class="detail"><dt>Location</dt><dd>Quezon City, PH</dd></div>
+        <div class="detail"><dt>Email</dt><dd><a href="mailto:dominicgarcia.creative@gmail.com">dominicgarcia.creative@gmail.com</a></dd></div>
+        <div class="detail"><dt>WhatsApp</dt><dd><a href="https://wa.me/639274185581" target="_blank" rel="noopener">+639274185581</a></dd></div>
+        <div class="detail"><dt>Socials</dt><dd class="socials s22">
+          <a href="https://www.instagram.com/nick.creativemedia/" target="_blank" rel="noopener" aria-label="Instagram"><img src="assets/f-instagram.svg" alt=""></a>
+          <a href="https://www.tiktok.com/@nick.creativemedia" target="_blank" rel="noopener" aria-label="TikTok"><img src="assets/f-tiktok.svg" alt=""></a>
+          <a href="https://www.facebook.com/nckdsgn/" target="_blank" rel="noopener" aria-label="Facebook"><img src="assets/f-facebook.svg" alt=""></a>
+          <a href="https://www.linkedin.com/in/dominic-garcia-709a26117/" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="assets/f-linkedin.svg" alt=""></a>
+        </dd></div>
+      </dl>
+    </div>
+    <div class="footer-row">
+      <p>© 2026 Dominic Garcia · G! Studio</p>
+      <a href="https://docs.google.com/presentation/d/1H1xydUEJzwq0EE1MfHpOYOw2Ds_JTVdIXon6wDATrdE/edit?slide=id.g2cf5203a1cb_0_84#slide=id.g2cf5203a1cb_0_84" target="_blank" rel="noopener">More work? Portfolio 2024 →</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{rootMargin:'0px 0px -6% 0px',threshold:.06});
+    els.forEach(function(el){ io.observe(el); });
+  } else { els.forEach(function(el){ el.classList.add('in'); }); }
+})();
+</script>
+</body>
+</html>
