@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Creatives — Dominic Garcia</title>
+<meta name="description" content="Dominic Garcia — a creative working across graphic design, video editing and design automation.">
+<meta property="og:title" content="Creatives — Dominic Garcia">
+<meta property="og:description" content="Graphic design, video editing and design automation.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-page:#e9e9e9;
+  --bg-inverse:#0b0b0b;
+  --text-primary:#0b0b0b;
+  --text-secondary:#5e5e5e;
+  --text-inverse:#f4f4f2;
+  --text-inverse-secondary:#a8a8a8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg-page);color:var(--text-primary);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;font-weight:500;line-height:1.3;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+:focus-visible{outline:2px solid #6aa6ff;outline-offset:3px}
+
+/* ============ HERO ============ */
+/* --u = one design pixel across (1440 grid). --v = one design pixel down: equal to --u
+   until the window is shorter than the mosaic, then rows compress so the hero still fits. */
+.hero{position:relative;background:var(--bg-inverse);container-type:inline-size;overflow:hidden}
+.hero-fit{--u:calc(100cqw / 1440);--v:max(calc(var(--u) * .6),min(var(--u),calc(100svh / 852)));position:relative;overflow:hidden;height:calc(var(--v) * 852)}
+.mosaic{display:flex;flex-direction:column;gap:calc(var(--v) * 12)}
+.row{display:flex;gap:calc(var(--u) * 12)}
+.tile{position:relative;overflow:hidden;border-radius:4px;flex:1 0 0;min-width:0;height:calc(var(--v) * var(--h));background:#000}
+.tile.w372{flex:none;width:calc(var(--u) * 372)}
+.tile img{max-width:none}
+/* artwork keeps its design height and is centred in the (possibly shorter) tile */
+.art{position:absolute;left:0;right:0;top:50%;height:calc(var(--u) * var(--h));transform:translateY(-50%)}
+/* absolutely placed layer: --x/--y/--w/--h are design pixels */
+.abs{position:absolute;left:calc(var(--u) * var(--x));top:calc(var(--u) * var(--y));width:calc(var(--u) * var(--w));height:calc(var(--u) * var(--h))}
+.abs > img.fill,.logo > img.fill,.logo-b > img.fill{position:absolute;inset:0;width:100%;height:100%}
+.clip{overflow:hidden}
+.cover{object-fit:cover}
+.flipv{transform:scaleY(-1)}
+.ft,.fb{position:absolute;left:0;right:0;opacity:.75;pointer-events:none}
+.ft{top:0;height:calc(var(--v) * 84.2);background:linear-gradient(to top,rgba(0,0,0,0),#000)}
+.fb{bottom:0;height:calc(var(--v) * 58.55);background:linear-gradient(to top,rgba(0,0,0,.675),rgba(0,0,0,0))}
+.dim{position:absolute;inset:0;background:rgba(0,0,0,.5)}
+.tile-label{position:absolute;left:calc(var(--u) * var(--x));top:calc(var(--v) * var(--y));font-size:max(10px,calc(var(--u) * 12));font-weight:500;line-height:1.3;color:var(--text-inverse);white-space:nowrap}
+.tile-label.b{top:auto;bottom:calc(var(--v) * var(--b))}
+.tile-label.r{left:auto;right:calc(var(--u) * var(--r))}
+.logo{position:absolute;right:calc(var(--u) * var(--r));top:calc(var(--v) * var(--y));width:calc(var(--u) * var(--w));height:calc(var(--u) * var(--h))}
+.logo-b{position:absolute;left:calc(var(--u) * var(--x));bottom:calc(var(--v) * var(--b));width:calc(var(--u) * var(--w));height:calc(var(--u) * var(--h))}
+.logo-b.r{left:auto;right:calc(var(--u) * var(--r))}
+
+/* Tile 1 — Nitron profile mock */
+.t1-panel{background:linear-gradient(109.35deg,rgb(20,20,20) 6.78%,rgb(36,38,42) 93.22%)}
+.t1-mask{-webkit-mask:url(assets/t1-mask.webp) 0 0/100% 100% no-repeat;mask:url(assets/t1-mask.webp) 0 0/100% 100% no-repeat}
+.t1-card{background:#fff;border-radius:calc(var(--u) * 15)}
+.t1-cover{border-radius:calc(var(--u) * 15) calc(var(--u) * 15) 0 0;overflow:hidden}
+.t1-cover img{position:absolute;left:.01%;top:-3.15%;width:99.97%;height:123.87%}
+.t1-name{font-weight:700;font-size:calc(var(--u) * 22);line-height:1.3;color:#000;display:flex;align-items:center}
+.t1-handle{font-weight:400;font-size:calc(var(--u) * 15);line-height:1.3;color:#686868;display:flex;align-items:center}
+.t1-follow{background:#181818;border-radius:calc(var(--u) * 46);display:flex;align-items:center;justify-content:center;font-size:calc(var(--u) * 14);letter-spacing:.02em;color:#fff}
+.t1-dim{opacity:.75}
+
+/* Tile 2 — rotated ad wall */
+.t2-wall{display:flex;align-items:center;justify-content:center}
+.t2-wall img{flex:none;width:calc(var(--u) * 745.035);height:calc(var(--u) * 875.192);object-fit:cover;transform:rotate(-20.37deg)}
+
+/* Nav */
+.nav{position:absolute;left:0;right:0;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;padding:28px 40px;font-size:15px;font-weight:500;line-height:1.3;color:var(--text-inverse);white-space:nowrap}
+.nav-links{display:flex;gap:36px}
+.nav a{position:relative;opacity:.96;transition:opacity .2s}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.nav-links a:hover::after{transform:scaleX(1)}
+
+/* Wordmark */
+.wordmark{position:absolute;left:0;right:0;bottom:calc(var(--v) * 36);z-index:4;display:flex;align-items:center;gap:calc(var(--u) * 40);padding:0 calc(var(--u) * 40);pointer-events:none}
+.wordmark span{flex:none;font-weight:600;font-size:calc(var(--v) * 140);line-height:1;letter-spacing:-.04em;color:var(--text-inverse);white-space:nowrap}
+.wordmark i{flex:1 0 0;min-width:1px;height:max(2px,calc(var(--v) * 3));background:var(--text-inverse)}
+
+/* ============ SECTIONS ============ */
+.eyebrow{font-size:14px;font-weight:500;line-height:1.3;color:var(--text-secondary);white-space:nowrap}
+.intro{display:flex;flex-direction:column;align-items:center;padding:160px 40px 140px}
+.intro-in{display:flex;flex-direction:column;align-items:center;gap:40px;width:100%;max-width:900px}
+.statement{font-weight:400;font-size:clamp(24px,3.056vw,44px);line-height:1.22;letter-spacing:-.02em;text-align:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px 14px 24px;border-radius:999px;font-size:15px;font-weight:500;line-height:1.3;white-space:nowrap;transition:transform .25s cubic-bezier(.2,.7,.2,1),background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn-play{background:var(--bg-inverse);color:var(--text-inverse)}
+.btn-play:hover{background:#222}
+.btn-inverse{background:var(--text-inverse);color:var(--text-primary)}
+.btn-inverse:hover{background:#fff}
+
+.services{display:flex;flex-direction:column;align-items:center;padding:0 40px 160px}
+.services-in{display:flex;flex-direction:column;align-items:center;gap:40px;width:100%;max-width:1040px}
+.service-row{display:flex;align-items:center;justify-content:space-between;width:100%;list-style:none}
+.service{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:500;line-height:1.3;letter-spacing:-.01em;color:var(--text-secondary);white-space:nowrap}
+.service-ic{flex:none;width:24px;height:24px;display:grid;place-items:center}
+
+.projects{display:flex;flex-direction:column;align-items:center;padding:0 40px 160px}
+.projects-in{display:flex;flex-direction:column;align-items:center;width:100%;max-width:1360px}
+.projects h2{font-weight:600;font-size:min(15.278vw,220px);line-height:.9;letter-spacing:-.05em;text-align:center;white-space:nowrap;margin-bottom:-.059em}
+.project-list{display:flex;flex-direction:column;gap:24px;width:100%}
+.card{position:relative;display:flex;flex-direction:column;overflow:hidden;border-radius:16px;background:var(--bg-inverse);box-shadow:0 -10px 36px rgba(0,0,0,.28)}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px;padding:0 28px;white-space:nowrap}
+.card-title{display:flex;align-items:center;gap:14px;min-width:0}
+.card-num,.card-cat{font-size:14px;color:var(--text-inverse-secondary)}
+.card-name{font-size:22px;letter-spacing:-.01em;color:var(--text-inverse);overflow:hidden;text-overflow:ellipsis}
+.card-media{position:relative;aspect-ratio:16/9;overflow:hidden}
+.scene{position:absolute;left:50%;top:50%;width:112.404%;aspect-ratio:1528.695/976.932;transform:translate(-50%,-50%);transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.card:hover .scene{transform:translate(-50%,-50%) scale(1.03)}
+.scene-img{position:absolute;inset:0;overflow:hidden}
+.scene-img img{position:absolute;left:0;top:6.01%;width:107%;height:107.01%;max-width:none}
+.scene-vig{position:absolute;inset:0;background:radial-gradient(ellipse 58.93% 58.93% at 50% 41.07%,rgba(0,0,0,0),rgba(0,0,0,.6))}
+.scene-wm{position:absolute;left:25.155%;top:23.918%;width:49.69%;height:52.164%;max-width:none;object-fit:cover;mix-blend-mode:plus-lighter}
+
+/* ============ FOOTER ============ */
+.footer{display:flex;flex-direction:column;align-items:center;padding:120px 40px 40px;background:var(--bg-inverse);color:var(--text-inverse)}
+.footer-in{width:100%;max-width:1360px}
+.contact{display:flex;align-items:flex-end;justify-content:space-between;gap:48px}
+.cta{display:flex;flex-direction:column;align-items:flex-start;gap:32px}
+.cta .eyebrow,.detail dt{color:var(--text-inverse-secondary)}
+.cta h2{font-weight:600;font-size:clamp(48px,6.667vw,96px);line-height:1;letter-spacing:-.04em;white-space:nowrap}
+.btn-dot{width:6px;height:6px;flex:none}
+.details{display:flex;flex-direction:column;gap:20px}
+.detail{display:flex;align-items:center;gap:24px}
+.detail dt{flex:none;width:96px;font-size:14px}
+.detail dd{font-size:18px;letter-spacing:-.01em;white-space:nowrap}
+.detail dd a{transition:opacity .2s}
+.detail dd a:hover{opacity:.7}
+.socials{display:flex;align-items:center;gap:20px}
+.socials a{display:block;width:22px;height:22px;transition:transform .25s cubic-bezier(.2,.7,.2,1),opacity .2s}
+.socials a:hover{transform:translateY(-2px);opacity:.8}
+.footer-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px 24px;flex-wrap:wrap;padding-top:96px;font-size:14px;color:var(--text-inverse-secondary)}
+.footer-row a:hover{color:var(--text-inverse)}
+
+/* ============ VIDEO DIALOG ============ */
+dialog.video{margin:auto;padding:0;border:0;background:transparent;width:min(1100px,92vw);max-height:92vh;overflow:visible}
+dialog.video::backdrop{background:rgba(0,0,0,.82);backdrop-filter:blur(6px)}
+dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;background:#000}
+.video-close{position:absolute;right:0;top:-44px;padding:8px 4px;font-size:14px;color:#f4f4f2}
+
+/* ============ MOTION ============ */
+@media (prefers-reduced-motion:no-preference){
+  .tile{opacity:0;transform:scale(1.02);animation:tileIn .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i) * 70ms)}
+  @keyframes tileIn{to{opacity:1;transform:none}}
+  .wordmark span{opacity:0;transform:translateY(.25em);animation:wmIn 1s cubic-bezier(.2,.7,.2,1) .45s forwards}
+  .wordmark span:last-child{animation-delay:.58s}
+  .wordmark i{transform:scaleX(0);transform-origin:left;animation:ruleIn 1s cubic-bezier(.2,.7,.2,1) .7s forwards}
+  @keyframes wmIn{to{opacity:1;transform:none}}
+  @keyframes ruleIn{to{transform:none}}
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1000px){
+  .intro{padding:120px 32px 110px}
+  .services{padding:0 32px 120px}
+  .projects{padding:0 24px 120px}
+  .service{font-size:16px}
+  .contact{flex-direction:column;align-items:flex-start;gap:64px}
+  .footer{padding:96px 32px 32px}
+}
+@media (max-width:759px){
+  /* mosaic re-flows on a 714-unit grid: wide tiles stack, the two narrow ones pair up */
+  .hero-fit{--u:calc(100cqw / 714);--v:var(--u);height:auto}
+  .row{flex-wrap:wrap}
+  .tile{flex:1 0 100%}
+  .tile.w372{flex:1 0 calc(50% - var(--u) * 6);width:auto}
+  .tile.t4{order:-1}
+  .tile.t4 .t4-img{width:100%}
+  .wordmark{flex-direction:column;align-items:flex-start;gap:0}
+  .wordmark i{display:none}
+  .nav{padding:18px 20px;font-size:13px}
+  .nav-links{gap:18px}
+  .intro{padding:88px 20px 80px}
+  .intro-in{gap:28px}
+  .services{padding:0 20px 96px}
+  .service-row{display:grid;grid-template-columns:1fr 1fr;gap:20px 12px}
+  .service{font-size:15px}
+  .projects{padding:0 14px 96px}
+  .card{border-radius:12px}
+  .card-head{height:60px;padding:0 18px}
+  .card-name{font-size:17px}
+  .card-num,.card-cat{font-size:12px}
+  .footer{padding:72px 20px 28px}
+  .detail{gap:12px}
+  .detail dt{width:76px;font-size:13px}
+  .detail dd{font-size:15px}
+  .footer-row{padding-top:64px;font-size:13px}
+}
+@media (max-width:400px){
+  .service-row{grid-template-columns:1fr}
+  .detail dd{font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="hero-fit">
+    <div class="mosaic" id="work">
+
+      <div class="row" style="--h:216">
+        <!-- Tile 1 · Social Media Asset -->
+        <div class="tile" style="--i:0">
+          <div class="art">
+            <div class="abs t1-panel" style="--x:-28.04;--y:-6.39;--w:769.258;--h:229.654"></div>
+            <div class="abs t1-mask" style="--x:-28.04;--y:-6.39;--w:769.258;--h:229.654">
+              <div class="abs t1-card" style="--x:238.66;--y:28.9;--w:409.883;--h:244.976"></div>
+              <div class="abs t1-cover" style="--x:238.66;--y:28.9;--w:409.883;--h:99.805"><img src="assets/t1-cover.webp" alt=""></div>
+              <div class="abs" style="--x:252.176;--y:81.726;--w:91.549;--h:91.549"><img class="fill" src="assets/t1-avatar.svg" alt=""></div>
+              <div class="abs" style="--x:278.3;--y:108.77;--w:39.251;--h:39.862"><img class="fill" src="assets/t1-avatar-mark.svg" alt=""></div>
+              <div class="abs t1-name" style="--x:263.816;--y:179.93;--w:76;--h:21.501">Nitron</div>
+              <div class="abs t1-handle" style="--x:263.816;--y:199.38;--w:135.666;--h:21.501">@nitron.ai</div>
+              <div class="abs" style="--x:337.264;--y:177.774;--w:23.028;--h:23.028"><img class="fill cover" src="assets/t1-verified.webp" alt=""></div>
+              <div class="abs t1-follow" style="--x:535.127;--y:153.44;--w:83.828;--h:27.814">Follow</div>
+            </div>
+          </div>
+          <div class="dim t1-dim"></div>
+          <div class="ft"></div><div class="fb"></div>
+          <p class="tile-label b r" style="--r:26;--b:15.4">Social Media Asset</p>
+          <div class="logo-b" style="--x:40.7;--b:16.79;--w:29.833;--h:30.298"><img class="fill" src="assets/t1-logo.svg" alt="Nitron"></div>
+        </div>
+
+        <!-- Tile 2 · Meta & Google Ads -->
+        <div class="tile" style="--i:1">
+          <div class="art">
+            <div class="abs t2-wall" style="--x:-139.02;--y:-365.67;--w:1003.082;--h:1079.794"><img src="assets/t2-group.webp" alt="Meta and Google ad designs"></div>
+          </div>
+          <div class="fb"></div>
+          <div class="dim"></div>
+          <p class="tile-label b" style="--x:27.84;--b:15.4">Meta &amp; Google Ads</p>
+          <div class="logo-b r" style="--r:24.64;--b:10.86;--w:27;--h:28"><img class="fill cover" src="assets/ff-logo.webp" alt="Formulation Factory"></div>
+        </div>
+      </div>
+
+      <div class="row" style="--h:400">
+        <!-- Tile 3 · Billboards -->
+        <div class="tile w372" style="--i:2">
+          <div class="art">
+            <img src="assets/t3-b.webp" alt="" style="position:absolute;left:-2.95%;top:-19.36%;width:114.02%;height:141.38%">
+            <img src="assets/t3-c.webp" alt="PLDT Home billboard" style="position:absolute;left:-2.72%;top:-15.53%;width:114.52%;height:141.33%">
+          </div>
+          <div class="ft"></div>
+          <p class="tile-label" style="--x:40;--y:28">Billboards</p>
+          <div class="logo" style="--r:19.64;--y:11.14;--w:79;--h:52"><img class="fill" src="assets/pldt.svg" alt="PLDT"></div>
+        </div>
+
+        <!-- Tile 4 · Banner -->
+        <div class="tile t4" style="--i:3">
+          <div class="art">
+            <img src="assets/t4-bg.webp" alt="" style="position:absolute;left:-2.91%;top:0;width:105.82%;height:100%">
+            <div class="abs t4-img" style="--x:0;--y:7.02;--w:672;--h:392.984"><img class="fill cover" src="assets/t4-img.webp" alt="GAINSWave pull-up banners"></div>
+          </div>
+          <div class="ft"></div>
+          <p class="tile-label" style="--x:40;--y:28">Banner</p>
+          <div class="logo" style="--r:34.64;--y:31;--w:107;--h:10"><img class="fill" src="assets/gw.svg" alt="GAINSWave"></div>
+        </div>
+
+        <!-- Tile 5 · Vehicle Wraps -->
+        <div class="tile w372" style="--i:4">
+          <div class="art">
+            <div class="abs clip" style="--x:-50.24;--y:-124.04;--w:757.202;--h:689.801"><img src="assets/t5-img.webp" alt="Vehicle wrap design" style="position:absolute;left:-2.64%;top:.08%;width:99.91%;height:99.91%"></div>
+          </div>
+          <div class="ft"></div>
+          <p class="tile-label" style="--x:40;--y:28">Vehicle Wraps</p>
+          <div class="logo" style="--r:25.85;--y:22.24;--w:35.57;--h:27.55" role="img" aria-label="Jed Head">
+            <div class="abs flipv" style="--x:7.44;--y:0;--w:13.775;--h:13.666"><img class="fill" src="assets/wm2.svg" alt=""></div>
+            <div class="abs flipv" style="--x:2.79;--y:10.08;--w:32.766;--h:17.468"><img class="fill" src="assets/wm3.svg" alt=""></div>
+            <div class="abs flipv" style="--x:0;--y:0;--w:10.563;--h:16.592"><img class="fill" src="assets/wm4.svg" alt=""></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="--h:212">
+        <!-- Tile 6 · Website Design -->
+        <div class="tile" style="--i:5">
+          <div class="art">
+            <div class="abs" style="--x:-10.04;--y:-170.28;--w:735;--h:553"><img class="fill cover" src="assets/t6-b.webp" alt="Website design"></div>
+          </div>
+          <div class="dim"></div>
+          <p class="tile-label" style="--x:40;--y:28">Website Design</p>
+          <div class="logo" style="--r:42.63;--y:22.94;--w:45.529;--h:28.688"><img class="fill" src="assets/t6-logo.svg" alt="Vermonix"></div>
+        </div>
+
+        <!-- Tile 7 · Email Design -->
+        <div class="tile" style="--i:6">
+          <div class="art">
+            <img class="cover" src="assets/t7-b.webp" alt="Email design" style="position:absolute;left:-.39%;top:calc(var(--u) * -222.14);width:100.39%;aspect-ratio:1200/1600">
+          </div>
+          <div class="dim"></div>
+          <p class="tile-label" style="--x:40;--y:28">Email Design</p>
+          <div class="logo" style="--r:41.79;--y:26;--w:50.708;--h:20.281"><img class="fill" src="assets/satyn.svg" alt="Satyn"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#top">Creatives — Dominic</a>
+      <div class="nav-links">
+        <a href="#projects">Work</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <h1 class="wordmark" aria-label="Creatives — Dominic"><span>Creatives</span><i></i><span>Dominic</span></h1>
+  </div>
+</header>
+
+<main>
+  <!-- ================= INTRO ================= -->
+  <section class="intro" id="about">
+    <div class="intro-in">
+      <p class="eyebrow rv">( Creatives — Dominic )</p>
+      <p class="statement rv">I'm Dominic Garcia, a creative working across graphic design, video editing and design automation. I design the visuals, cut the videos, and build the automated systems that keep the content moving.</p>
+      <button class="btn btn-play rv" type="button" id="playBtn"><img src="assets/play.svg" alt="" width="10" height="12">Play video</button>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="services" id="services">
+    <div class="services-in">
+      <p class="eyebrow rv">( Services provided and built )</p>
+      <ul class="service-row rv">
+        <li class="service"><span class="service-ic"><img src="assets/ic-graphic.svg" alt=""></span>Graphic Design</li>
+        <li class="service"><span class="service-ic"><img src="assets/ic-auto.svg" alt=""></span>Design Automation</li>
+        <li class="service"><span class="service-ic"><img src="assets/ic-video.svg" alt=""></span>Video Editing</li>
+        <li class="service"><span class="service-ic"><img src="assets/ic-brand.svg" alt=""></span>Brand Identity</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section class="projects" id="projects">
+    <div class="projects-in">
+      <h2 class="rv">Projects</h2>
+      <div class="project-list">
+        <a class="card rv" href="../" aria-label="Formulation Factory — Health Supplements. Open the full portfolio.">
+          <div class="card-head">
+            <div class="card-title"><span class="card-num">01</span><span class="card-name">Formulation Factory</span></div>
+            <span class="card-cat">Health Supplements</span>
+          </div>
+          <div class="card-media">
+            <div class="scene">
+              <div class="scene-img"><img src="assets/ff-scene.webp" alt="Formulation Factory supplement range" loading="lazy"></div>
+              <div class="scene-vig"></div>
+              <img class="scene-wm" src="assets/ff-wordmark.webp" alt="" loading="lazy">
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer" id="contact">
+  <div class="footer-in">
+    <div class="contact">
+      <div class="cta">
+        <p class="eyebrow">( Say hello! )</p>
+        <h2>Let's build<br>something.</h2>
+        <a class="btn btn-inverse" href="mailto:dominicgarcia.creative@gmail.com"><img class="btn-dot" src="assets/dot.svg" alt="">Let's chat</a>
+      </div>
+      <dl class="details">
+        <div class="detail"><dt>Location</dt><dd>Quezon City, PH</dd></div>
+        <div class="detail"><dt>Email</dt><dd><a href="mailto:dominicgarcia.creative@gmail.com">dominicgarcia.creative@gmail.com</a></dd></div>
+        <div class="detail"><dt>WhatsApp</dt><dd><a href="https://wa.me/639274185581" target="_blank" rel="noopener">+639274185581</a></dd></div>
+        <div class="detail"><dt>Socials</dt><dd class="socials">
+          <a href="https://www.instagram.com/nick.creativemedia/" target="_blank" rel="noopener" aria-label="Instagram"><img src="assets/ic-instagram.svg" alt=""></a>
+          <a href="https://www.tiktok.com/@nick.creativemedia" target="_blank" rel="noopener" aria-label="TikTok"><img src="assets/ic-tiktok.svg" alt=""></a>
+          <a href="https://www.facebook.com/nckdsgn/" target="_blank" rel="noopener" aria-label="Facebook"><img src="assets/ic-facebook.svg" alt=""></a>
+          <a href="https://www.linkedin.com/in/dominic-garcia-709a26117/" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="assets/ic-linkedin.svg" alt=""></a>
+        </dd></div>
+      </dl>
+    </div>
+    <div class="footer-row">
+      <p>© 2026 Dominic Garcia · G! Studio</p>
+      <a href="https://docs.google.com/presentation/d/1H1xydUEJzwq0EE1MfHpOYOw2Ds_JTVdIXon6wDATrdE/edit?slide=id.g2cf5203a1cb_0_84#slide=id.g2cf5203a1cb_0_84" target="_blank" rel="noopener">More work? Portfolio 2024 →</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= VIDEO ================= -->
+<dialog class="video" id="videoDialog" aria-label="Video">
+  <button class="video-close" type="button" id="videoClose">Close ✕</button>
+  <video id="videoEl" controls playsinline preload="none" poster="../assets/meet-nick-poster.jpg"></video>
+</dialog>
+
+<script>
+(function(){
+  /* reveal on scroll — runs at parse time, never waits for fonts/images */
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    els.forEach(function(el){ io.observe(el); });
+  } else { els.forEach(function(el){ el.classList.add('in'); }); }
+
+  /* Play video */
+  var dlg=document.getElementById('videoDialog'),vid=document.getElementById('videoEl');
+  function openVideo(){
+    if(!vid.getAttribute('src')) vid.setAttribute('src','../assets/meet-nick.mp4');
+    if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open','');
+    var p=vid.play(); if(p&&p.catch) p.catch(function(){});
+  }
+  function closeVideo(){ vid.pause(); if(dlg.open) dlg.close(); }
+  document.getElementById('playBtn').addEventListener('click',openVideo);
+  document.getElementById('videoClose').addEventListener('click',closeVideo);
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) closeVideo(); });
+  dlg.addEventListener('close',function(){ vid.pause(); });
+})();
+</script>
+</body>
+</html>
