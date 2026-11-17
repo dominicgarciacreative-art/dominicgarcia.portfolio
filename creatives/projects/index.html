@@ -92,30 +92,6 @@ button{border:0;background:none;cursor:pointer}
   .folder:hover .f-open{transform:translate(2px,-2px)}
 }
 
-/* ============ VIEWER ============ */
-dialog.viewer{margin:auto;padding:0;border:0;background:transparent;color:var(--text-inverse);width:min(1180px,94vw);height:min(860px,92svh);max-width:none;max-height:none;overflow:visible}
-dialog.viewer::backdrop{background:rgba(8,8,8,.88);backdrop-filter:blur(8px)}
-dialog.viewer[open]{display:flex;flex-direction:column;gap:16px;animation:vIn .35s var(--ease)}
-@keyframes vIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.v-head{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.v-title{display:flex;align-items:baseline;gap:14px;min-width:0}
-.v-title b{font-weight:500;font-size:22px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.v-title span{min-width:0;font-size:14px;color:var(--text-inverse-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.v-title b{flex:none;max-width:100%}
-.v-close{flex:none;width:44px;height:44px;border-radius:999px;background:#1c1c1c;display:grid;place-items:center;font-size:18px;transition:transform .3s var(--ease),background .2s}
-.v-close:hover{transform:rotate(90deg);background:#2a2a2a}
-.v-stage{position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
-.v-stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:imgIn .35s var(--ease)}
-@keyframes imgIn{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:none}}
-.v-nav{position:absolute;top:50%;width:48px;height:48px;margin-top:-24px;border-radius:999px;background:rgba(244,244,242,.92);color:var(--text-primary);display:grid;place-items:center;font-size:20px;box-shadow:0 6px 20px rgba(0,0,0,.3);transition:transform .25s var(--ease),background .2s}
-.v-nav:hover{background:#fff;transform:scale(1.06)}
-.v-prev{left:-8px}
-.v-next{right:-8px}
-.v-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:14px;color:var(--text-inverse-secondary)}
-.v-dots{display:flex;gap:8px}
-.v-dots button{width:8px;height:8px;border-radius:999px;background:rgba(244,244,242,.3);transition:background .2s,width .3s var(--ease)}
-.v-dots button[aria-current="true"]{width:22px;background:var(--text-inverse)}
-
 /* ============ FOOTER ============ */
 .footer{padding:120px 40px 40px;background:var(--bg-inverse);color:var(--text-inverse)}
 .contact{display:flex;align-items:flex-end;justify-content:space-between;gap:48px}
@@ -179,13 +155,6 @@ dialog.viewer[open]{display:flex;flex-direction:column;gap:16px;animation:vIn .3
   .chip{padding:10px 16px;font-size:14px}
   .folders{padding:0 20px 96px}
   .grid{grid-template-columns:1fr;gap:32px}
-  dialog.viewer{width:100vw;height:100svh;padding:16px 12px;background:#0b0b0b}
-  .v-title{flex-direction:column;align-items:flex-start;gap:2px}
-  .v-title b{font-size:18px}
-  .v-title span{font-size:13px;white-space:normal}
-  .v-nav{width:40px;height:40px;margin-top:-20px;font-size:17px}
-  .v-prev{left:4px}
-  .v-next{right:4px}
   .footer{padding:72px 20px 28px}
   .detail{gap:12px}
   .detail dt{width:76px;font-size:13px}
@@ -266,39 +235,28 @@ dialog.viewer[open]{display:flex;flex-direction:column;gap:16px;animation:vIn .3
   </div>
 </footer>
 
-<dialog class="viewer" id="viewer" aria-labelledby="vTitle">
-  <div class="v-head">
-    <div class="v-title"><b id="vTitle"></b><span id="vMeta"></span></div>
-    <button class="v-close" type="button" id="vClose" aria-label="Close">✕</button>
-  </div>
-  <div class="v-stage">
-    <img id="vImg" alt="">
-    <button class="v-nav v-prev" type="button" id="vPrev" aria-label="Previous">←</button>
-    <button class="v-nav v-next" type="button" id="vNext" aria-label="Next">→</button>
-  </div>
-  <div class="v-foot"><span id="vCount"></span><div class="v-dots" id="vDots"></div></div>
-</dialog>
+
 
 <script>
 (function(){
   /* Folder data from the Figma frame. Each sheet: [file, width%, height%, left%] inside its 124×160 card. */
   var FOLDERS=[
-    {name:'Social Media Ads',cat:'Digital',desc:'12 pieces · Paid social statics',sheets:[['s1',100,77.5,0],['s2',100,77.5,0],['s3',100,77.5,0]]},
-    {name:'Social Media Content',cat:'Digital',desc:'12 pieces · Organic posts',sheets:[['s4',100,77.5,0],['s5',100,96.88,0],['s6',100,77.5,0]]},
-    {name:'Brand Identity',cat:'Brand',desc:'12 pieces · Logos and brand kits',sheets:[['s7',100,77.5,0],['s8',100,77.5,0],['s9',100,77.5,0]]},
-    {name:'Packaging',cat:'Print',desc:'4 pieces · Boxes, labels and stickers',sheets:[['s10',100,77.5,0],['s11',135.38,70,-17.69],['s12',197.89,70,-48.94]]},
-    {name:'Print',cat:'Print',desc:'12 pieces · Posters, billboards, brochures',sheets:[['s13',100,117.66,0],['s14',135.48,70,-17.74],['s15',100,137.78,0]]},
-    {name:'Website Design',cat:'Web',desc:'9 pieces · Websites and landing pages',sheets:[['s16',100,127.62,0],['s17',100,131.61,0],['s18',100,132.6,0]]},
-    {name:'Email Design',cat:'Web',desc:'5 pieces · Campaign emails',sheets:[['s19',100,285.47,0],['s20',126.45,70,-13.23],['s21',100,327.26,0]]},
-    {name:'Thumbnails',cat:'Video',desc:'12 pieces · YouTube thumbnails',sheets:[['s22',160.47,70,0],['s23',160.57,70,-30.29],['s24',160.47,70,0]]},
-    {name:'Listing Design',cat:'E-Commerce',desc:'12 pieces · Marketplace listings',sheets:[['s25',100,77.5,0],['s26',180.65,70,-40.32],['s27',100,77.5,0]]}
+    {name:'Social Media Ads',slug:'social-media-ads',cat:'Digital',desc:'12 pieces · Paid social statics',sheets:[['s1',100,77.5,0],['s2',100,77.5,0],['s3',100,77.5,0]]},
+    {name:'Social Media Content',slug:'social-media-content',cat:'Digital',desc:'12 pieces · Organic posts',sheets:[['s4',100,77.5,0],['s5',100,96.88,0],['s6',100,77.5,0]]},
+    {name:'Brand Identity',slug:'brand-identity',cat:'Brand',desc:'12 pieces · Logos and brand kits',sheets:[['s7',100,77.5,0],['s8',100,77.5,0],['s9',100,77.5,0]]},
+    {name:'Packaging',slug:'packaging',cat:'Print',desc:'4 pieces · Boxes, labels and stickers',sheets:[['s10',100,77.5,0],['s11',135.38,70,-17.69],['s12',197.89,70,-48.94]]},
+    {name:'Print',slug:'print',cat:'Print',desc:'12 pieces · Posters, billboards, brochures',sheets:[['s13',100,117.66,0],['s14',135.48,70,-17.74],['s15',100,137.78,0]]},
+    {name:'Website Design',slug:'website-design',cat:'Web',desc:'9 pieces · Websites and landing pages',sheets:[['s16',100,127.62,0],['s17',100,131.61,0],['s18',100,132.6,0]]},
+    {name:'Email Design',slug:'email-design',cat:'Web',desc:'5 pieces · Campaign emails',sheets:[['s19',100,285.47,0],['s20',126.45,70,-13.23],['s21',100,327.26,0]]},
+    {name:'Thumbnails',slug:'thumbnails',cat:'Video',desc:'12 pieces · YouTube thumbnails',sheets:[['s22',160.47,70,0],['s23',160.57,70,-30.29],['s24',160.47,70,0]]},
+    {name:'Listing Design',slug:'listing-design',cat:'E-Commerce',desc:'12 pieces · Marketplace listings',sheets:[['s25',100,77.5,0],['s26',180.65,70,-40.32],['s27',100,77.5,0]]}
   ];
 
   var grid=document.getElementById('grid'), empty=document.getElementById('empty');
   var html='';
   FOLDERS.forEach(function(f,i){
     var num=String(i+1).padStart(2,'0');
-    html+='<button class="folder rv" type="button" style="--d:'+(i%3)+'" data-i="'+i+'" data-cat="'+f.cat+'" aria-label="'+f.name+', '+f.desc.replace('·',',')+'. Open preview.">'+
+    html+='<a class="folder rv" href="'+f.slug+'/" style="--d:'+(i%3)+'" data-i="'+i+'" data-cat="'+f.cat+'" aria-label="'+f.name+', '+f.desc.replace('·',',')+'">'+
       '<span class="f-in">'+
         '<img class="f-back" src="assets/folder-back.svg" alt="">'+
         '<span class="f-cat">'+f.cat+'</span>'+
@@ -309,7 +267,7 @@ dialog.viewer[open]{display:flex;flex-direction:column;gap:16px;animation:vIn .3
           '<span class="f-top"><span class="f-num">'+num+'</span><span class="f-open"><img src="assets/ic-open.svg" alt=""></span></span>'+
           '<span><span class="f-name" style="display:block">'+f.name+'</span><span class="f-desc" style="display:block">'+f.desc+'</span></span>'+
         '</span>'+
-      '</span></button>';
+      '</span></a>';
   });
   grid.insertAdjacentHTML('afterbegin',html);
   var folders=[].slice.call(grid.querySelectorAll('.folder'));
@@ -343,40 +301,6 @@ dialog.viewer[open]{display:flex;flex-direction:column;gap:16px;animation:vIn .3
     });
   });
   q.addEventListener('input',apply);
-
-  /* viewer */
-  var dlg=document.getElementById('viewer'), vImg=document.getElementById('vImg'), vTitle=document.getElementById('vTitle'),
-      vMeta=document.getElementById('vMeta'), vCount=document.getElementById('vCount'), vDots=document.getElementById('vDots'),
-      cur=null, idx=0, opener=null;
-  function show(n){
-    var s=cur.sheets; idx=(n+s.length)%s.length;
-    vImg.src='assets/'+s[idx][0]+'.webp';
-    vImg.alt=cur.name+' — preview '+(idx+1)+' of '+s.length;
-    vImg.style.animation='none'; void vImg.offsetWidth; vImg.style.animation='';
-    vCount.textContent='Preview '+(idx+1)+' / '+s.length;
-    [].forEach.call(vDots.children,function(d,k){ d.setAttribute('aria-current',k===idx?'true':'false'); });
-  }
-  function open(i,el){
-    cur=FOLDERS[i]; opener=el;
-    vTitle.textContent=cur.name; vMeta.textContent=cur.cat+' · '+cur.desc;
-    vDots.innerHTML=cur.sheets.map(function(_,k){ return '<button type="button" aria-label="Preview '+(k+1)+'"></button>'; }).join('');
-    [].forEach.call(vDots.children,function(d,k){ d.addEventListener('click',function(){ show(k); }); });
-    show(0);
-    if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open','');
-  }
-  folders.forEach(function(el){ el.addEventListener('click',function(){ open(+el.dataset.i,el); }); });
-  document.getElementById('vPrev').addEventListener('click',function(){ show(idx-1); });
-  document.getElementById('vNext').addEventListener('click',function(){ show(idx+1); });
-  document.getElementById('vClose').addEventListener('click',function(){ dlg.close(); });
-  dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
-  dlg.addEventListener('close',function(){ if(opener) opener.focus(); });
-  dlg.addEventListener('keydown',function(e){
-    if(e.key==='ArrowLeft'){ show(idx-1); e.preventDefault(); }
-    if(e.key==='ArrowRight'){ show(idx+1); e.preventDefault(); }
-  });
-  var sx=null;
-  dlg.addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; },{passive:true});
-  dlg.addEventListener('touchend',function(e){ if(sx===null) return; var dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40) show(idx+(dx<0?1:-1)); sx=null; });
 
   /* deep link: ?cat=Print */
   var p=new URLSearchParams(location.search).get('cat');
