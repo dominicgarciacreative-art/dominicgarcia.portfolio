@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formulation Factory — Creatives, Dominic Garcia</title>
+<meta name="description" content="Formulation Factory — display ad sets, social carousels and social ads for a health supplements brand. Designed by Dominic Garcia.">
+<meta property="og:title" content="Formulation Factory — Dominic Garcia">
+<meta property="og:description" content="Three products. Three moods. Display ad sets, social carousels and social ads.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-surface:#f5f5f3;
+  --bg-page:#e9e9e9;
+  --bg-inverse:#0b0b0b;
+  --bg-tile:#1c1c1c;
+  --text-primary:#0b0b0b;
+  --text-secondary:#5e5e5e;
+  --text-inverse:#f4f4f2;
+  --text-inverse-secondary:#a8a8a8;
+  --border-default:#cfcfcf;
+  --ff-purple-deep:#210823;
+  --pad:72px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg-surface);color:var(--text-primary);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;font-weight:500;line-height:1.3;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid #3b82f6;outline-offset:3px}
+
+/* ============ TOP BAR ============ */
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:24px 40px;background:rgba(245,245,243,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.back{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:500;line-height:1.3;white-space:nowrap}
+.ic20{flex:none;width:20px;height:20px;display:grid;place-items:center}
+.back .ic20 img{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.back:hover .ic20 img{transform:translateX(-3px)}
+.close{flex:none;width:44px;height:44px;border-radius:999px;background:var(--bg-tile);display:grid;place-items:center;transition:transform .3s cubic-bezier(.2,.7,.2,1),background .2s}
+.close:hover{transform:rotate(90deg);background:#000}
+
+/* ============ CASE STUDY ============ */
+.case{display:flex;flex-direction:column;gap:16px;padding:0 32px 32px}
+
+/* Cover — a 2560×1440 banner canvas centred in the frame; --u is one design pixel */
+.cover{position:relative;container-type:inline-size;overflow:hidden;border-radius:20px;background:var(--bg-inverse);height:min(72.674vw - 46.5px,100svh - 124px);min-height:240px}
+.cover-canvas{--u:calc(100cqw / 1376);position:absolute;left:50%;top:50%;width:calc(var(--u) * 2560);height:calc(var(--u) * 1440);transform:translate(-50%,-50%);background:#000;overflow:hidden}
+.cover-canvas > *{position:absolute;left:calc(var(--u) * var(--x));top:calc(var(--u) * var(--y));width:calc(var(--u) * var(--w));height:calc(var(--u) * var(--h));max-width:none}
+.cover-scene{object-fit:cover;opacity:.91}
+.cover-wm{object-fit:cover;mix-blend-mode:screen}
+
+/* Interlude */
+.interlude{display:flex;flex-direction:column;align-items:center;gap:20px;padding:132px 0;text-align:center}
+.interlude h2{font-size:15px;font-weight:500;line-height:1.3}
+.interlude p{max-width:780px;font-weight:400;font-size:clamp(21px,2.222vw,32px);line-height:1.3;letter-spacing:-.02em}
+
+/* Panels with labelled artwork */
+.panel{display:flex;flex-direction:column;gap:40px;padding:var(--pad);border-radius:20px;background:var(--bg-page)}
+.panel.dark{background:var(--ff-purple-deep)}
+.prow{display:flex;gap:24px;align-items:flex-start}
+.prow.end{align-items:flex-end}
+/* each figure grows in proportion to its design width, so a row's images share one height */
+.fig{flex:var(--w) 1 0;min-width:0;display:flex;flex-direction:column;gap:12px}
+.fig img{width:100%;height:auto;aspect-ratio:var(--w)/var(--h);object-fit:cover;border-radius:6px}
+.fig figcaption{font-size:12px;font-weight:500;line-height:1.3;color:var(--text-secondary);white-space:nowrap}
+.panel.dark figcaption{color:var(--text-inverse-secondary)}
+.stack{flex:362 1 0;min-width:0;display:flex;flex-direction:column;gap:19px}
+.stack .fig{flex:none}
+
+/* Carousels */
+.grid{display:grid;gap:16px}
+.grid.c4{grid-template-columns:repeat(4,1fr)}
+.grid.c3{grid-template-columns:repeat(3,1fr)}
+.grid img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:16px}
+
+/* Credits */
+.credits{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;padding:56px;border-radius:20px;background:var(--bg-page)}
+.credits h2{font-weight:600;font-size:25px;line-height:1;letter-spacing:-.04em;white-space:nowrap}
+.meta{flex:none;width:440px;max-width:100%;display:flex;flex-direction:column;gap:20px}
+.meta div{display:flex;flex-direction:column;gap:4px}
+.meta dt{font-size:14px;color:var(--text-secondary)}
+.meta dd{font-size:18px;letter-spacing:-.01em}
+
+/* More work */
+.next{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:32px;border-top:1px solid var(--border-default)}
+.next span{font-size:14px;color:var(--text-secondary);white-space:nowrap}
+.next a{display:inline-flex;align-items:center;gap:12px;font-size:22px;letter-spacing:-.01em;white-space:nowrap}
+.ic22{flex:none;width:22px;height:22px;display:grid;place-items:center}
+.next a .ic22 img{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.next a:hover .ic22 img{transform:translateX(4px)}
+
+/* ============ MOTION ============ */
+@media (prefers-reduced-motion:no-preference){
+  .cover{animation:coverIn 1s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes coverIn{from{opacity:0;transform:translateY(28px) scale(.985)}to{opacity:1;transform:none}}
+  .cover-wm{animation:wmIn 1.4s cubic-bezier(.2,.7,.2,1) .35s both}
+  @keyframes wmIn{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0) * 70ms)}
+  .rv.in{opacity:1;transform:none}
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1100px){
+  :root{--pad:44px}
+  .interlude{padding:104px 0}
+}
+@media (max-width:759px){
+  :root{--pad:20px}
+  .topbar{padding:14px 16px}
+  .close{width:40px;height:40px}
+  .case{padding:0 12px 20px;gap:12px}
+  .cover{border-radius:14px;height:min(72.674vw,100svh - 96px)}
+  .interlude{padding:72px 8px;gap:14px}
+  .panel{gap:24px;border-radius:14px}
+  .prow{flex-direction:column;gap:20px;align-items:stretch}
+  .prow.end{align-items:stretch}
+  .prow.keep{flex-direction:row;align-items:flex-start}
+  .fig,.stack{flex:none}
+  .prow.keep .fig{flex:var(--w) 1 0}
+  .prow.wrap{flex-direction:row;flex-wrap:wrap;align-items:flex-start}
+  .prow.wrap .fig{flex:var(--w) 1 0}
+  .prow.wrap .fig.wide,.prow.wrap .stack{flex:1 0 100%}
+  .grid{gap:10px}
+  .grid.c4,.grid.c3{grid-template-columns:repeat(2,1fr)}
+  .grid img{border-radius:12px}
+  .credits{flex-direction:column;align-items:flex-start;gap:40px;padding:28px 20px;border-radius:14px}
+  .meta{width:100%}
+  .meta dd{font-size:16px}
+  .next{padding-top:24px}
+  .next a{font-size:19px}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="back" href="../#projects" id="backLink"><span class="ic20"><img src="assets/ic-back.svg" alt=""></span>All projects</a>
+  <a class="close" href="../#projects" id="closeLink" aria-label="Close project"><span class="ic20"><img src="assets/ic-close.svg" alt=""></span></a>
+</header>
+
+<main class="case">
+
+  <!-- Cover -->
+  <div class="cover" role="img" aria-label="Formulation Factory">
+    <div class="cover-canvas">
+      <img class="cover-scene" src="assets/cover-scene.webp" alt="" style="--x:401.76;--y:117;--w:1797.608;--h:1205.99">
+      <img src="assets/cover-glow.svg" alt="" style="--x:685;--y:590.5;--w:1184.5;--h:265.5">
+      <img class="cover-wm" src="../assets/ff-wordmark.webp" alt="" style="--x:787.9;--y:396.71;--w:984.199;--h:660.285">
+    </div>
+  </div>
+
+  <section class="interlude rv">
+    <h2>Three products. Three moods.</h2>
+    <p>Each campaign got its own colour world and its own voice. One promise ties them together: nothing hidden on the label.</p>
+  </section>
+
+  <!-- Channel banners · 3 Formulas for 1 Complete Day -->
+  <section class="panel rv" aria-label="Channel banners — 3 Formulas for 1 Complete Day">
+    <div class="prow">
+      <figure class="fig" style="--w:750;--h:422"><img src="assets/a-youtube.webp" alt="YouTube channel banner — 3 Formulas for 1 Complete Day" loading="lazy"><figcaption>YouTube · 2560 × 1440</figcaption></figure>
+      <figure class="fig" style="--w:458;--h:422"><img src="assets/a-tiktok.webp" alt="TikTok banner" loading="lazy"><figcaption>TikTok · 780 × 720</figcaption></figure>
+    </div>
+    <div class="prow">
+      <figure class="fig" style="--w:453;--h:151"><img src="assets/a-x.webp" alt="X header banner" loading="lazy"><figcaption>X · 1500 × 500</figcaption></figure>
+      <figure class="fig" style="--w:755;--h:151"><img src="assets/a-reddit.webp" alt="Reddit banner" loading="lazy"><figcaption>Reddit · 1920 × 384</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- Channel banners · Three formulas, three lights -->
+  <section class="panel rv" aria-label="Channel banners — Three formulas, three lights">
+    <div class="prow">
+      <figure class="fig" style="--w:750;--h:422"><img src="assets/b-youtube.webp" alt="YouTube channel banner — three formulas, three lights" loading="lazy"><figcaption>YouTube · 2560 × 1440</figcaption></figure>
+      <figure class="fig" style="--w:458;--h:422"><img src="assets/b-tiktok.webp" alt="TikTok banner" loading="lazy"><figcaption>TikTok · 780 × 720</figcaption></figure>
+    </div>
+    <div class="prow">
+      <figure class="fig" style="--w:453;--h:151"><img src="assets/b-x.webp" alt="X header banner" loading="lazy"><figcaption>X · 1500 × 500</figcaption></figure>
+      <figure class="fig" style="--w:755;--h:151"><img src="assets/b-reddit.webp" alt="Reddit banner" loading="lazy"><figcaption>Reddit · 1920 × 384</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="interlude rv">
+    <h2>Heart of Steel Pre</h2>
+    <p>A stim-free pre-workout, told in six slides. It opens on one question, then shows everything: 10 actives, 24.51g dosed, nothing hidden.</p>
+  </section>
+
+  <!-- Pre-workout carousel 3–6 -->
+  <section class="grid c4" aria-label="Heart of Steel Pre carousel">
+    <img class="rv" style="--d:0" src="assets/pw3.webp" alt="Pre-workout carousel slide 3" loading="lazy">
+    <img class="rv" style="--d:1" src="assets/pw4.webp" alt="Pre-workout carousel slide 4" loading="lazy">
+    <img class="rv" style="--d:2" src="assets/pw5.webp" alt="Pre-workout carousel slide 5" loading="lazy">
+    <img class="rv" style="--d:3" src="assets/pw6.webp" alt="Pre-workout carousel slide 6" loading="lazy">
+  </section>
+
+  <section class="interlude rv">
+    <h2>The Night Before</h2>
+    <p>One line carries the whole campaign: waking up feeling like you fought the mattress? Built once, then resized across ten display sizes.</p>
+  </section>
+
+  <!-- Night Before display set -->
+  <section class="panel dark rv" aria-label="The Night Before display ad set">
+    <div class="prow end">
+      <figure class="fig" style="--w:1232;--h:318"><img src="assets/nb-1940x500.webp" alt="The Night Before display ad, 1940 × 500" loading="lazy"><figcaption>1940 × 500</figcaption></figure>
+    </div>
+    <div class="prow end">
+      <figure class="fig" style="--w:652;--h:168"><img src="assets/nb-970x250.webp" alt="Display ad, 970 × 250" loading="lazy"><figcaption>970 × 250</figcaption></figure>
+      <figure class="fig" style="--w:556;--h:168"><img src="assets/nb-828x250.webp" alt="Display ad, 828 × 250" loading="lazy"><figcaption>828 × 250</figcaption></figure>
+    </div>
+    <div class="prow end">
+      <figure class="fig" style="--w:604;--h:75"><img src="assets/nb-1456x180.webp" alt="Display ad, 1456 × 180" loading="lazy"><figcaption>1456 × 180</figcaption></figure>
+      <figure class="fig" style="--w:604;--h:75"><img src="assets/nb-728x90.webp" alt="Display ad, 728 × 90" loading="lazy"><figcaption>728 × 90</figcaption></figure>
+    </div>
+    <div class="prow wrap">
+      <figure class="fig" style="--w:203;--h:406"><img src="assets/nb-300x600.webp" alt="Display ad, 300 × 600" loading="lazy"><figcaption>300 × 600</figcaption></figure>
+      <figure class="fig" style="--w:108;--h:406"><img src="assets/nb-160x600.webp" alt="Display ad, 160 × 600" loading="lazy"><figcaption>160 × 600</figcaption></figure>
+      <figure class="fig wide" style="--w:487;--h:406"><img src="assets/nb-600x500.webp" alt="Display ad, 600 × 500" loading="lazy"><figcaption>600 × 500</figcaption></figure>
+      <div class="stack">
+        <figure class="fig" style="--w:362;--h:302"><img src="assets/nb-300x250.webp" alt="Display ad, 300 × 250" loading="lazy"><figcaption>300 × 250</figcaption></figure>
+        <figure class="fig" style="--w:362;--h:57"><img src="assets/nb-640x100.webp" alt="Display ad, 640 × 100" loading="lazy"><figcaption>640 × 100</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="interlude rv">
+    <h2>Daily Detox</h2>
+    <p>A calmer world for a daily habit. Ten botanicals, one routine, six slides.</p>
+  </section>
+
+  <!-- Daily Detox carousel 1–6 -->
+  <section class="grid c3" aria-label="Daily Detox carousel">
+    <img class="rv" style="--d:0" src="assets/dd1.webp" alt="Daily Detox carousel slide 1" loading="lazy">
+    <img class="rv" style="--d:1" src="assets/dd2.webp" alt="Daily Detox carousel slide 2" loading="lazy">
+    <img class="rv" style="--d:2" src="assets/dd3.webp" alt="Daily Detox carousel slide 3" loading="lazy">
+    <img class="rv" style="--d:0" src="assets/dd4.webp" alt="Daily Detox carousel slide 4" loading="lazy">
+    <img class="rv" style="--d:1" src="assets/dd5.webp" alt="Daily Detox carousel slide 5" loading="lazy">
+    <img class="rv" style="--d:2" src="assets/dd6.webp" alt="Daily Detox carousel slide 6" loading="lazy">
+  </section>
+
+  <section class="interlude rv">
+    <h2>Colour</h2>
+    <p>One colour world per product, so every ad is recognisable before a word is read.</p>
+  </section>
+
+  <!-- Credits -->
+  <section class="credits rv">
+    <h2>Designed by<br>Dominic Garcia</h2>
+    <dl class="meta">
+      <div><dt>Client</dt><dd>Formulation Factory</dd></div>
+      <div><dt>Category</dt><dd>Health Supplements</dd></div>
+      <div><dt>Deliverables</dt><dd>Display Ad Sets · Social Carousels · Social Ads</dd></div>
+      <div><dt>Channels</dt><dd>Amazon DSP · Instagram</dd></div>
+    </dl>
+  </section>
+
+  <nav class="next" aria-label="More work">
+    <span>More work</span>
+    <a href="../#projects">All works<span class="ic22"><img src="assets/ic-next.svg" alt=""></span></a>
+  </nav>
+</main>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{rootMargin:'0px 0px -6% 0px',threshold:.06});
+    els.forEach(function(el){ io.observe(el); });
+  } else { els.forEach(function(el){ el.classList.add('in'); }); }
+
+  /* Esc closes the project, same as the ✕ */
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') location.href=document.getElementById('closeLink').href; });
+})();
+</script>
+</body>
+</html>
