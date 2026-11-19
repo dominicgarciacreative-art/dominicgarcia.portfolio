@@ -4,127 +4,262 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Formulation Factory — Creatives, Dominic Garcia</title>
-<meta name="description" content="Formulation Factory — display ad sets, social carousels and social ads for a health supplements brand. Designed by Dominic Garcia.">
+<meta name="description" content="Formulation Factory — channel banners, animated carousels, Meta and Google ads, website assets and Amazon materials for a health supplements brand. Designed by Dominic Garcia.">
 <meta property="og:title" content="Formulation Factory — Dominic Garcia">
-<meta property="og:description" content="Three products. Three moods. Display ad sets, social carousels and social ads.">
+<meta property="og:description" content="Social media and store assets, carousels, Meta and Google ads, website assets and Amazon materials.">
 <meta property="og:type" content="article">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg-surface:#f5f5f3;
-  --bg-page:#e9e9e9;
-  --bg-inverse:#0b0b0b;
-  --bg-tile:#1c1c1c;
-  --text-primary:#0b0b0b;
-  --text-secondary:#5e5e5e;
-  --text-inverse:#f4f4f2;
-  --text-inverse-secondary:#a8a8a8;
-  --border-default:#cfcfcf;
-  --ff-purple-deep:#210823;
-  --pad:72px;
+  --bg-surface:#f5f5f3;--bg-page:#e9e9e9;--bg-inverse:#0b0b0b;--bg-tile:#1c1c1c;
+  --text-primary:#0b0b0b;--text-secondary:#5e5e5e;--text-inverse:#f4f4f2;--text-inverse-secondary:#a8a8a8;
+  --border-default:#cfcfcf;--pad:72px;
+  --ease-out:cubic-bezier(0,0,.58,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 body{background:var(--bg-surface);color:var(--text-primary);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;font-weight:500;line-height:1.3;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
+ul{list-style:none}
 :focus-visible{outline:2px solid #3b82f6;outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-/* ============ TOP BAR ============ */
+/* TOP BAR */
 .topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:24px 40px;background:rgba(245,245,243,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-.back{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:500;line-height:1.3;white-space:nowrap}
-.ic20{flex:none;width:20px;height:20px;display:grid;place-items:center}
-.back .ic20 img{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.back{display:inline-flex;align-items:center;gap:10px;font-size:15px;white-space:nowrap}
+.ic20,.ic22{flex:none;display:grid;place-items:center}.ic20{width:20px;height:20px}.ic22{width:22px;height:22px}
+.back .ic20 img,.next a .ic22 img{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
 .back:hover .ic20 img{transform:translateX(-3px)}
-.close{flex:none;width:44px;height:44px;border-radius:999px;background:var(--bg-tile);display:grid;place-items:center;transition:transform .3s cubic-bezier(.2,.7,.2,1),background .2s}
-.close:hover{transform:rotate(90deg);background:#000}
+.close{flex:none;width:44px;height:44px;border-radius:999px;background:var(--bg-tile);display:grid;place-items:center;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.close:hover{transform:rotate(90deg)}
 
-/* ============ CASE STUDY ============ */
 .case{display:flex;flex-direction:column;gap:16px;padding:0 32px 32px}
 
-/* Cover — a 2560×1440 banner canvas centred in the frame; --u is one design pixel */
+/* COVER — 2560×1440 banner canvas centred in the frame; --u is one design pixel */
 .cover{position:relative;container-type:inline-size;overflow:hidden;border-radius:20px;background:var(--bg-inverse);height:min(72.674vw - 46.5px,100svh - 124px);min-height:240px}
+.cover-anim{position:absolute;inset:0}
 .cover-canvas{--u:calc(100cqw / 1376);position:absolute;left:50%;top:50%;width:calc(var(--u) * 2560);height:calc(var(--u) * 1440);transform:translate(-50%,-50%);background:#000;overflow:hidden}
 .cover-canvas > *{position:absolute;left:calc(var(--u) * var(--x));top:calc(var(--u) * var(--y));width:calc(var(--u) * var(--w));height:calc(var(--u) * var(--h));max-width:none}
 .cover-scene{object-fit:cover;opacity:.91}
 .cover-wm{object-fit:cover;mix-blend-mode:screen}
 
-/* Interlude */
+/* INTERLUDE */
 .interlude{display:flex;flex-direction:column;align-items:center;gap:20px;padding:132px 0;text-align:center}
-.interlude h2{font-size:15px;font-weight:500;line-height:1.3}
-.interlude p{max-width:780px;font-weight:400;font-size:clamp(21px,2.222vw,32px);line-height:1.3;letter-spacing:-.02em}
+.il-label{font-size:15px;font-weight:500;line-height:1.3}
+.il-text{max-width:780px;font-weight:400;font-size:clamp(21px,2.222vw,32px);line-height:1.3;letter-spacing:-.02em}
 
-/* Panels with labelled artwork */
+/* PANELS */
 .panel{display:flex;flex-direction:column;gap:40px;padding:var(--pad);border-radius:20px;background:var(--bg-page)}
-.panel.dark{background:var(--ff-purple-deep)}
-.prow{display:flex;gap:24px;align-items:flex-start}
-.prow.end{align-items:flex-end}
-/* each figure grows in proportion to its design width, so a row's images share one height */
-.fig{flex:var(--w) 1 0;min-width:0;display:flex;flex-direction:column;gap:12px}
+.panel.dark{background:var(--bg-inverse)}
+.row{display:flex;gap:24px;align-items:flex-start}
+.fig{flex:var(--w,1) 1 0;min-width:0;display:flex;flex-direction:column;gap:12px}
 .fig img{width:100%;height:auto;aspect-ratio:var(--w)/var(--h);object-fit:cover;border-radius:6px}
-.fig figcaption{font-size:12px;font-weight:500;line-height:1.3;color:var(--text-secondary);white-space:nowrap}
-.panel.dark figcaption{color:var(--text-inverse-secondary)}
-.stack{flex:362 1 0;min-width:0;display:flex;flex-direction:column;gap:19px}
-.stack .fig{flex:none}
+.fig figcaption,.cap{font-size:12px;font-weight:500;line-height:1.3;color:var(--text-secondary);white-space:nowrap}
+.fig.dark figcaption,.cap.inv{color:var(--text-inverse-secondary)}
+.amazon{gap:24px}
+.amazon .fig img{border-radius:8px}
 
-/* Carousels */
-.grid{display:grid;gap:16px}
-.grid.c4{grid-template-columns:repeat(4,1fr)}
-.grid.c3{grid-template-columns:repeat(3,1fr)}
-.grid img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:16px}
+/* CAROUSELS */
+.carousels{display:flex;gap:16px}
+.carousel{flex:1 1 0;min-width:0;aspect-ratio:332/415;border-radius:16px;overflow:hidden;background:var(--bg-inverse)}
+.strip{display:flex;width:600%;height:100%}
+.strip img{width:16.6667%;height:100%;max-width:none;object-fit:cover}
 
-/* Credits */
+/* LOOPING MOTION (Figma timeline: 18 s, infinite) — starts when its section scrolls into view */
+.loop{animation-duration:18s;animation-iteration-count:infinite;animation-timing-function:linear;animation-fill-mode:both;animation-play-state:paused}
+.playing .loop{animation-play-state:running}
+@keyframes strip-steel{0.000%{transform:translateX(0.0000%);animation-timing-function:linear}11.940%{transform:translateX(0.0000%);animation-timing-function:ease-in-out}14.440%{transform:translateX(-16.6667%);animation-timing-function:linear}20.830%{transform:translateX(-16.6667%);animation-timing-function:ease-in-out}23.330%{transform:translateX(-33.3333%);animation-timing-function:linear}29.720%{transform:translateX(-33.3333%);animation-timing-function:ease-in-out}32.220%{transform:translateX(-50.0000%);animation-timing-function:linear}38.610%{transform:translateX(-50.0000%);animation-timing-function:ease-in-out}41.110%{transform:translateX(-66.6667%);animation-timing-function:linear}47.500%{transform:translateX(-66.6667%);animation-timing-function:ease-in-out}50.000%{transform:translateX(-83.3333%);animation-timing-function:linear}100.000%{transform:translateX(-83.3333%)}}
+@keyframes strip-detox{0.000%{transform:translateX(0.0000%);animation-timing-function:linear}13.330%{transform:translateX(0.0000%);animation-timing-function:ease-in-out}15.830%{transform:translateX(-16.6667%);animation-timing-function:linear}22.220%{transform:translateX(-16.6667%);animation-timing-function:ease-in-out}24.720%{transform:translateX(-33.3333%);animation-timing-function:linear}31.110%{transform:translateX(-33.3333%);animation-timing-function:ease-in-out}33.610%{transform:translateX(-50.0000%);animation-timing-function:linear}40.000%{transform:translateX(-50.0000%);animation-timing-function:ease-in-out}42.500%{transform:translateX(-66.6667%);animation-timing-function:linear}48.890%{transform:translateX(-66.6667%);animation-timing-function:ease-in-out}51.390%{transform:translateX(-83.3333%);animation-timing-function:linear}100.000%{transform:translateX(-83.3333%)}}
+@keyframes strip-titan{0.000%{transform:translateX(0.0000%);animation-timing-function:linear}14.720%{transform:translateX(0.0000%);animation-timing-function:ease-in-out}17.220%{transform:translateX(-16.6667%);animation-timing-function:linear}23.610%{transform:translateX(-16.6667%);animation-timing-function:ease-in-out}26.110%{transform:translateX(-33.3333%);animation-timing-function:linear}32.500%{transform:translateX(-33.3333%);animation-timing-function:ease-in-out}35.000%{transform:translateX(-50.0000%);animation-timing-function:linear}41.390%{transform:translateX(-50.0000%);animation-timing-function:ease-in-out}43.890%{transform:translateX(-66.6667%);animation-timing-function:linear}50.280%{transform:translateX(-66.6667%);animation-timing-function:ease-in-out}52.780%{transform:translateX(-83.3333%);animation-timing-function:linear}100.000%{transform:translateX(-83.3333%)}}
+@keyframes strip-easy{0.000%{transform:translateX(0.0000%);animation-timing-function:linear}16.110%{transform:translateX(0.0000%);animation-timing-function:ease-in-out}18.610%{transform:translateX(-16.6667%);animation-timing-function:linear}25.000%{transform:translateX(-16.6667%);animation-timing-function:ease-in-out}27.500%{transform:translateX(-33.3333%);animation-timing-function:linear}33.890%{transform:translateX(-33.3333%);animation-timing-function:ease-in-out}36.390%{transform:translateX(-50.0000%);animation-timing-function:linear}42.780%{transform:translateX(-50.0000%);animation-timing-function:ease-in-out}45.280%{transform:translateX(-66.6667%);animation-timing-function:linear}51.670%{transform:translateX(-66.6667%);animation-timing-function:ease-in-out}54.170%{transform:translateX(-83.3333%);animation-timing-function:linear}100.000%{transform:translateX(-83.3333%)}}
+@keyframes aplus-desk{0.000%{transform:translateY(0.0000%);animation-timing-function:linear}6.670%{transform:translateY(0.0000%);animation-timing-function:ease-in-out}12.780%{transform:translateY(-14.4345%);animation-timing-function:linear}21.110%{transform:translateY(-14.4345%);animation-timing-function:ease-in-out}27.220%{transform:translateY(-32.4901%);animation-timing-function:linear}35.560%{transform:translateY(-32.4901%);animation-timing-function:ease-in-out}41.670%{transform:translateY(-50.5456%);animation-timing-function:linear}50.000%{transform:translateY(-50.5456%);animation-timing-function:ease-in-out}56.110%{transform:translateY(-72.2222%);animation-timing-function:linear}100.000%{transform:translateY(-72.2222%)}}
+@keyframes aplus-mob{0.000%{transform:translateY(0.0000%);animation-timing-function:linear}7.780%{transform:translateY(0.0000%);animation-timing-function:ease-in-out}13.890%{transform:translateY(-11.4916%);animation-timing-function:linear}22.220%{transform:translateY(-11.4916%);animation-timing-function:ease-in-out}28.330%{transform:translateY(-25.7991%);animation-timing-function:linear}36.670%{transform:translateY(-25.7991%);animation-timing-function:ease-in-out}42.780%{transform:translateY(-40.1826%);animation-timing-function:linear}51.110%{transform:translateY(-40.1826%);animation-timing-function:ease-in-out}57.220%{transform:translateY(-57.3820%);animation-timing-function:linear}100.000%{transform:translateY(-57.3820%)}}
+@keyframes list-02{0.000%{opacity:0;animation-timing-function:linear}13.890%{opacity:0;animation-timing-function:ease-in-out}16.110%{opacity:1;animation-timing-function:linear}100.000%{opacity:1}}
+@keyframes list-03{0.000%{opacity:0;animation-timing-function:linear}22.220%{opacity:0;animation-timing-function:ease-in-out}24.440%{opacity:1;animation-timing-function:linear}100.000%{opacity:1}}
+@keyframes list-04{0.000%{opacity:0;animation-timing-function:linear}30.560%{opacity:0;animation-timing-function:ease-in-out}32.780%{opacity:1;animation-timing-function:linear}100.000%{opacity:1}}
+@keyframes list-05{0.000%{opacity:0;animation-timing-function:linear}38.890%{opacity:0;animation-timing-function:ease-in-out}41.110%{opacity:1;animation-timing-function:linear}100.000%{opacity:1}}
+@keyframes list-06{0.000%{opacity:0;animation-timing-function:linear}47.220%{opacity:0;animation-timing-function:ease-in-out}49.440%{opacity:1;animation-timing-function:linear}100.000%{opacity:1}}
+@keyframes list-07{0.000%{opacity:0;animation-timing-function:linear}55.560%{opacity:0;animation-timing-function:ease-in-out}57.780%{opacity:1;animation-timing-function:linear}100.000%{opacity:1}}
+@keyframes list-08{0.000%{opacity:0;animation-timing-function:linear}63.890%{opacity:0;animation-timing-function:ease-in-out}66.110%{opacity:1;animation-timing-function:linear}100.000%{opacity:1}}
+@keyframes list-09{0.000%{opacity:0;animation-timing-function:linear}72.220%{opacity:0;animation-timing-function:ease-in-out}74.440%{opacity:1;animation-timing-function:linear}100.000%{opacity:1}}
+@keyframes list-10{0.000%{opacity:0;animation-timing-function:linear}80.560%{opacity:0;animation-timing-function:ease-in-out}82.780%{opacity:1;animation-timing-function:linear}100.000%{opacity:1}}
+@keyframes list-11{0.000%{opacity:0;animation-timing-function:linear}88.890%{opacity:0;animation-timing-function:ease-in-out}91.110%{opacity:1;animation-timing-function:linear}100.000%{opacity:1}}
+
+/* PLACEMENTS */
+.placements{display:flex;flex-direction:column;gap:40px;padding:72px 56px 80px;border-radius:20px;background:var(--bg-inverse)}
+.pl-title{font-size:15px;font-weight:500;color:var(--text-inverse)}
+.pl-row{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-end;justify-content:center}
+.use,.dev{display:flex;flex-direction:column;gap:14px;max-width:100%}
+.phone{background:#0d0d0d;border:2px solid #363636;border-radius:52px;padding:12px}
+.screen{position:relative;width:324px;height:576px;border-radius:40px;overflow:hidden;background:#000}
+.story-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.shade{position:absolute;left:0;top:0;width:100%;height:110px;background:linear-gradient(to bottom,rgba(0,0,0,.7),rgba(0,0,0,0))}
+.prog{position:absolute;top:14px;width:96px;height:2.5px;border-radius:2px;background:rgba(255,255,255,.45)}
+.prog.p1{left:12px;background:#fff}.prog.p2{left:114px}.prog.p3{left:216px}
+.st-head{position:absolute;left:12px;top:26px;display:flex;align-items:center;gap:8px;white-space:nowrap;line-height:normal}
+.st-av{position:relative;width:26px;height:26px;border-radius:13px;border:1.5px solid #fff;background:#0b0b0b;overflow:hidden}
+.st-av img{position:absolute;left:4px;top:4px;width:15px;height:15px;object-fit:contain}
+.st-head b{font-size:12px;font-weight:600;color:#fff}
+.st-head small{font-size:11px;font-weight:400;color:rgba(255,255,255,.8)}
+.st-cta{position:absolute;left:108.5px;top:524px;padding:9px 18px;border-radius:999px;background:#fff;color:#0b0b0b;font-size:13px;font-weight:600;line-height:normal;white-space:nowrap}
+.screen.light{display:flex;flex-direction:column;background:#fff}
+.status{flex:none;display:flex;align-items:center;justify-content:space-between;height:44px;padding:0 24px 0 26px}
+.status b{font-size:14px;font-weight:600;line-height:normal}
+.batt{position:relative;width:25px;height:12px;border:1.2px solid #0b0b0b;border-radius:4px}
+.batt i{position:absolute;left:1.8px;top:1.8px;width:17px;height:6px;border-radius:2px;background:#0b0b0b}
+.igpost{flex:none;display:flex;flex-direction:column;border-radius:24px;overflow:hidden;background:var(--bg-surface)}
+.ig-head{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.ig-av{flex:none;width:32px;height:32px;border-radius:16px;background:var(--bg-inverse);display:grid;place-items:center}
+.ig-av img{width:18px;height:18px;object-fit:contain}
+.ig-acc{flex:1;min-width:0;display:flex;flex-direction:column;white-space:nowrap}
+.ig-acc b{font-size:14px;font-weight:500}.ig-acc small{font-size:12px;color:var(--text-secondary)}
+.ig-head > img,.ig-cta img,.ig-actions img{width:24px;height:24px;flex:none}
+.ig-img{width:100%;height:340px;object-fit:cover}
+.ig-cta{display:flex;align-items:center;justify-content:space-between;padding:9px 12px 9px 14px;border-bottom:1px solid var(--border-default);font-size:14px}
+.ig-actions{display:flex;align-items:center;justify-content:space-between;padding:11px 14px 13px}
+.ig-actions span{display:flex;gap:14px}
+.ig-cap{padding:2px 14px 0;font-size:12px;font-weight:400;line-height:normal;color:#0b0b0b}
+.ig-cap b{font-weight:600}
+.fbad{width:468px;border:1px solid #3a3a3a;border-radius:12px;overflow:hidden;background:#f0f2f5}
+.fb-feed{padding:16px 16px 20px}
+.fb-post{display:flex;flex-direction:column;border-radius:8px;overflow:hidden;background:#fff;line-height:normal}
+.fb-head{display:flex;align-items:center;gap:8px;padding:12px 12px 0}
+.fb-av{position:relative;flex:none;width:32px;height:32px;border-radius:16px;background:#0b0b0b}
+.fb-av img{position:absolute;left:7px;top:7px;width:18px;height:18px;object-fit:contain}
+.fb-name{display:flex;flex-direction:column;gap:1px;white-space:nowrap}
+.fb-name b{font-size:13px;font-weight:600;color:#050505}.fb-name small{font-size:11px;font-weight:400;color:#65676b}
+.fb-text{padding:10px 12px;font-size:13px;font-weight:400;color:#050505}
+.fb-img{width:100%;aspect-ratio:436/228.2;object-fit:cover}
+.fb-link{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#f0f2f5}
+.fb-lt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.fb-lt small{font-size:10px;font-weight:400;color:#65676b;white-space:nowrap}.fb-lt b{font-size:13px;font-weight:600;color:#050505}
+.fb-btn{flex:none;padding:7px 12px;border-radius:6px;background:#e4e6eb;font-size:12px;font-weight:600;color:#050505;white-space:nowrap}
+.fb-actions{display:flex;justify-content:space-between;padding:10px 12px;font-size:12px;font-weight:600;color:#65676b}
+
+/* BROWSER CHROME */
+.browser{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:12px;overflow:hidden;background:#fff}
+.tb{display:flex;align-items:center;gap:6px;padding:10px 12px;background:#f1f1ef}
+.tb.fb{background:#dee0e4}
+.dots{display:flex;gap:6px;flex:none}.dots img{width:9px;height:9px}
+.addr{flex:1;min-width:0;padding:3px 10px;border-radius:6px;background:#fff;font-size:12px;font-weight:500;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb.small .addr,.tb.fb .addr{font-size:11px;font-weight:400;line-height:normal}
+.tb.fb .addr{color:#606770}
+.bscreen{width:100%;height:auto;aspect-ratio:var(--w)/var(--h);object-fit:cover}
+
+/* WEBSITE */
+.devices,.aplus{flex-direction:row;flex-wrap:wrap;align-items:flex-end;justify-content:center;gap:64px;padding:104px 40px}
+.aplus{padding:96px 40px}
+.laptop{display:flex;flex-direction:column;align-items:center}
+.lid{padding:15px 20px 12px;border:2px solid #3c3c3c;border-radius:20px;background:#111}
+.lid img{width:720px;height:483px;max-width:none;object-fit:cover;border-radius:6px}
+.base{position:relative;width:860px;height:16px;border-radius:2px 2px 14px 14px;background:linear-gradient(to bottom,#5c5c5e,#1f1f21)}
+.base i{position:absolute;left:368px;top:0;width:124px;height:5px;border-radius:0 0 6px 6px;background:#1e1e1f}
+.webm{border-radius:46px}
+.webm img{width:288px;height:512px;max-width:none;object-fit:cover;border-radius:34px}
+.heroes{gap:24px}
+.brow{display:flex;gap:24px}
+.brow .browser{flex:1 1 0;min-width:0}
+.blog-head{display:flex;flex-direction:column;gap:8px;padding:40px 40px 8px;line-height:normal}
+.blog-head small{font-size:11px;font-weight:600;color:#737373}
+.blog-head h3{font-size:34px;font-weight:600;color:#0b0b0b}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 24px;padding:24px 40px 40px}
+.post{display:flex;flex-direction:column;gap:10px;min-width:0;line-height:normal}
+.post img{width:100%;aspect-ratio:368/207;object-fit:cover;border-radius:8px}
+.post small{font-size:10px;font-weight:600;color:#737373}
+.post h4{font-size:17px;font-weight:600;color:#0b0b0b}
+
+/* AMAZON A+ */
+.a-desk{width:822px}
+.a-screen{position:relative;width:820px;height:560px;overflow:hidden;background:#fff}
+.a-screen img,.a-mscreen img{width:100%;max-width:none;height:auto}
+.a-mob{border-radius:48px}
+.a-mscreen{position:relative;width:292px;height:560px;border-radius:36px;overflow:hidden;background:#fff}
+.fit-in{display:flex;flex-direction:column;gap:14px;width:max-content}
+
+/* AMAZON LISTING */
+.store-nav{display:flex;align-items:center;gap:24px;padding:14px 32px;background:#131921;white-space:nowrap;overflow:hidden}
+.store-nav b{font-size:18px;font-weight:500;letter-spacing:-.01em;color:#fff}
+.store-nav span{font-size:14px;color:#cdd2da}
+.lst{display:flex;align-items:flex-start;gap:32px;padding:32px 32px 40px}
+.gal{flex:none;max-width:100%}
+.gal-in{display:flex;gap:12px;width:max-content}
+.thumbs{display:flex;flex-direction:column;gap:10px}
+.thumb{display:block;padding:4px;border:1px solid var(--border-default);border-radius:8px;background:#fff}
+.thumb.on{border:2px solid #007185}
+.thumb img{width:56px;height:56px;object-fit:cover}
+.main-img{padding:16px}
+.slides{position:relative;width:400px;height:400px;border-radius:4px;overflow:hidden}
+.slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.info{flex:1 1 260px;min-width:0;display:flex;flex-direction:column;gap:14px}
+.info h3{font-size:22px;font-weight:500;letter-spacing:-.01em}
+.store-link{font-size:14px;color:#007185}
+.info hr{border:0;height:1px;background:var(--border-default)}
+.info h4{font-size:18px;font-weight:500;letter-spacing:-.01em}
+.info ul{display:flex;flex-direction:column;gap:14px}
+.info li{display:flex;gap:10px;font-size:18px;font-weight:400;line-height:1.5;letter-spacing:-.01em}
+.info li img{flex:none;width:5px;height:14px;margin-top:6px}
+.buy{flex:none;width:240px;display:flex;flex-direction:column;gap:12px;padding:20px;border:1px solid var(--border-default);border-radius:10px;background:#fff}
+.buy b{font-size:18px;font-weight:500;letter-spacing:-.01em;color:#007600}
+.buy span{padding:10px;border-radius:999px;text-align:center;font-size:14px;color:#0f1111}
+.cart{background:#ffd814}.now{background:#ffa41c}
+.buy small{font-size:12px;color:var(--text-secondary)}
+
+/* CREDITS / NEXT */
 .credits{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;padding:56px;border-radius:20px;background:var(--bg-page)}
 .credits h2{font-weight:600;font-size:25px;line-height:1;letter-spacing:-.04em;white-space:nowrap}
 .meta{flex:none;width:440px;max-width:100%;display:flex;flex-direction:column;gap:20px}
 .meta div{display:flex;flex-direction:column;gap:4px}
 .meta dt{font-size:14px;color:var(--text-secondary)}
 .meta dd{font-size:18px;letter-spacing:-.01em}
-
-/* More work */
 .next{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:32px;border-top:1px solid var(--border-default)}
 .next span{font-size:14px;color:var(--text-secondary);white-space:nowrap}
 .next a{display:inline-flex;align-items:center;gap:12px;font-size:22px;letter-spacing:-.01em;white-space:nowrap}
-.ic22{flex:none;width:22px;height:22px;display:grid;place-items:center}
-.next a .ic22 img{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
 .next a:hover .ic22 img{transform:translateX(4px)}
 
-/* ============ MOTION ============ */
+/* ENTRANCE MOTION — Figma: opacity 0→1 and translateY(--y)→0, easeOut, own delay/duration per layer */
 @media (prefers-reduced-motion:no-preference){
-  .cover{animation:coverIn 1s cubic-bezier(.2,.7,.2,1) both}
-  @keyframes coverIn{from{opacity:0;transform:translateY(28px) scale(.985)}to{opacity:1;transform:none}}
-  .cover-wm{animation:wmIn 1.4s cubic-bezier(.2,.7,.2,1) .35s both}
-  @keyframes wmIn{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
-  .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0) * 70ms)}
-  .rv.in{opacity:1;transform:none}
+  .js .rv{opacity:0;transform:translateY(var(--y,0px))}
+  .js .rv.in{opacity:1;transform:none;transition:opacity var(--du) var(--ease-out) var(--dl),transform var(--du) var(--ease-out) var(--dl)}
+  .js .cover-anim{animation:coverIn 1.2s var(--ease-out) both}
+  @keyframes coverIn{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:none}}
 }
+@media (prefers-reduced-motion:reduce){.loop{animation:none!important}}
 
-/* ============ RESPONSIVE ============ */
+/* RESPONSIVE */
 @media (max-width:1100px){
   :root{--pad:44px}
   .interlude{padding:104px 0}
+  .placements{padding:56px 32px 64px}
+  .lst{flex-wrap:wrap}
+}
+@media (max-width:900px){
+  .carousels{display:grid;grid-template-columns:1fr 1fr}
+  .posts{grid-template-columns:1fr 1fr}
 }
 @media (max-width:759px){
-  :root{--pad:20px}
+  :root{--pad:16px}
   .topbar{padding:14px 16px}
   .close{width:40px;height:40px}
   .case{padding:0 12px 20px;gap:12px}
   .cover{border-radius:14px;height:min(72.674vw,100svh - 96px)}
   .interlude{padding:72px 8px;gap:14px}
-  .panel{gap:24px;border-radius:14px}
-  .prow{flex-direction:column;gap:20px;align-items:stretch}
-  .prow.end{align-items:stretch}
-  .prow.keep{flex-direction:row;align-items:flex-start}
-  .fig,.stack{flex:none}
-  .prow.keep .fig{flex:var(--w) 1 0}
-  .prow.wrap{flex-direction:row;flex-wrap:wrap;align-items:flex-start}
-  .prow.wrap .fig{flex:var(--w) 1 0}
-  .prow.wrap .fig.wide,.prow.wrap .stack{flex:1 0 100%}
-  .grid{gap:10px}
-  .grid.c4,.grid.c3{grid-template-columns:repeat(2,1fr)}
-  .grid img{border-radius:12px}
+  .panel,.placements{gap:24px;border-radius:14px}
+  .placements{padding:32px 16px 40px}
+  .row,.brow{flex-direction:column;gap:20px;align-items:stretch}
+  .fig,.brow .browser{flex:none}
+  .carousels{gap:10px}
+  .carousel{border-radius:12px}
+  .devices,.aplus{gap:40px;padding:48px 16px}
+  .posts{grid-template-columns:1fr;padding:16px 20px 24px}
+  .blog-head{padding:24px 20px 4px}.blog-head h3{font-size:26px}
+  .store-nav{flex-wrap:wrap;gap:6px 18px;padding:12px 18px;white-space:normal}
+  .lst{padding:20px 16px 28px;gap:24px}
+  .info li{font-size:16px}
+  .buy{width:100%}
   .credits{flex-direction:column;align-items:flex-start;gap:40px;padding:28px 20px;border-radius:14px}
   .meta{width:100%}
   .meta dd{font-size:16px}
@@ -142,108 +277,203 @@ img{display:block;max-width:100%}
 
 <main class="case">
 
+  <h1 class="sr">Formulation Factory — social, ads, website and Amazon assets</h1>
+
   <!-- Cover -->
   <div class="cover" role="img" aria-label="Formulation Factory">
-    <div class="cover-canvas">
-      <img class="cover-scene" src="assets/cover-scene.webp" alt="" style="--x:401.76;--y:117;--w:1797.608;--h:1205.99">
-      <img src="assets/cover-glow.svg" alt="" style="--x:685;--y:590.5;--w:1184.5;--h:265.5">
-      <img class="cover-wm" src="../assets/ff-wordmark.webp" alt="" style="--x:787.9;--y:396.71;--w:984.199;--h:660.285">
+    <div class="cover-anim">
+      <div class="cover-canvas">
+        <img class="cover-scene" src="assets/cover-scene.webp" alt="" style="--x:401.76;--y:117;--w:1797.608;--h:1205.99">
+        <img src="assets/cover-glow.svg" alt="" style="--x:685;--y:590.5;--w:1184.5;--h:265.5">
+        <img class="cover-wm" src="assets/cover-wordmark.webp" alt="" style="--x:787.9;--y:396.71;--w:984.199;--h:660.285">
+      </div>
     </div>
   </div>
 
-  <section class="interlude rv">
-    <h2>Three products. Three moods.</h2>
-    <p>Each campaign got its own colour world and its own voice. One promise ties them together: nothing hidden on the label.</p>
-  </section>
+  <section class="interlude"><h2 class="il-label rv" style="--dl:0.2s;--du:0.7s;--y:24px">01 · Social media &amp; store assets</h2><p class="il-text rv" style="--dl:0.35s;--du:0.7s;--y:24px">Channel banners for YouTube, TikTok, X and Reddit, built from one system so the brand reads the same on every profile.</p></section>
 
-  <!-- Channel banners · 3 Formulas for 1 Complete Day -->
-  <section class="panel rv" aria-label="Channel banners — 3 Formulas for 1 Complete Day">
-    <div class="prow">
-      <figure class="fig" style="--w:750;--h:422"><img src="assets/a-youtube.webp" alt="YouTube channel banner — 3 Formulas for 1 Complete Day" loading="lazy"><figcaption>YouTube · 2560 × 1440</figcaption></figure>
-      <figure class="fig" style="--w:458;--h:422"><img src="assets/a-tiktok.webp" alt="TikTok banner" loading="lazy"><figcaption>TikTok · 780 × 720</figcaption></figure>
+  <section class="panel" aria-label="3 Formulas for 1 Complete Day">
+    <div class="row rv" style="--dl:0.3s;--du:0.6s;--y:40px">
+      <figure class="fig" style="--w:750;--h:422"><img src="assets/banner-youtube-0.webp" alt="YouTube channel banner — 3 Formulas for 1 Complete Day" loading="lazy"><figcaption>YouTube · 2560 × 1440</figcaption></figure>
+      <figure class="fig" style="--w:458;--h:422"><img src="assets/banner-tiktok-0.webp" alt="TikTok banner — 3 Formulas for 1 Complete Day" loading="lazy"><figcaption>TikTok · 780 × 720</figcaption></figure>
     </div>
-    <div class="prow">
-      <figure class="fig" style="--w:453;--h:151"><img src="assets/a-x.webp" alt="X header banner" loading="lazy"><figcaption>X · 1500 × 500</figcaption></figure>
-      <figure class="fig" style="--w:755;--h:151"><img src="assets/a-reddit.webp" alt="Reddit banner" loading="lazy"><figcaption>Reddit · 1920 × 384</figcaption></figure>
+    <div class="row rv" style="--dl:0.45s;--du:0.6s;--y:40px">
+      <figure class="fig" style="--w:453;--h:151"><img src="assets/banner-x-0.webp" alt="X header banner — 3 Formulas for 1 Complete Day" loading="lazy"><figcaption>X · 1500 × 500</figcaption></figure>
+      <figure class="fig" style="--w:755;--h:151"><img src="assets/banner-reddit-4.webp" alt="Reddit banner — 3 Formulas for 1 Complete Day" loading="lazy"><figcaption>Reddit · 1920 × 384</figcaption></figure>
     </div>
   </section>
 
-  <!-- Channel banners · Three formulas, three lights -->
-  <section class="panel rv" aria-label="Channel banners — Three formulas, three lights">
-    <div class="prow">
-      <figure class="fig" style="--w:750;--h:422"><img src="assets/b-youtube.webp" alt="YouTube channel banner — three formulas, three lights" loading="lazy"><figcaption>YouTube · 2560 × 1440</figcaption></figure>
-      <figure class="fig" style="--w:458;--h:422"><img src="assets/b-tiktok.webp" alt="TikTok banner" loading="lazy"><figcaption>TikTok · 780 × 720</figcaption></figure>
+  <section class="panel" aria-label="Three formulas, three lights">
+    <div class="row rv" style="--dl:0.4s;--du:0.7s;--y:40px">
+      <figure class="fig" style="--w:750;--h:422"><img src="assets/banner-youtube-1.webp" alt="YouTube channel banner — Three formulas, three lights" loading="lazy"><figcaption>YouTube · 2560 × 1440</figcaption></figure>
+      <figure class="fig" style="--w:458;--h:422"><img src="assets/banner-tiktok-1.webp" alt="TikTok banner — Three formulas, three lights" loading="lazy"><figcaption>TikTok · 780 × 720</figcaption></figure>
     </div>
-    <div class="prow">
-      <figure class="fig" style="--w:453;--h:151"><img src="assets/b-x.webp" alt="X header banner" loading="lazy"><figcaption>X · 1500 × 500</figcaption></figure>
-      <figure class="fig" style="--w:755;--h:151"><img src="assets/b-reddit.webp" alt="Reddit banner" loading="lazy"><figcaption>Reddit · 1920 × 384</figcaption></figure>
+    <div class="row rv" style="--dl:0.55s;--du:0.7s;--y:40px">
+      <figure class="fig" style="--w:453;--h:151"><img src="assets/banner-x-1.webp" alt="X header banner — Three formulas, three lights" loading="lazy"><figcaption>X · 1500 × 500</figcaption></figure>
+      <figure class="fig" style="--w:755;--h:151"><img src="assets/banner-reddit-5.webp" alt="Reddit banner — Three formulas, three lights" loading="lazy"><figcaption>Reddit · 1920 × 384</figcaption></figure>
     </div>
   </section>
 
-  <section class="interlude rv">
-    <h2>Heart of Steel Pre</h2>
-    <p>A stim-free pre-workout, told in six slides. It opens on one question, then shows everything: 10 actives, 24.51g dosed, nothing hidden.</p>
+  <section class="interlude"><h2 class="il-label rv" style="--dl:0.2s;--du:0.7s;--y:24px">02 · Carousels</h2><p class="il-text rv" style="--dl:0.35s;--du:0.7s;--y:24px">Four formulas, each told in six swipeable slides: one hook up front, then everything on the label.</p></section>
+
+  <section class="carousels" aria-label="Animated carousels">
+    <div class="carousel rv" style="--dl:0.3s;--du:0.7s;--y:40px" role="img" aria-label="Heart of Steel Pre carousel, six slides"><div class="strip loop" style="animation-name:strip-steel"><img src="assets/slide1-heart-of-steel-pre.webp" alt="Heart of Steel Pre carousel, slide 1" loading="lazy"><img src="assets/slide2-heart-of-steel-pre.webp" alt="Heart of Steel Pre carousel, slide 2" loading="lazy"><img src="assets/slide3-heart-of-steel-pre.webp" alt="Heart of Steel Pre carousel, slide 3" loading="lazy"><img src="assets/slide4-heart-of-steel-pre.webp" alt="Heart of Steel Pre carousel, slide 4" loading="lazy"><img src="assets/slide5-heart-of-steel-pre.webp" alt="Heart of Steel Pre carousel, slide 5" loading="lazy"><img src="assets/slide6-heart-of-steel-pre.webp" alt="Heart of Steel Pre carousel, slide 6" loading="lazy"></div></div><div class="carousel rv" style="--dl:0.42s;--du:0.7s;--y:40px" role="img" aria-label="Daily Detox carousel, six slides"><div class="strip loop" style="animation-name:strip-detox"><img src="assets/slide1-daily-detox.webp" alt="Daily Detox carousel, slide 1" loading="lazy"><img src="assets/slide2-daily-detox.webp" alt="Daily Detox carousel, slide 2" loading="lazy"><img src="assets/slide3-daily-detox.webp" alt="Daily Detox carousel, slide 3" loading="lazy"><img src="assets/slide4-daily-detox.webp" alt="Daily Detox carousel, slide 4" loading="lazy"><img src="assets/slide5-daily-detox.webp" alt="Daily Detox carousel, slide 5" loading="lazy"><img src="assets/slide6-daily-detox.webp" alt="Daily Detox carousel, slide 6" loading="lazy"></div></div><div class="carousel rv" style="--dl:0.54s;--du:0.7s;--y:40px" role="img" aria-label="Heart of Titanium carousel, six slides"><div class="strip loop" style="animation-name:strip-titan"><img src="assets/slide1-heart-of-titanium.webp" alt="Heart of Titanium carousel, slide 1" loading="lazy"><img src="assets/slide2-heart-of-titanium.webp" alt="Heart of Titanium carousel, slide 2" loading="lazy"><img src="assets/slide3-heart-of-titanium.webp" alt="Heart of Titanium carousel, slide 3" loading="lazy"><img src="assets/slide4-heart-of-titanium.webp" alt="Heart of Titanium carousel, slide 4" loading="lazy"><img src="assets/slide5-heart-of-titanium.webp" alt="Heart of Titanium carousel, slide 5" loading="lazy"><img src="assets/slide6-heart-of-titanium.webp" alt="Heart of Titanium carousel, slide 6" loading="lazy"></div></div><div class="carousel rv" style="--dl:0.66s;--du:0.7s;--y:40px" role="img" aria-label="Easy Mode carousel, six slides"><div class="strip loop" style="animation-name:strip-easy"><img src="assets/slide1-easy-mode.webp" alt="Easy Mode carousel, slide 1" loading="lazy"><img src="assets/slide2-easy-mode.webp" alt="Easy Mode carousel, slide 2" loading="lazy"><img src="assets/slide3-easy-mode.webp" alt="Easy Mode carousel, slide 3" loading="lazy"><img src="assets/slide4-easy-mode.webp" alt="Easy Mode carousel, slide 4" loading="lazy"><img src="assets/slide5-easy-mode.webp" alt="Easy Mode carousel, slide 5" loading="lazy"><img src="assets/slide6-easy-mode.webp" alt="Easy Mode carousel, slide 6" loading="lazy"></div></div>
   </section>
 
-  <!-- Pre-workout carousel 3–6 -->
-  <section class="grid c4" aria-label="Heart of Steel Pre carousel">
-    <img class="rv" style="--d:0" src="assets/pw3.webp" alt="Pre-workout carousel slide 3" loading="lazy">
-    <img class="rv" style="--d:1" src="assets/pw4.webp" alt="Pre-workout carousel slide 4" loading="lazy">
-    <img class="rv" style="--d:2" src="assets/pw5.webp" alt="Pre-workout carousel slide 5" loading="lazy">
-    <img class="rv" style="--d:3" src="assets/pw6.webp" alt="Pre-workout carousel slide 6" loading="lazy">
-  </section>
+  <section class="interlude"><h2 class="il-label rv" style="--dl:0.2s;--du:0.7s;--y:24px">03 · Meta &amp; Google ads</h2><p class="il-text rv" style="--dl:0.35s;--du:0.7s;--y:24px">One idea, built once, then resized for every placement: Stories, the feed and desktop.</p></section>
 
-  <section class="interlude rv">
-    <h2>The Night Before</h2>
-    <p>One line carries the whole campaign: waking up feeling like you fought the mattress? Built once, then resized across ten display sizes.</p>
-  </section>
-
-  <!-- Night Before display set -->
-  <section class="panel dark rv" aria-label="The Night Before display ad set">
-    <div class="prow end">
-      <figure class="fig" style="--w:1232;--h:318"><img src="assets/nb-1940x500.webp" alt="The Night Before display ad, 1940 × 500" loading="lazy"><figcaption>1940 × 500</figcaption></figure>
-    </div>
-    <div class="prow end">
-      <figure class="fig" style="--w:652;--h:168"><img src="assets/nb-970x250.webp" alt="Display ad, 970 × 250" loading="lazy"><figcaption>970 × 250</figcaption></figure>
-      <figure class="fig" style="--w:556;--h:168"><img src="assets/nb-828x250.webp" alt="Display ad, 828 × 250" loading="lazy"><figcaption>828 × 250</figcaption></figure>
-    </div>
-    <div class="prow end">
-      <figure class="fig" style="--w:604;--h:75"><img src="assets/nb-1456x180.webp" alt="Display ad, 1456 × 180" loading="lazy"><figcaption>1456 × 180</figcaption></figure>
-      <figure class="fig" style="--w:604;--h:75"><img src="assets/nb-728x90.webp" alt="Display ad, 728 × 90" loading="lazy"><figcaption>728 × 90</figcaption></figure>
-    </div>
-    <div class="prow wrap">
-      <figure class="fig" style="--w:203;--h:406"><img src="assets/nb-300x600.webp" alt="Display ad, 300 × 600" loading="lazy"><figcaption>300 × 600</figcaption></figure>
-      <figure class="fig" style="--w:108;--h:406"><img src="assets/nb-160x600.webp" alt="Display ad, 160 × 600" loading="lazy"><figcaption>160 × 600</figcaption></figure>
-      <figure class="fig wide" style="--w:487;--h:406"><img src="assets/nb-600x500.webp" alt="Display ad, 600 × 500" loading="lazy"><figcaption>600 × 500</figcaption></figure>
-      <div class="stack">
-        <figure class="fig" style="--w:362;--h:302"><img src="assets/nb-300x250.webp" alt="Display ad, 300 × 250" loading="lazy"><figcaption>300 × 250</figcaption></figure>
-        <figure class="fig" style="--w:362;--h:57"><img src="assets/nb-640x100.webp" alt="Display ad, 640 × 100" loading="lazy"><figcaption>640 × 100</figcaption></figure>
+  <section class="placements" aria-label="The Night Before ad placements">
+    <h3 class="pl-title">The Night Before</h3>
+    <div class="pl-row">
+      <div class="use rv" style="--dl:0.6s;--du:0.7s;--y:60px"><div class="fit" data-fit>
+        <div class="phone story"><div class="screen">
+          <img class="story-img" src="assets/story-6.webp" alt="The Night Before Instagram Story ad" loading="lazy">
+          <span class="shade"></span><span class="prog p1"></span><span class="prog p2"></span><span class="prog p3"></span>
+          <div class="st-head"><span class="st-av"><img src="assets/brand-mark.webp" alt=""></span><b>formulationfactory</b><small>Sponsored</small></div>
+          <span class="st-cta">Learn more</span>
+        </div></div></div>
+        <p class="cap inv">Instagram Story · 1080 × 1920</p>
+      </div>
+      <div class="use rv" style="--dl:0.78s;--du:0.7s;--y:60px"><div class="fit" data-fit>
+        <div class="phone feed"><div class="screen light">
+          <div class="status"><b>9:41</b><span class="batt"><i></i></span></div>
+          <div class="igpost">
+            <div class="ig-head"><span class="ig-av"><img src="assets/brand-mark.webp" alt=""></span><span class="ig-acc"><b>Formulation Factory</b><small>Sponsored</small></span><img src="assets/icon-more.svg" alt=""></div>
+            <img class="ig-img" src="assets/ad-image.webp" alt="The Night Before Instagram feed ad" loading="lazy">
+            <div class="ig-cta"><span>Shop now</span><img src="assets/icon-chevron.svg" alt=""></div>
+            <div class="ig-actions"><span><img src="assets/icon-like.svg" alt=""><img src="assets/icon-comment.svg" alt=""><img src="assets/icon-share.svg" alt=""></span><img src="assets/icon-save.svg" alt=""></div>
+          </div>
+          <p class="ig-cap"><b>formulationfactory</b> Big day tomorrow? Wind down before it counts.</p>
+        </div></div></div>
+        <p class="cap inv">Instagram Feed · 1080 × 1080</p>
+      </div>
+      <div class="use rv" style="--dl:0.96s;--du:0.7s;--y:60px"><div class="fit" data-fit>
+        <div class="fbad">
+          <div class="tb fb"><span class="dots"><img src="assets/dot.svg" alt=""><img src="assets/dot1.svg" alt=""><img src="assets/dot2.svg" alt=""></span><span class="addr">facebook.com</span></div>
+          <div class="fb-feed"><div class="fb-post">
+            <div class="fb-head"><span class="fb-av"><img src="assets/brand-mark.webp" alt=""></span><span class="fb-name"><b>Formulation Factory</b><small>Sponsored</small></span></div>
+            <p class="fb-text">Big day tomorrow. Mind still running? 10 ingredients, full doses on the label. Wind down before it counts.</p>
+            <img class="fb-img" src="assets/link-8.webp" alt="The Night Before Facebook link ad" loading="lazy">
+            <div class="fb-link"><span class="fb-lt"><small>FORMULATIONFACTORY.COM</small><b>What type of sleeper are you?</b></span><span class="fb-btn">Learn more</span></div>
+            <div class="fb-actions"><span>Like</span><span>Comment</span><span>Share</span></div>
+          </div></div>
+        </div></div>
+        <p class="cap inv">Facebook Desktop · 1200 × 628</p>
       </div>
     </div>
   </section>
 
-  <section class="interlude rv">
-    <h2>Daily Detox</h2>
-    <p>A calmer world for a daily habit. Ten botanicals, one routine, six slides.</p>
+  <section class="placements" aria-label="Crown of Glory ad placements">
+    <h3 class="pl-title">Crown of Glory</h3>
+    <div class="pl-row">
+      <div class="use rv" style="--dl:0.9s;--du:0.7s;--y:60px"><div class="fit" data-fit>
+        <div class="phone story"><div class="screen">
+          <img class="story-img" src="assets/story-7.webp" alt="Crown of Glory Instagram Story ad" loading="lazy">
+          <span class="shade"></span><span class="prog p1"></span><span class="prog p2"></span><span class="prog p3"></span>
+          <div class="st-head"><span class="st-av"><img src="assets/brand-mark.webp" alt=""></span><b>formulationfactory</b><small>Sponsored</small></div>
+          <span class="st-cta">Learn more</span>
+        </div></div></div>
+        <p class="cap inv">Instagram Story · 1080 × 1920</p>
+      </div>
+      <div class="use rv" style="--dl:1.08s;--du:0.7s;--y:60px"><div class="fit" data-fit>
+        <div class="phone feed"><div class="screen light">
+          <div class="status"><b>9:41</b><span class="batt"><i></i></span></div>
+          <div class="igpost">
+            <div class="ig-head"><span class="ig-av"><img src="assets/brand-mark.webp" alt=""></span><span class="ig-acc"><b>Formulation Factory</b><small>Sponsored</small></span><img src="assets/icon-more.svg" alt=""></div>
+            <img class="ig-img" src="assets/ad-image1.webp" alt="Crown of Glory Instagram feed ad" loading="lazy">
+            <div class="ig-cta"><span>Shop now</span><img src="assets/icon-chevron.svg" alt=""></div>
+            <div class="ig-actions"><span><img src="assets/icon-like.svg" alt=""><img src="assets/icon-comment.svg" alt=""><img src="assets/icon-share.svg" alt=""></span><img src="assets/icon-save.svg" alt=""></div>
+          </div>
+          <p class="ig-cap"><b>formulationfactory</b> The brush has been telling me something.</p>
+        </div></div></div>
+        <p class="cap inv">Instagram Feed · 1080 × 1080</p>
+      </div>
+      <div class="use rv" style="--dl:1.26s;--du:0.7s;--y:60px"><div class="fit" data-fit>
+        <div class="fbad">
+          <div class="tb fb"><span class="dots"><img src="assets/dot.svg" alt=""><img src="assets/dot1.svg" alt=""><img src="assets/dot2.svg" alt=""></span><span class="addr">facebook.com</span></div>
+          <div class="fb-feed"><div class="fb-post">
+            <div class="fb-head"><span class="fb-av"><img src="assets/brand-mark.webp" alt=""></span><span class="fb-name"><b>Formulation Factory</b><small>Sponsored</small></span></div>
+            <p class="fb-text">More in the brush than I remember lately. So I stopped working only on the surface and started supporting my hair from within.</p>
+            <img class="fb-img" src="assets/link-9.webp" alt="Crown of Glory Facebook link ad" loading="lazy">
+            <div class="fb-link"><span class="fb-lt"><small>FORMULATIONFACTORY.COM</small><b>Take the 60-second quiz</b></span><span class="fb-btn">Learn more</span></div>
+            <div class="fb-actions"><span>Like</span><span>Comment</span><span>Share</span></div>
+          </div></div>
+        </div></div>
+        <p class="cap inv">Facebook Desktop · 1200 × 628</p>
+      </div>
+    </div>
   </section>
 
-  <!-- Daily Detox carousel 1–6 -->
-  <section class="grid c3" aria-label="Daily Detox carousel">
-    <img class="rv" style="--d:0" src="assets/dd1.webp" alt="Daily Detox carousel slide 1" loading="lazy">
-    <img class="rv" style="--d:1" src="assets/dd2.webp" alt="Daily Detox carousel slide 2" loading="lazy">
-    <img class="rv" style="--d:2" src="assets/dd3.webp" alt="Daily Detox carousel slide 3" loading="lazy">
-    <img class="rv" style="--d:0" src="assets/dd4.webp" alt="Daily Detox carousel slide 4" loading="lazy">
-    <img class="rv" style="--d:1" src="assets/dd5.webp" alt="Daily Detox carousel slide 5" loading="lazy">
-    <img class="rv" style="--d:2" src="assets/dd6.webp" alt="Daily Detox carousel slide 6" loading="lazy">
+  <section class="interlude"><h2 class="il-label rv" style="--dl:0.2s;--du:0.7s;--y:24px">04 · Website assets</h2><p class="il-text rv" style="--dl:0.35s;--du:0.7s;--y:24px">Hero directions for the home page, built for desktop and mobile, plus the blog and content images that carry the same voice.</p></section>
+
+  <section class="panel devices" aria-label="Website on laptop and phone">
+    <div class="dev rv" style="--dl:0.7s;--du:0.8s;--y:50px"><div class="fit" data-fit>
+      <div class="laptop"><div class="lid"><img src="assets/screen-website-home.webp" alt="Formulation Factory home page on desktop" loading="lazy"></div><div class="base"><i></i></div></div>
+    </div></div>
+    <div class="dev rv" style="--dl:0.95s;--du:0.8s;--y:50px"><div class="fit" data-fit>
+      <div class="phone webm"><img src="assets/screen-website-mobile.webp" alt="Formulation Factory home page on mobile" loading="lazy"></div>
+    </div></div>
   </section>
 
-  <section class="interlude rv">
-    <h2>Colour</h2>
-    <p>One colour world per product, so every ad is recognisable before a word is read.</p>
+  <section class="panel heroes" aria-label="Home page hero directions">
+    <div class="hero1 rv" style="--dl:0.4s;--du:0.7s;--y:40px"><div class="browser"><div class="tb"><span class="dots"><img src="assets/dot.svg" alt=""><img src="assets/dot1.svg" alt=""><img src="assets/dot2.svg" alt=""></span><span class="addr">formulationfactory.com</span></div><img class="bscreen" src="assets/home-001.webp" alt="Home page hero direction 001" style="--w:1232;--h:827" loading="lazy"></div></div>
+    <div class="brow rv" style="--dl:0.55s;--du:0.7s;--y:40px"><div class="browser"><div class="tb"><span class="dots"><img src="assets/dot.svg" alt=""><img src="assets/dot1.svg" alt=""><img src="assets/dot2.svg" alt=""></span><span class="addr">formulationfactory.com</span></div><img class="bscreen" src="assets/home-3211.webp" alt="Home page hero direction 3211" style="--w:604;--h:405" loading="lazy"></div><div class="browser"><div class="tb"><span class="dots"><img src="assets/dot.svg" alt=""><img src="assets/dot1.svg" alt=""><img src="assets/dot2.svg" alt=""></span><span class="addr">formulationfactory.com</span></div><img class="bscreen" src="assets/home-3252.webp" alt="Home page hero direction 3252" style="--w:604;--h:405" loading="lazy"></div></div>
+    <div class="brow rv" style="--dl:0.7s;--du:0.7s;--y:40px"><div class="browser"><div class="tb"><span class="dots"><img src="assets/dot.svg" alt=""><img src="assets/dot1.svg" alt=""><img src="assets/dot2.svg" alt=""></span><span class="addr">formulationfactory.com</span></div><img class="bscreen" src="assets/home-3168.webp" alt="Home page hero direction 3168" style="--w:604;--h:405" loading="lazy"></div><div class="browser"><div class="tb"><span class="dots"><img src="assets/dot.svg" alt=""><img src="assets/dot1.svg" alt=""><img src="assets/dot2.svg" alt=""></span><span class="addr">formulationfactory.com</span></div><img class="bscreen" src="assets/home-3188.webp" alt="Home page hero direction 3188" style="--w:604;--h:405" loading="lazy"></div></div>
+    <div class="brow rv" style="--dl:0.85s;--du:0.7s;--y:40px"><div class="browser"><div class="tb"><span class="dots"><img src="assets/dot.svg" alt=""><img src="assets/dot1.svg" alt=""><img src="assets/dot2.svg" alt=""></span><span class="addr">formulationfactory.com</span></div><img class="bscreen" src="assets/home-3289.webp" alt="Home page hero direction 3289" style="--w:604;--h:405" loading="lazy"></div><div class="browser"><div class="tb"><span class="dots"><img src="assets/dot.svg" alt=""><img src="assets/dot1.svg" alt=""><img src="assets/dot2.svg" alt=""></span><span class="addr">formulationfactory.com</span></div><img class="bscreen" src="assets/home-3331.webp" alt="Home page hero direction 3331" style="--w:604;--h:405" loading="lazy"></div></div>
   </section>
 
-  <!-- Credits -->
-  <section class="credits rv">
+  <section class="panel" aria-label="Blog">
+    <div class="browser blog">
+      <div class="tb small"><span class="dots"><img src="assets/dot.svg" alt=""><img src="assets/dot1.svg" alt=""><img src="assets/dot2.svg" alt=""></span><span class="addr">formulationfactory.com/journal</span></div>
+      <div class="blog-head"><small>THE JOURNAL</small><h3>Notes from the Factory</h3></div>
+      <div class="posts"><article class="post rv" style="--dl:0.6s;--du:0.7s;--y:30px"><img src="assets/blog-0.webp" alt="The Night Before just dropped" loading="lazy"><small>NEW PRODUCT</small><h4>The Night Before just dropped</h4></article><article class="post rv" style="--dl:0.72s;--du:0.7s;--y:30px"><img src="assets/blog-1.webp" alt="L-Citrulline, at the full 1000 mg dose" loading="lazy"><small>INGREDIENT SPOTLIGHT</small><h4>L-Citrulline, at the full 1000 mg dose</h4></article><article class="post rv" style="--dl:0.84s;--du:0.7s;--y:30px"><img src="assets/blog-2.webp" alt="Six weeks in, the 3pm crash is gone" loading="lazy"><small>CUSTOMER STORY</small><h4>Six weeks in, the 3pm crash is gone</h4></article><article class="post rv" style="--dl:0.96s;--du:0.7s;--y:30px"><img src="assets/blog-3.webp" alt="More ingredients is not a stronger formula" loading="lazy"><small>MYTH VS FACTS</small><h4>More ingredients is not a stronger formula</h4></article><article class="post rv" style="--dl:1.08s;--du:0.7s;--y:30px"><img src="assets/blog-4.webp" alt="250,000+ humans formulated" loading="lazy"><small>MILESTONE</small><h4>250,000+ humans formulated</h4></article><article class="post rv" style="--dl:1.2s;--du:0.7s;--y:30px"><img src="assets/blog-5.webp" alt="Find your formula in 60 seconds" loading="lazy"><small>FORMULA FINDER</small><h4>Find your formula in 60 seconds</h4></article></div>
+    </div>
+  </section>
+
+  <section class="interlude"><h2 class="il-label rv" style="--dl:0.2s;--du:0.7s;--y:24px">05 · Amazon materials</h2><p class="il-text rv" style="--dl:0.35s;--du:0.7s;--y:24px">Storefront banners, A+ content for desktop and mobile, and the product listing itself.</p></section>
+
+  <section class="panel dark amazon" aria-label="Amazon store banners">
+    <figure class="fig dark rv" style="--dl:0.6s;--du:0.6s;--y:40px"><img src="assets/amazon-2624.webp" alt="Amazon store banner" style="aspect-ratio:1232/410" loading="lazy"><figcaption>Amazon Store · 3000 × 998</figcaption></figure>
+    <div class="row rv" style="--dl:0.75s;--du:0.6s;--y:40px"><figure class="fig dark"><img src="assets/amazon-2666.webp" alt="Amazon store banner" style="aspect-ratio:604/201" loading="lazy"><figcaption>Amazon Store · 3000 × 998</figcaption></figure><figure class="fig dark"><img src="assets/amazon-2710.webp" alt="Amazon store banner" style="aspect-ratio:604/201" loading="lazy"><figcaption>Amazon Store · 3000 × 998</figcaption></figure></div>
+    <div class="row rv" style="--dl:0.9s;--du:0.6s;--y:40px"><figure class="fig dark"><img src="assets/amazon-2725.webp" alt="Amazon store banner" style="aspect-ratio:604/201" loading="lazy"><figcaption>Amazon Store · 3000 × 998</figcaption></figure><figure class="fig dark"><img src="assets/amazon-2749.webp" alt="Amazon store banner" style="aspect-ratio:604/201" loading="lazy"><figcaption>Amazon Store · 3000 × 998</figcaption></figure></div>
+    <div class="row rv" style="--dl:1.05s;--du:0.6s;--y:40px"><figure class="fig dark"><img src="assets/amazon-2766.webp" alt="Amazon store banner" style="aspect-ratio:604/201" loading="lazy"><figcaption>Amazon Store · 3000 × 998</figcaption></figure><figure class="fig dark"><img src="assets/amazon-2783.webp" alt="Amazon store banner" style="aspect-ratio:604/201" loading="lazy"><figcaption>Amazon Store · 3000 × 998</figcaption></figure></div>
+  </section>
+
+  <section class="panel aplus" aria-label="Amazon A+ content">
+    <div class="dev rv" style="--dl:0.5s;--du:0.7s;--y:50px"><div class="fit" data-fit>
+      <div class="browser a-desk"><div class="tb small"><span class="dots"><img src="assets/dot.svg" alt=""><img src="assets/dot1.svg" alt=""><img src="assets/dot2.svg" alt=""></span><span class="addr">amazon.com/formulation-factory-self-obsessed</span></div><div class="a-screen"><img class="loop" style="animation-name:aplus-desk" src="assets/screen-a-desktop-content.webp" alt="Amazon A+ content, desktop" loading="lazy"></div></div>
+      <p class="cap">A+ content · Desktop · 1464 wide</p>
+    </div></div>
+    <div class="dev rv" style="--dl:0.75s;--du:0.7s;--y:50px"><div class="fit" data-fit>
+      <div class="phone a-mob"><div class="a-mscreen"><img class="loop" style="animation-name:aplus-mob" src="assets/screen-a-mobile-content.webp" alt="Amazon A+ content, mobile" loading="lazy"></div></div>
+      <p class="cap">A+ content · Mobile · 600 wide</p>
+    </div></div>
+  </section>
+
+  <section class="panel" aria-label="Amazon product listing">
+    <div class="browser listing rv" style="--dl:0.8s;--du:0.8s;--y:60px">
+      <div class="tb"><span class="dots"><img src="assets/dot.svg" alt=""><img src="assets/dot1.svg" alt=""><img src="assets/dot2.svg" alt=""></span><span class="addr">amazon.com/formulation-factory-self-obsessed</span></div>
+      <nav class="store-nav" aria-label="Store (mockup)"><b>Formulation Factory Store</b><span>Self Obsessed</span><span>Heart of Steel Pre</span><span>Daily Detox</span><span>Easy Mode</span></nav>
+      <div class="lst">
+        <div class="gal"><div class="fit" data-fit><div class="gal-in">
+          <div class="thumbs"><span class="thumb on"><img src="assets/image.webp" alt=""></span><span class="thumb"><img src="assets/image1.webp" alt=""></span><span class="thumb"><img src="assets/image2.webp" alt=""></span><span class="thumb"><img src="assets/image3.webp" alt=""></span><span class="thumb"><img src="assets/image4.webp" alt=""></span></div>
+          <div class="main-img"><div class="slides"><img src="assets/image.webp" alt="Self Obsessed listing image 1" loading="lazy"><img src="assets/listing-image02.webp" alt="Self Obsessed listing image 2" class="loop" style="animation-name:list-02" loading="lazy"><img src="assets/image1.webp" alt="Self Obsessed listing image 3" class="loop" style="animation-name:list-03" loading="lazy"><img src="assets/listing-image04.webp" alt="Self Obsessed listing image 4" class="loop" style="animation-name:list-04" loading="lazy"><img src="assets/image2.webp" alt="Self Obsessed listing image 5" class="loop" style="animation-name:list-05" loading="lazy"><img src="assets/image3.webp" alt="Self Obsessed listing image 6" class="loop" style="animation-name:list-06" loading="lazy"><img src="assets/image4.webp" alt="Self Obsessed listing image 7" class="loop" style="animation-name:list-07" loading="lazy"><img src="assets/listing-image08.webp" alt="Self Obsessed listing image 8" class="loop" style="animation-name:list-08" loading="lazy"><img src="assets/listing-image09.webp" alt="Self Obsessed listing image 9" class="loop" style="animation-name:list-09" loading="lazy"><img src="assets/listing-image10.webp" alt="Self Obsessed listing image 10" class="loop" style="animation-name:list-10" loading="lazy"><img src="assets/listing-image11.webp" alt="Self Obsessed listing image 11" class="loop" style="animation-name:list-11" loading="lazy"></div></div>
+        </div></div></div>
+        <div class="info">
+          <h3>Formulation Factory Self Obsessed, 10-in-1 Advanced Formulation, Dietary Supplement, 120 Capsules</h3>
+          <span class="store-link">Visit the Formulation Factory Store</span>
+          <hr>
+          <h4>About this item</h4>
+          <ul><li><img src="assets/dot-wrap.svg" alt="">Ten actives in one daily formula: Shilajit, Tongkat Ali, Fadogia Agrestis, Ashwagandha and more</li><li><img src="assets/dot-wrap.svg" alt="">Built for daily drive: natural T support, energy and stamina, stress and recovery. Stim-free</li><li><img src="assets/dot-wrap.svg" alt="">Full transparency: no proprietary blends, third-party tested, GMP-certified facility</li><li><img src="assets/dot-wrap.svg" alt="">120 capsules, two a day</li></ul>
+        </div>
+        <div class="buy"><b>In Stock</b><span class="cart">Add to Cart</span><span class="now">Buy Now</span><small>Sold by Formulation Factory</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="interlude"><h2 class="il-label">Colour</h2><p class="il-text">One colour world per product, so every ad is recognisable before a word is read.</p></section>
+
+  <section class="credits">
     <h2>Designed by<br>Dominic Garcia</h2>
     <dl class="meta">
       <div><dt>Client</dt><dd>Formulation Factory</dd></div>
@@ -261,13 +491,42 @@ img{display:block;max-width:100%}
 
 <script>
 (function(){
-  var els=document.querySelectorAll('.rv');
+  /* fixed-size mockups (phones, laptop, browsers, listing gallery) scale down to the space they have */
+  var fits=[].slice.call(document.querySelectorAll('[data-fit]'));
+  fits.forEach(function(f){
+    var inn=document.createElement('div'); inn.className='fit-in';
+    while(f.firstChild) inn.appendChild(f.firstChild);
+    f.appendChild(inn); f.style.position='relative';
+  });
+  function fit(){
+    fits.forEach(function(f){
+      var inn=f.firstElementChild;
+      inn.style.transform='none'; inn.style.position='static'; f.style.width=''; f.style.height='';
+      var W=inn.offsetWidth, H=inn.offsetHeight;
+      var host=f.parentElement, area=host.parentElement, cs=getComputedStyle(area);
+      var avail=area.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+      var s=Math.min(1,avail/W);
+      inn.style.position='absolute'; inn.style.left='0'; inn.style.top='0'; inn.style.transformOrigin='0 0';
+      inn.style.transform=s<1?'scale('+s+')':'none';
+      f.style.width=(W*s)+'px'; f.style.height=(H*s)+'px';
+    });
+  }
+  fit();
+  var rt; addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(fit,80); });
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+
+  /* entrance reveals + starting the looping motion when a section comes into view */
+  var rvs=document.querySelectorAll('.rv'), hosts=[];
+  document.querySelectorAll('.loop').forEach(function(l){ var s=l.closest('section'); if(s&&hosts.indexOf(s)<0) hosts.push(s); });
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    },{rootMargin:'0px 0px -6% 0px',threshold:.06});
-    els.forEach(function(el){ io.observe(el); });
-  } else { els.forEach(function(el){ el.classList.add('in'); }); }
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(e.target.classList.contains('rv')?'in':'playing'); io.unobserve(e.target); } });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.05});
+    rvs.forEach(function(el){ io.observe(el); });
+    hosts.forEach(function(el){ io.observe(el); });
+  } else {
+    rvs.forEach(function(el){ el.classList.add('in'); }); hosts.forEach(function(el){ el.classList.add('playing'); });
+  }
 
   /* Esc closes the project, same as the ✕ */
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') location.href=document.getElementById('closeLink').href; });
