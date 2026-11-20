@@ -106,13 +106,16 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .projects{display:flex;flex-direction:column;align-items:center;padding:0 40px 160px}
 .projects-in{display:flex;flex-direction:column;align-items:center;width:100%;max-width:1360px}
 .projects h2{font-weight:600;font-size:min(15.278vw,220px);line-height:.9;letter-spacing:-.05em;text-align:center;white-space:nowrap;margin-bottom:-.059em}
-.project-list{--gap:120px;--head:76px;--peek:26px;--ease:cubic-bezier(.2,.7,.2,1);container-type:inline-size;display:flex;flex-direction:column;gap:var(--gap);width:100%}
-/* stacked deck: card 01 in front, the others tucked behind it with their bottom edges peeking out;
-   hovering (or focusing) the deck opens it into the full list */
+.project-list{--gap:120px;--head:76px;--ease:cubic-bezier(.2,.7,.2,1);container-type:inline-size;display:flex;flex-direction:column;gap:var(--gap);width:100%}
+/* stacked deck: card 01 in front, the others tucked behind it and raised so their header row
+   (number, name, category) shows above card 01; hovering (or focusing) the deck opens it into the full list.
+   The list keeps a top padding the height of the raised headers so card 01 never moves. */
+.project-list{padding-top:calc(var(--head) * var(--extra,1))}
 .project-list .card{z-index:calc(10 - var(--i,0))}
-.project-list .card + .card{transform-origin:50% 100%;transition:margin-top .8s var(--ease),transform .8s var(--ease)}
-.project-list:not(.open) .card + .card{margin-top:calc(-1 * (var(--head) + 56.25cqw + var(--gap)) + var(--peek));transform:scale(calc(1 - var(--i) * .045))}
-.project-list:not(.open) .card + .card .card-media,.project-list:not(.open) .card + .card .card-head{opacity:.55;transition:opacity .8s var(--ease)}
+.project-list .card + .card{transform-origin:50% 0;transition:margin-top .8s var(--ease),transform .8s var(--ease)}
+.project-list:not(.open) .card + .card{margin-top:calc(-1 * (var(--head) + 56.25cqw + var(--gap)));transform:translateY(calc(-1 * var(--i) * var(--head) * (1 - var(--i) * .045))) scale(calc(1 - var(--i) * .045))}
+.project-list:not(.open) .card + .card .card-media{opacity:.55}
+.project-list:not(.open) .card + .card .card-head{opacity:.8}
 .project-list .card + .card .card-media,.project-list .card + .card .card-head{transition:opacity .8s var(--ease)}
 .card{position:relative;display:flex;flex-direction:column;overflow:hidden;border-radius:16px;background:var(--bg-inverse);box-shadow:0 -10px 36px rgba(0,0,0,.28)}
 .card-head{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px;padding:0 28px;white-space:nowrap}
@@ -157,7 +160,7 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
 
 /* ============ MOTION ============ */
 /* touch screens have no hover, so the deck is shown open there */
-@media (hover:none){.project-list .card + .card{margin-top:0!important;transform:none!important}.project-list .card + .card .card-media,.project-list .card + .card .card-head{opacity:1!important}}
+@media (hover:none){.project-list{padding-top:0}.project-list .card + .card{margin-top:0!important;transform:none!important}.project-list .card + .card .card-media,.project-list .card + .card .card-head{opacity:1!important}}
 @media (prefers-reduced-motion:reduce){.project-list .card + .card,.project-list .card-media,.project-list .card-head{transition:none!important}}
 @media (prefers-reduced-motion:no-preference){
   .tile{opacity:0;transform:scale(1.02);animation:tileIn .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i) * 70ms)}
@@ -199,7 +202,7 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
   .service-row{display:grid;grid-template-columns:1fr 1fr;gap:20px 12px}
   .service{font-size:15px}
   .projects{padding:0 14px 96px}
-  .project-list{--gap:48px;--head:60px;--peek:18px}
+  .project-list{--gap:48px;--head:60px}
   .card{border-radius:12px}
   .card-head{height:60px;padding:0 18px}
   .card-name{font-size:17px}
@@ -437,6 +440,7 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
      top card is still on screen, so the page never jumps while someone is looking further down. */
   var deck=document.getElementById('deck');
   if(deck){
+    deck.style.setProperty('--extra', Math.max(deck.children.length-1,0));
     var t;
     function open(){ clearTimeout(t); deck.classList.add('open'); }
     deck.addEventListener('mouseenter',open);
