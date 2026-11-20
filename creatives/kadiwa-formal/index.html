@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kadiwa Formal — Creatives, Dominic Garcia</title>
+<meta name="description" content="Kadiwa Formal — event branding for a formal concert night: key visual, posters, countdown stories, venue screen, motion graphics, videos and print. Designed by Dominic Garcia.">
+<meta property="og:title" content="Kadiwa Formal — Dominic Garcia">
+<meta property="og:description" content="Key visual, posters, countdown stories, motion graphics, videos and event print for a formal concert night.">
+<meta property="og:type" content="article">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-surface:#f5f5f3;--bg-page:#e9e9e9;--bg-inverse:#0b0b0b;--bg-tile:#1c1c1c;
+  --text-primary:#0b0b0b;--text-secondary:#5e5e5e;--text-inverse:#f4f4f2;--text-inverse-secondary:#a8a8a8;
+  --border-default:#cfcfcf;--ease-out:cubic-bezier(0,0,.58,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg-surface);color:var(--text-primary);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;font-weight:500;line-height:1.3;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,video{display:block;max-width:100%}
+figure{margin:0}
+:focus-visible{outline:2px solid #3b82f6;outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* TOP BAR */
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:24px 40px;background:rgba(245,245,243,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.back{display:inline-flex;align-items:center;gap:10px;font-size:15px;white-space:nowrap}
+.ic20,.ic22{flex:none;display:grid;place-items:center}.ic20{width:20px;height:20px}.ic22{width:22px;height:22px}
+.back .ic20 img,.next a .ic22 img{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.back:hover .ic20 img{transform:translateX(-3px)}
+.close{flex:none;width:44px;height:44px;border-radius:999px;background:var(--bg-tile);display:grid;place-items:center;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.close:hover{transform:rotate(90deg)}
+
+.case{display:flex;flex-direction:column;gap:16px;padding:0 32px 32px}
+
+/* COVER */
+.cover{position:relative;overflow:hidden;border-radius:20px;background:var(--bg-inverse);aspect-ratio:1376/774;max-height:calc(100svh - 124px);width:100%}
+.cover-anim,.cover-anim img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* INTERLUDE */
+.interlude{display:flex;flex-direction:column;align-items:center;gap:20px;padding:132px 0;text-align:center}
+.il-label{font-size:15px;font-weight:500;line-height:1.3}
+.il-text{max-width:780px;font-weight:400;font-size:clamp(21px,2.222vw,32px);line-height:1.3;letter-spacing:-.02em}
+
+/* PANELS */
+.panel{display:flex;flex-direction:column;align-items:center;border-radius:20px;background:var(--bg-page)}
+.panel.dark{background:var(--bg-inverse)}
+.cap{font-size:12px;font-weight:500;line-height:1.3;color:var(--text-secondary)}
+.cap.inv{color:var(--text-inverse-secondary)}
+
+/* LOBBY MOCKUP — 1376×774 design canvas, --u is one design pixel */
+.lobby{--u:calc(100cqw / 1376);position:relative;container-type:inline-size;overflow:hidden;border-radius:20px;background:var(--bg-inverse);aspect-ratio:1376/774}
+.lobby > *{position:absolute}
+.lb-bg{inset:0;width:100%;height:100%;object-fit:cover}
+.lb-poster{top:calc(var(--u) * 68.08);width:calc(var(--u) * 258);height:calc(var(--u) * 388.792);box-shadow:0 0 calc(var(--u) * 56) calc(var(--u) * 6) rgba(255,245,224,.55)}
+.lb-poster.p1,.lb-refl.p1{--l:370.88}.lb-poster.p2,.lb-refl.p2{--l:745.33}
+.lb-poster{left:calc(var(--u) * var(--l))}
+.lb-poster img{width:100%;height:100%;object-fit:cover}
+.lb-poster i{position:absolute;inset:0}
+.lb-poster .glass{box-shadow:inset 0 0 calc(var(--u) * 8) 0 rgba(255,255,255,.45)}
+.lb-poster .sheen{mix-blend-mode:screen;background:linear-gradient(123.568deg,rgba(255,255,255,0) 14.286%,rgba(255,255,255,.13) 46.429%,rgba(255,255,255,.02) 53.571%,rgba(255,255,255,0) 85.714%)}
+.lb-refl{left:calc(var(--u) * (var(--l) - 5));top:calc(var(--u) * 725);width:calc(var(--u) * 268);height:calc(var(--u) * 49);overflow:hidden}
+.lb-refl .flip{position:absolute;inset:0;overflow:hidden;transform:scaleY(-1);filter:blur(1px);-webkit-mask:url(assets/reflect-mask.svg) 0 0/100% 100% no-repeat;mask:url(assets/reflect-mask.svg) 0 0/100% 100% no-repeat}
+.lb-refl img{position:absolute;left:0;top:-724.21%;width:100%;height:824.21%;max-width:none}
+.lb-refl i{position:absolute;inset:0;background:rgba(5,8,20,.35)}
+
+/* COUNTDOWN STORIES */
+.stories{padding:80px 72px}
+.st-host{max-width:100%}
+.fit-in{width:max-content}
+.st-row{display:flex;gap:40px;align-items:center}
+.story{flex:none;width:144px;height:256px;border-radius:10px;overflow:hidden}
+.story img{width:100%;height:100%;object-fit:cover}
+.phone-group{display:flex;flex-direction:column;align-items:center;gap:16px}
+.st-phone{background:#0d0d0d;border:1.6px solid #363636;border-radius:41.6px;padding:9.6px}
+.st-screen{position:relative;width:256px;height:455.2px;border-radius:32px;overflow:hidden;background:#000}
+.st-screen img{width:100%;height:100%;object-fit:cover}
+.bar{position:absolute;top:11.2px;left:calc(9.6px + var(--n) * 40px);width:36.8px;height:2px;border-radius:1.6px;background:rgba(255,255,255,.4)}
+.bar.on{background:#fff}
+
+/* SCREENS + VIDEO FRAMES */
+.screens{padding:96px 72px}
+.frame{width:100%;background:#141416;border:2px solid #3c3c40;border-radius:14px}
+.frame.p12{padding:12px}.frame.p10{padding:10px}
+.led{width:min(100%,1072px);padding:14px;background:#141416;border:2px solid #3c3c40;border-radius:14px}
+.led img{width:100%;aspect-ratio:1040/585;object-fit:cover;border-radius:4px}
+.stand{display:block;width:240px;max-width:40%;height:10px;border-radius:4px;background:#28282c}
+.screens .cap{padding-top:24px}
+.loopvid{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px;background:#050a28}
+.loopvid.tall{aspect-ratio:252/448;border-radius:34px}
+
+/* MOTION GRAPHICS */
+.motion{gap:56px;padding:80px 72px}
+.mfig{display:flex;flex-direction:column;gap:14px;min-width:0}
+.mfig.intro{width:min(100%,1068px)}
+.mrow{display:grid;grid-template-columns:724fr 276fr;gap:48px;align-items:end;width:min(100%,1048px)}
+.mphone{background:#0d0d0d;border:2px solid #363636;border-radius:44px;padding:10px}
+.vrow{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;width:min(100%,1048px)}
+
+/* PLAYABLE VIDEO TILES — muted loop preview; the play button opens the full video */
+.vtile{position:relative;display:block;overflow:hidden;border-radius:8px;cursor:pointer}
+.vtile .loopvid{border-radius:0}
+.vplay{position:absolute;left:calc(50% - 42px);top:calc(50% - 36px);width:84px;height:84px;max-width:none;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.vtile.big .vplay{left:calc(50% - 65px);top:calc(50% - 59px);width:130px;height:130px}
+.vtile:hover .vplay,.vtile:focus-visible .vplay{transform:scale(1.08)}
+.vlabel{position:absolute;left:10px;bottom:10px;padding:5px 10px;border-radius:999px;background:rgba(0,0,0,.6);font-size:11px;font-weight:500;line-height:normal;color:#fff;white-space:nowrap}
+.rules{gap:24px;padding:80px 72px}
+.rules-frame{width:min(100%,1068px)}
+.rules-frame .vtile{border-radius:4px;background:#050a28}
+
+/* EVENT MATERIALS */
+.materials{gap:16px;padding:48px 40px}
+.mat-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:min(100%,1296px)}
+.mat{display:flex;flex-direction:column;align-items:center;gap:16px;min-width:0}
+.mat.wide{width:min(100%,1296px)}
+.mat img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px}
+.mat.wide img{aspect-ratio:2/1}
+.mat figcaption{padding:7px 14px;border-radius:999px;background:rgba(0,0,0,.55);font-size:12px;color:#e5ebf5;white-space:nowrap}
+
+/* CREDITS / NEXT */
+.credits{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;padding:56px;border-radius:20px;background:var(--bg-page)}
+.credits h2{font-weight:600;font-size:25px;line-height:1;letter-spacing:-.04em;white-space:nowrap}
+.meta{flex:none;width:440px;max-width:100%;display:flex;flex-direction:column;gap:20px}
+.meta div{display:flex;flex-direction:column;gap:4px}
+.meta dt{font-size:14px;color:var(--text-secondary)}
+.meta dd{font-size:18px;letter-spacing:-.01em}
+.next{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:32px;border-top:1px solid var(--border-default)}
+.next span{font-size:14px;color:var(--text-secondary);white-space:nowrap}
+.next a{display:inline-flex;align-items:center;gap:12px;font-size:22px;letter-spacing:-.01em;white-space:nowrap}
+.next a:hover .ic22 img{transform:translateX(4px)}
+
+/* VIDEO PLAYER */
+.player{margin:auto;padding:0;border:0;background:transparent;max-width:none;max-height:none;overflow:visible}
+.player::backdrop{background:rgba(5,5,7,.88);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.pl-box{width:min(92vw,(100svh - 140px) * 16 / 9);aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
+.pl-box iframe{display:block;width:100%;height:100%;border:0}
+.pl-bar{display:flex;align-items:center;gap:20px;padding-top:14px;color:var(--text-inverse)}
+.pl-title{flex:1;min-width:0;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pl-open{font-size:13px;color:var(--text-inverse-secondary);white-space:nowrap}
+.pl-open:hover{color:var(--text-inverse)}
+.pl-x{flex:none;width:40px;height:40px;border:0;border-radius:999px;background:#2a2a2c;display:grid;place-items:center;cursor:pointer}
+.pl-x img{width:18px;height:18px;filter:invert(1)}
+
+/* ENTRANCE MOTION — Figma: opacity 0→1 and translateY(--y)→0, easeOut, own delay/duration per layer */
+@media (prefers-reduced-motion:no-preference){
+  .js .rv{opacity:0;transform:translateY(var(--y,0px))}
+  .js .rv.in{opacity:1;transform:none;transition:opacity var(--du) var(--ease-out) var(--dl),transform var(--du) var(--ease-out) var(--dl)}
+  .js .cover-anim{animation:coverFade 1.2s var(--ease-out) both,coverScale 1.4s var(--ease-out) both}
+  @keyframes coverFade{from{opacity:0}to{opacity:1}}
+  @keyframes coverScale{from{transform:scale(1.08)}to{transform:none}}
+}
+
+/* RESPONSIVE */
+@media (max-width:1100px){
+  .interlude{padding:104px 0}
+  .stories,.screens,.motion,.rules{padding:64px 44px}
+  .motion{gap:44px}
+  .mrow,.vrow{gap:32px}
+}
+@media (max-width:759px){
+  .topbar{padding:14px 16px}
+  .close{width:40px;height:40px}
+  .case{padding:0 12px 20px;gap:12px}
+  .cover,.lobby,.panel{border-radius:14px}
+  .cover{max-height:none}
+  .interlude{padding:72px 8px;gap:14px}
+  .stories{padding:32px 16px}
+  .s-out{display:none}
+  .screens,.rules{padding:32px 16px}
+  .motion{padding:32px 16px;gap:32px}
+  .frame.p12{padding:6px}.frame.p10{padding:6px}
+  .led{padding:8px}
+  .mrow{grid-template-columns:1fr;gap:32px}
+  .mfig.day1{width:min(70%,260px);justify-self:center}
+  .vrow{grid-template-columns:1fr;gap:28px}
+  .vplay{transform:scale(.85)}
+  .vtile.big .vplay{transform:scale(.6)}
+  .materials{padding:16px;gap:12px}
+  .mat-row{grid-template-columns:1fr;gap:12px}
+  .mat{gap:10px}
+  .mat img{border-radius:10px}
+  .credits{flex-direction:column;align-items:flex-start;gap:40px;padding:28px 20px;border-radius:14px}
+  .meta{width:100%}
+  .meta dd{font-size:16px}
+  .next{padding-top:24px}
+  .next a{font-size:19px}
+  .pl-bar{gap:12px}
+  .pl-open{font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="back" href="../projects/" id="backLink"><span class="ic20"><img src="assets/ic-back.svg" alt=""></span>All projects</a>
+  <a class="close" href="../#projects" id="closeLink" aria-label="Close project"><span class="ic20"><img src="assets/ic-close.svg" alt=""></span></a>
+</header>
+
+<main class="case">
+
+  <h1 class="sr">Kadiwa Formal — event branding</h1>
+
+  <!-- Cover -->
+  <div class="cover"><div class="cover-anim"><img src="assets/cover.webp" alt="Kadiwa Formal concert key visual: blue curtain, light leaks and a silver title"></div></div>
+
+  <section class="interlude"><h2 class="il-label rv" style="--dl:0.2s;--du:0.7s;--y:24px">Kadiwa Formal</h2><p class="il-text rv" style="--dl:0.35s;--du:0.7s;--y:24px">A formal concert night for the Locale of Novaliches. One key visual, blue curtain, light leaks and a silver title, carried across every touchpoint of the event.</p></section>
+
+  <section class="interlude"><h2 class="il-label rv" style="--dl:0.2s;--du:0.7s;--y:24px">01 · Key visual &amp; posters</h2><p class="il-text rv" style="--dl:0.35s;--du:0.7s;--y:24px">The poster set the whole look. Built at print size, with and without the registration contacts.</p></section>
+
+  <section class="lobby" aria-label="Both posters in lit lightboxes in a theatre lobby">
+    <img class="lb-bg" src="assets/lobby-bg.webp" alt="" loading="lazy">
+    <div class="lb-poster p1 rv" style="--dl:0.5s;--du:0.7s;--y:0px"><img src="assets/poster-print.webp" alt="Kadiwa Formal poster, print version"><i class="glass"></i><i class="sheen"></i></div>
+    <div class="lb-poster p2 rv" style="--dl:0.75s;--du:0.7s;--y:0px"><img src="assets/poster-contacts.webp" alt="Kadiwa Formal poster with registration contacts"><i class="glass"></i><i class="sheen"></i></div>
+    <div class="lb-refl p1" aria-hidden="true"><div class="flip"><img src="assets/poster-print.webp" alt=""><i></i></div></div>
+    <div class="lb-refl p2" aria-hidden="true"><div class="flip"><img src="assets/poster-contacts.webp" alt=""><i></i></div></div>
+  </section>
+
+  <section class="interlude"><h2 class="il-label rv" style="--dl:0.2s;--du:0.7s;--y:24px">02 · Countdown stories</h2><p class="il-text rv" style="--dl:0.35s;--du:0.7s;--y:24px">Six Instagram Stories counting down to the night, one a day, so the date stayed in the feed all week.</p></section>
+
+  <section class="panel dark stories" aria-label="Countdown stories">
+    <div class="st-host"><div class="fit" data-fit>
+      <div class="st-row">
+        <div class="story s-out rv" style="--dl:0.5s;--du:0.7s;--y:20px"><img src="assets/story-1.webp" alt="Countdown story 1" loading="lazy"></div>
+        <div class="story s-out rv" style="--dl:0.62s;--du:0.7s;--y:20px"><img src="assets/story-2.webp" alt="Countdown story 2" loading="lazy"></div>
+        <div class="story rv" style="--dl:0.74s;--du:0.7s;--y:20px"><img src="assets/story-3.webp" alt="Countdown story 3" loading="lazy"></div>
+        <div class="phone-group rv" style="--dl:0.3s;--du:0.7s;--y:40px">
+          <div class="st-phone"><div class="st-screen"><img src="assets/story-4.webp" alt="Countdown story: 4 days to go" loading="lazy"><i class="bar on" style="--n:0"></i><i class="bar on" style="--n:1"></i><i class="bar on" style="--n:2"></i><i class="bar" style="--n:3"></i><i class="bar" style="--n:4"></i><i class="bar" style="--n:5"></i></div></div>
+          <p class="cap inv">Instagram Stories · 1080 × 1920 · 6 days to 1</p>
+        </div>
+        <div class="story rv" style="--dl:0.86s;--du:0.7s;--y:20px"><img src="assets/story-5.webp" alt="Countdown story 5" loading="lazy"></div>
+        <div class="story s-out rv" style="--dl:0.98s;--du:0.7s;--y:20px"><img src="assets/story-6.webp" alt="Countdown story 6" loading="lazy"></div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="interlude"><h2 class="il-label rv" style="--dl:0.2s;--du:0.7s;--y:24px">03 · Screens</h2><p class="il-text rv" style="--dl:0.35s;--du:0.7s;--y:24px">The same key visual opened the night on the venue screen, at 1920 × 1080.</p></section>
+
+  <section class="panel dark screens" aria-label="Concert banner on the venue screen">
+    <div class="led rv" style="--dl:0.4s;--du:0.7s;--y:40px"><img src="assets/cover.webp" alt="Kadiwa Formal concert banner on the venue LED screen" loading="lazy"></div>
+    <i class="stand"></i>
+    <p class="cap inv">Concert banner · 1920 × 1080</p>
+  </section>
+
+  <section class="interlude"><h2 class="il-label rv" style="--dl:0.2s;--du:0.7s;--y:24px">04 · Motion graphics</h2><p class="il-text rv" style="--dl:0.35s;--du:0.7s;--y:24px">Everything that moved: a 3D intro and logo reveal, the 1 Day To Go motion story, the Kadiwa lyric video, the full-song video and the same-day edit cut on the night.</p></section>
+
+  <section class="panel dark motion" aria-label="Motion graphics">
+    <figure class="mfig intro rv" style="--dl:0.3s;--du:0.7s;--y:50px">
+      <div class="frame p12"><video class="loopvid" muted loop playsinline preload="none" poster="assets/intro-poster.webp" aria-label="Kadiwa Formal 3D intro"><source src="assets/intro.mp4" type="video/mp4"></video></div>
+      <figcaption class="cap inv">3D intro · 1920 × 1080 · 28 seconds</figcaption>
+    </figure>
+    <div class="mrow">
+      <figure class="mfig rv" style="--dl:0.45s;--du:0.7s;--y:50px">
+        <div class="frame p10"><video class="loopvid" muted loop playsinline preload="none" poster="assets/logo-poster.webp" aria-label="Kadiwa Formal 3D logo intro"><source src="assets/logo.mp4" type="video/mp4"></video></div>
+        <figcaption class="cap inv">3D logo intro · 1920 × 1080 · 8 seconds</figcaption>
+      </figure>
+      <figure class="mfig day1 rv" style="--dl:0.6s;--du:0.7s;--y:50px">
+        <div class="mphone"><video class="loopvid tall" muted loop playsinline preload="none" poster="assets/day1-poster.webp" aria-label="1 Day To Go motion story"><source src="assets/day1.mp4" type="video/mp4"></video></div>
+        <figcaption class="cap inv">1 Day To Go · motion story · 20 seconds</figcaption>
+      </figure>
+    </div>
+    <div class="vrow">
+      <figure class="mfig rv" style="--dl:0.75s;--du:0.7s;--y:50px">
+        <a class="vtile" href="https://drive.google.com/file/d/1ny09cBH90anpGg5mL-mMeBRoMMDdmuha/view" target="_blank" rel="noopener" data-drive="1ny09cBH90anpGg5mL-mMeBRoMMDdmuha" data-title="Kadiwa lyric video" aria-label="Play Kadiwa lyric video"><video class="loopvid" muted loop playsinline preload="none" poster="assets/lyric-poster.webp" aria-label="Kadiwa lyric video preview"><source src="assets/lyric.mp4" type="video/mp4"></video><img class="vplay" src="assets/play.svg" alt=""><span class="vlabel">Watch full video ↗</span></a>
+        <figcaption class="cap inv">Kadiwa lyric video · about 2 minutes</figcaption>
+      </figure>
+      <figure class="mfig rv" style="--dl:1.05s;--du:0.7s;--y:50px">
+        <a class="vtile" href="https://drive.google.com/file/d/1G0kq1_mF8VDFv-MsnVKsW12iwCL1UQsH/view" target="_blank" rel="noopener" data-drive="1G0kq1_mF8VDFv-MsnVKsW12iwCL1UQsH" data-title="Event recap, same-day edit" aria-label="Play Event recap, same-day edit"><video class="loopvid" muted loop playsinline preload="none" poster="assets/recap-poster.webp" aria-label="Event recap, same-day edit preview"><source src="assets/recap.mp4" type="video/mp4"></video><img class="vplay" src="assets/play.svg" alt=""><span class="vlabel">Watch full video ↗</span></a>
+        <figcaption class="cap inv">Event recap · same-day edit · about 3 minutes</figcaption>
+      </figure>
+    </div>
+    <p class="cap inv">Short pieces loop like GIFs · longer videos open in full with the play button</p>
+  </section>
+
+  <section class="interlude"><h2 class="il-label rv" style="--dl:0.2s;--du:0.7s;--y:24px">05 · House rules video</h2><p class="il-text rv" style="--dl:0.35s;--du:0.7s;--y:24px">The final 60-second house rules video, cut to the voiceover from the ten-scene storyboard and played before the program.</p></section>
+
+  <section class="panel dark rules" aria-label="House rules video">
+    <div class="frame p12 rules-frame rv" style="--dl:0.4s;--du:0.7s;--y:40px"><a class="vtile big" href="https://drive.google.com/file/d/1a4FQvhZAvroB7NnLi0JSvoQjJo2MHw1V/view" target="_blank" rel="noopener" data-drive="1a4FQvhZAvroB7NnLi0JSvoQjJo2MHw1V" data-title="House rules video" aria-label="Play House rules video"><video class="loopvid" muted loop playsinline preload="none" poster="assets/rules-poster.webp" aria-label="House rules video preview"><source src="assets/rules.mp4" type="video/mp4"></video><img class="vplay" src="assets/play-lg.svg" alt=""><span class="vlabel">Watch full video ↗</span></a></div>
+    <p class="cap inv">House rules video · 1920 × 1080 · 58 seconds · final render</p>
+  </section>
+
+  <section class="interlude"><h2 class="il-label rv" style="--dl:0.2s;--du:0.7s;--y:24px">06 · Event materials</h2><p class="il-text rv" style="--dl:0.35s;--du:0.7s;--y:24px">Wristband, food stub and completion card, printed in the same curtain-and-light system so guests carried the brand through the night.</p></section>
+
+  <section class="panel dark materials" aria-label="Event materials">
+    <div class="mat-row">
+      <figure class="mat"><img src="assets/wristband.webp" alt="Kadiwa Formal wristband on a cylinder" loading="lazy"><figcaption>Wristband · 1280 × 120</figcaption></figure>
+      <figure class="mat"><img src="assets/food-stubs.webp" alt="Two Kadiwa Formal food stubs" loading="lazy"><figcaption>Food stubs · 1000 × 400</figcaption></figure>
+    </div>
+    <figure class="mat wide"><img src="assets/completion-card.webp" alt="Kadiwa Formal completion card on a wooden table" loading="lazy"><figcaption>Completion card · 5 × 7 in</figcaption></figure>
+  </section>
+
+  <section class="credits rv" style="--dl:0.3s;--du:0.7s;--y:30px">
+    <h2>Designed by<br>Dominic Garcia</h2>
+    <dl class="meta">
+      <div><dt>Client</dt><dd>INC · Locale of Novaliches</dd></div>
+      <div><dt>Category</dt><dd>Event Branding</dd></div>
+      <div><dt>Deliverables</dt><dd>Key Visual · Posters · Stories · Video · Print</dd></div>
+      <div><dt>Channels</dt><dd>Instagram · Venue Screen · Print</dd></div>
+    </dl>
+  </section>
+
+  <nav class="next" aria-label="More work">
+    <span>More work</span>
+    <a href="../projects/">All works<span class="ic22"><img src="assets/ic-next.svg" alt=""></span></a>
+  </nav>
+</main>
+
+<dialog class="player" id="player" aria-label="Video player">
+  <div class="pl-box"><iframe title="Video" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe></div>
+  <div class="pl-bar">
+    <span class="pl-title"></span>
+    <a class="pl-open" href="#" target="_blank" rel="noopener">Open in Google Drive ↗</a>
+    <button class="pl-x" type="button" aria-label="Close video"><img src="assets/ic-close.svg" alt=""></button>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  /* the countdown row is a fixed-size layout; it scales down to the space it has */
+  var fits=[].slice.call(document.querySelectorAll('[data-fit]'));
+  fits.forEach(function(f){
+    var inn=document.createElement('div'); inn.className='fit-in';
+    while(f.firstChild) inn.appendChild(f.firstChild);
+    f.appendChild(inn); f.style.position='relative';
+  });
+  function fit(){
+    fits.forEach(function(f){
+      var inn=f.firstElementChild;
+      inn.style.transform='none'; inn.style.position='static'; f.style.width=''; f.style.height='';
+      var W=inn.offsetWidth, H=inn.offsetHeight;
+      var area=f.parentElement.parentElement, cs=getComputedStyle(area);
+      var avail=area.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+      var s=Math.min(1,avail/W);
+      inn.style.position='absolute'; inn.style.left='0'; inn.style.top='0'; inn.style.transformOrigin='0 0';
+      inn.style.transform=s<1?'scale('+s+')':'none';
+      f.style.width=(W*s)+'px'; f.style.height=(H*s)+'px';
+    });
+  }
+  fit();
+  var rt; addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(fit,80); });
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+
+  /* entrance reveals */
+  var rvs=document.querySelectorAll('.rv');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.05});
+    rvs.forEach(function(el){ io.observe(el); });
+
+    /* GIF-style previews: muted loops that play only while on screen (poster frame only with reduced motion) */
+    if(!reduce){
+      var vo=new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          var v=e.target;
+          if(e.isIntersecting){ v.muted=true; var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
+          else v.pause();
+        });
+      },{rootMargin:'120px 0px'});
+      document.querySelectorAll('.loopvid').forEach(function(v){ vo.observe(v); });
+    }
+  } else {
+    rvs.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* play buttons open the full video in an in-page player (Google Drive), or Drive itself as a fallback */
+  var dlg=document.getElementById('player');
+  if(dlg && typeof dlg.showModal==='function'){
+    var frame=dlg.querySelector('iframe'), ttl=dlg.querySelector('.pl-title'), openA=dlg.querySelector('.pl-open'), last;
+    document.querySelectorAll('.vtile[data-drive]').forEach(function(a){
+      a.addEventListener('click',function(e){
+        if(e.metaKey||e.ctrlKey||e.shiftKey||e.button===1) return;
+        e.preventDefault(); last=a;
+        var id=a.getAttribute('data-drive');
+        frame.src='https://drive.google.com/file/d/'+id+'/preview';
+        ttl.textContent=a.getAttribute('data-title');
+        openA.href='https://drive.google.com/file/d/'+id+'/view';
+        dlg.showModal(); dlg.querySelector('.pl-x').focus();
+      });
+    });
+    function shut(){ dlg.close(); }
+    dlg.querySelector('.pl-x').addEventListener('click',shut);
+    dlg.addEventListener('click',function(e){ if(e.target===dlg) shut(); });
+    dlg.addEventListener('close',function(){ frame.src='about:blank'; if(last) last.focus(); });
+  }
+
+  /* Esc closes the project, same as the ✕ (but only closes the video when it is open) */
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape') return;
+    if(dlg && dlg.open) return;
+    location.href=document.getElementById('closeLink').href;
+  });
+})();
+</script>
+<script src="../notice.js" defer></script>
+</body>
+</html>
