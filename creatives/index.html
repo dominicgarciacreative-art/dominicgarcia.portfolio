@@ -106,7 +106,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .projects{display:flex;flex-direction:column;align-items:center;padding:0 40px 160px}
 .projects-in{display:flex;flex-direction:column;align-items:center;width:100%;max-width:1360px}
 .projects h2{font-weight:600;font-size:min(15.278vw,220px);line-height:.9;letter-spacing:-.05em;text-align:center;white-space:nowrap;margin-bottom:-.059em}
-.project-list{display:flex;flex-direction:column;gap:24px;width:100%}
+.project-list{display:flex;flex-direction:column;gap:120px;width:100%}
 .card{position:relative;display:flex;flex-direction:column;overflow:hidden;border-radius:16px;background:var(--bg-inverse);box-shadow:0 -10px 36px rgba(0,0,0,.28)}
 .card-head{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px;padding:0 28px;white-space:nowrap}
 .card-title{display:flex;align-items:center;gap:14px;min-width:0}
@@ -118,6 +118,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .scene-img{position:absolute;inset:0;overflow:hidden}
 .scene-img img{position:absolute;left:0;top:6.01%;width:107%;height:107.01%;max-width:none}
 .scene-vig{position:absolute;inset:0;background:radial-gradient(ellipse 58.93% 58.93% at 50% 41.07%,rgba(0,0,0,0),rgba(0,0,0,.6))}
+.media-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+a.card:hover .media-img{transform:scale(1.03)}
 .scene-wm{position:absolute;left:25.155%;top:23.918%;width:49.69%;height:52.164%;max-width:none;object-fit:cover;mix-blend-mode:plus-lighter}
 
 /* ============ FOOTER ============ */
@@ -164,6 +166,7 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
   .intro{padding:120px 32px 110px}
   .services{padding:0 32px 120px}
   .projects{padding:0 24px 120px}
+  .project-list{gap:80px}
   .service{font-size:16px}
   .contact{flex-direction:column;align-items:flex-start;gap:64px}
   .footer{padding:96px 32px 32px}
@@ -186,6 +189,7 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
   .service-row{display:grid;grid-template-columns:1fr 1fr;gap:20px 12px}
   .service{font-size:15px}
   .projects{padding:0 14px 96px}
+  .project-list{gap:48px}
   .card{border-radius:12px}
   .card-head{height:60px;padding:0 18px}
   .card-name{font-size:17px}
@@ -360,6 +364,15 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
             </div>
           </div>
         </a>
+        <div class="card rv" role="group" aria-label="Kadiwa Formal — Event Branding">
+          <div class="card-head">
+            <div class="card-title"><span class="card-num">02</span><span class="card-name">Kadiwa Formal</span></div>
+            <span class="card-cat">Event Branding</span>
+          </div>
+          <div class="card-media">
+            <img class="media-img" src="assets/kadiwa-banner.webp" alt="Kadiwa Formal concert banner" loading="lazy">
+          </div>
+        </div>
       </div>
     </div>
   </section>
