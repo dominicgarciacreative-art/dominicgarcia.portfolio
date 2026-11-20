@@ -106,7 +106,14 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .projects{display:flex;flex-direction:column;align-items:center;padding:0 40px 160px}
 .projects-in{display:flex;flex-direction:column;align-items:center;width:100%;max-width:1360px}
 .projects h2{font-weight:600;font-size:min(15.278vw,220px);line-height:.9;letter-spacing:-.05em;text-align:center;white-space:nowrap;margin-bottom:-.059em}
-.project-list{display:flex;flex-direction:column;gap:120px;width:100%}
+.project-list{--gap:120px;--head:76px;--peek:26px;--ease:cubic-bezier(.2,.7,.2,1);container-type:inline-size;display:flex;flex-direction:column;gap:var(--gap);width:100%}
+/* stacked deck: card 01 in front, the others tucked behind it with their bottom edges peeking out;
+   hovering (or focusing) the deck opens it into the full list */
+.project-list .card{z-index:calc(10 - var(--i,0))}
+.project-list .card + .card{transform-origin:50% 100%;transition:margin-top .8s var(--ease),transform .8s var(--ease)}
+.project-list:not(.open) .card + .card{margin-top:calc(-1 * (var(--head) + 56.25cqw + var(--gap)) + var(--peek));transform:scale(calc(1 - var(--i) * .045))}
+.project-list:not(.open) .card + .card .card-media,.project-list:not(.open) .card + .card .card-head{opacity:.55;transition:opacity .8s var(--ease)}
+.project-list .card + .card .card-media,.project-list .card + .card .card-head{transition:opacity .8s var(--ease)}
 .card{position:relative;display:flex;flex-direction:column;overflow:hidden;border-radius:16px;background:var(--bg-inverse);box-shadow:0 -10px 36px rgba(0,0,0,.28)}
 .card-head{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px;padding:0 28px;white-space:nowrap}
 .card-title{display:flex;align-items:center;gap:14px;min-width:0}
@@ -149,6 +156,9 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
 .video-close{position:absolute;right:0;top:-44px;padding:8px 4px;font-size:14px;color:#f4f4f2}
 
 /* ============ MOTION ============ */
+/* touch screens have no hover, so the deck is shown open there */
+@media (hover:none){.project-list .card + .card{margin-top:0!important;transform:none!important}.project-list .card + .card .card-media,.project-list .card + .card .card-head{opacity:1!important}}
+@media (prefers-reduced-motion:reduce){.project-list .card + .card,.project-list .card-media,.project-list .card-head{transition:none!important}}
 @media (prefers-reduced-motion:no-preference){
   .tile{opacity:0;transform:scale(1.02);animation:tileIn .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i) * 70ms)}
   @keyframes tileIn{to{opacity:1;transform:none}}
@@ -166,7 +176,7 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
   .intro{padding:120px 32px 110px}
   .services{padding:0 32px 120px}
   .projects{padding:0 24px 120px}
-  .project-list{gap:80px}
+  .project-list{--gap:80px}
   .service{font-size:16px}
   .contact{flex-direction:column;align-items:flex-start;gap:64px}
   .footer{padding:96px 32px 32px}
@@ -189,7 +199,7 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
   .service-row{display:grid;grid-template-columns:1fr 1fr;gap:20px 12px}
   .service{font-size:15px}
   .projects{padding:0 14px 96px}
-  .project-list{gap:48px}
+  .project-list{--gap:48px;--head:60px;--peek:18px}
   .card{border-radius:12px}
   .card-head{height:60px;padding:0 18px}
   .card-name{font-size:17px}
@@ -350,8 +360,8 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
   <section class="projects" id="projects">
     <div class="projects-in">
       <h2 class="rv">Projects</h2>
-      <div class="project-list">
-        <a class="card rv" href="formulation-factory/" aria-label="Formulation Factory — Health Supplements. Open the project.">
+      <div class="project-list rv" id="deck">
+        <a class="card" style="--i:0" href="formulation-factory/" aria-label="Formulation Factory — Health Supplements. Open the project.">
           <div class="card-head">
             <div class="card-title"><span class="card-num">01</span><span class="card-name">Formulation Factory</span></div>
             <span class="card-cat">Health Supplements</span>
@@ -364,7 +374,7 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
             </div>
           </div>
         </a>
-        <div class="card rv" role="group" aria-label="Kadiwa Formal — Event Branding">
+        <div class="card" style="--i:1" role="group" aria-label="Kadiwa Formal — Event Branding">
           <div class="card-head">
             <div class="card-title"><span class="card-num">02</span><span class="card-name">Kadiwa Formal</span></div>
             <span class="card-cat">Event Branding</span>
@@ -422,6 +432,23 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
     },{rootMargin:'0px 0px -8% 0px',threshold:.08});
     els.forEach(function(el){ io.observe(el); });
   } else { els.forEach(function(el){ el.classList.add('in'); }); }
+
+  /* project deck: opens on hover/focus. It re-stacks when the pointer leaves only if the
+     top card is still on screen, so the page never jumps while someone is looking further down. */
+  var deck=document.getElementById('deck');
+  if(deck){
+    var t;
+    function open(){ clearTimeout(t); deck.classList.add('open'); }
+    deck.addEventListener('mouseenter',open);
+    deck.addEventListener('focusin',open);
+    deck.addEventListener('mouseleave',function(){
+      clearTimeout(t);
+      t=setTimeout(function(){
+        var r=deck.getBoundingClientRect();
+        if(r.top>=0 && r.top<innerHeight*0.6 && !deck.contains(document.activeElement)) deck.classList.remove('open');
+      },350);
+    });
+  }
 
   /* Play video */
   var dlg=document.getElementById('videoDialog'),vid=document.getElementById('videoEl');
