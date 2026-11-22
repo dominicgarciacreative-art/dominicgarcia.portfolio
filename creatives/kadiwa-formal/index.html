@@ -138,7 +138,8 @@ figure{margin:0}
 .player{margin:auto;padding:0;border:0;background:transparent;max-width:none;max-height:none;overflow:visible}
 .player::backdrop{background:rgba(5,5,7,.88);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .pl-box{width:min(92vw,(100svh - 140px) * 16 / 9);aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
-.pl-box iframe{display:block;width:100%;height:100%;border:0}
+.pl-box iframe,.pl-box video{display:block;width:100%;height:100%;border:0;background:#000}
+.pl-box [hidden],.pl-open[hidden]{display:none}
 .pl-bar{display:flex;align-items:center;gap:20px;padding-top:14px;color:var(--text-inverse)}
 .pl-title{flex:1;min-width:0;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pl-open{font-size:13px;color:var(--text-inverse-secondary);white-space:nowrap}
@@ -251,7 +252,7 @@ figure{margin:0}
   <section class="panel dark motion" aria-label="Motion graphics">
     <figure class="mfig intro rv" style="--dl:0.3s;--du:0.7s;--y:50px">
       <div class="frame p12"><video class="loopvid" muted loop playsinline preload="none" poster="assets/intro-poster.webp" aria-label="Kadiwa Formal 3D intro"><source src="assets/intro.mp4" type="video/mp4"></video></div>
-      <figcaption class="cap inv">3D intro · 1920 × 1080 · 28 seconds</figcaption>
+      <figcaption class="cap inv">3D intro · 1920 × 1080 · 23 seconds</figcaption>
     </figure>
     <div class="mrow">
       <figure class="mfig rv" style="--dl:0.45s;--du:0.7s;--y:50px">
@@ -269,8 +270,8 @@ figure{margin:0}
         <figcaption class="cap inv">Kadiwa lyric video · about 2 minutes</figcaption>
       </figure>
       <figure class="mfig rv" style="--dl:1.05s;--du:0.7s;--y:50px">
-        <a class="vtile" href="https://drive.google.com/file/d/1G0kq1_mF8VDFv-MsnVKsW12iwCL1UQsH/view" target="_blank" rel="noopener" data-drive="1G0kq1_mF8VDFv-MsnVKsW12iwCL1UQsH" data-title="Event recap, same-day edit" aria-label="Play Event recap, same-day edit"><video class="loopvid" muted loop playsinline preload="none" poster="assets/recap-poster.webp" aria-label="Event recap, same-day edit preview"><source src="assets/recap.mp4" type="video/mp4"></video><img class="vplay" src="assets/play.svg" alt=""><span class="vlabel">Watch full video ↗</span></a>
-        <figcaption class="cap inv">Event recap · same-day edit · about 3 minutes</figcaption>
+        <a class="vtile" href="assets/recap-full.mp4" target="_blank" rel="noopener" data-src="assets/recap-full.mp4" data-poster="assets/recap-poster.webp" data-title="Event recap, full-song video" aria-label="Play Event recap, full-song video"><video class="loopvid" muted loop playsinline preload="none" poster="assets/recap-poster.webp" aria-label="Event recap preview"><source src="assets/recap.mp4" type="video/mp4"></video><img class="vplay" src="assets/play.svg" alt=""><span class="vlabel">Watch full video ↗</span></a>
+        <figcaption class="cap inv">Event recap · full-song video · about 3 minutes</figcaption>
       </figure>
     </div>
     <p class="cap inv">Short pieces loop like GIFs · longer videos open in full with the play button</p>
@@ -310,7 +311,7 @@ figure{margin:0}
 </main>
 
 <dialog class="player" id="player" aria-label="Video player">
-  <div class="pl-box"><iframe title="Video" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe></div>
+  <div class="pl-box"><iframe title="Video" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe><video controls playsinline preload="none" hidden></video></div>
   <div class="pl-bar">
     <span class="pl-title"></span>
     <a class="pl-open" href="#" target="_blank" rel="noopener">Open in Google Drive ↗</a>
@@ -371,22 +372,25 @@ figure{margin:0}
   /* play buttons open the full video in an in-page player (Google Drive), or Drive itself as a fallback */
   var dlg=document.getElementById('player');
   if(dlg && typeof dlg.showModal==='function'){
-    var frame=dlg.querySelector('iframe'), ttl=dlg.querySelector('.pl-title'), openA=dlg.querySelector('.pl-open'), last;
-    document.querySelectorAll('.vtile[data-drive]').forEach(function(a){
+    var frame=dlg.querySelector('iframe'), vid=dlg.querySelector('video'), ttl=dlg.querySelector('.pl-title'), openA=dlg.querySelector('.pl-open'), last;
+    /* data-drive: full video on Google Drive (Drive's player); data-src: full video hosted with the site (native player) */
+    document.querySelectorAll('.vtile[data-drive],.vtile[data-src]').forEach(function(a){
       a.addEventListener('click',function(e){
         if(e.metaKey||e.ctrlKey||e.shiftKey||e.button===1) return;
         e.preventDefault(); last=a;
-        var id=a.getAttribute('data-drive');
-        frame.src='https://drive.google.com/file/d/'+id+'/preview';
+        var id=a.getAttribute('data-drive'), src=a.getAttribute('data-src');
         ttl.textContent=a.getAttribute('data-title');
-        openA.href='https://drive.google.com/file/d/'+id+'/view';
+        frame.hidden=!!src; vid.hidden=!src; openA.hidden=!!src;
+        if(src){ vid.poster=a.getAttribute('data-poster')||''; vid.src=src; }
+        else { frame.src='https://drive.google.com/file/d/'+id+'/preview'; openA.href='https://drive.google.com/file/d/'+id+'/view'; }
         dlg.showModal(); dlg.querySelector('.pl-x').focus();
+        if(src){ var p=vid.play(); if(p&&p.catch) p.catch(function(){}); }
       });
     });
     function shut(){ dlg.close(); }
     dlg.querySelector('.pl-x').addEventListener('click',shut);
     dlg.addEventListener('click',function(e){ if(e.target===dlg) shut(); });
-    dlg.addEventListener('close',function(){ frame.src='about:blank'; if(last) last.focus(); });
+    dlg.addEventListener('close',function(){ frame.src='about:blank'; vid.pause(); vid.removeAttribute('src'); vid.load(); if(last) last.focus(); });
   }
 
   /* Esc closes the project, same as the ✕ (but only closes the video when it is open) */
