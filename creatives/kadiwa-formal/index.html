@@ -106,7 +106,7 @@ figure{margin:0}
 .vtile{position:relative;display:block;overflow:hidden;border-radius:8px;cursor:pointer}
 .vtile .loopvid{border-radius:0}
 .frame .vtile{border-radius:4px}
-.vtile.still{cursor:default}
+
 .vplay{position:absolute;left:calc(50% - 42px);top:calc(50% - 36px);width:84px;height:84px;max-width:none;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .vtile.big .vplay{left:calc(50% - 65px);top:calc(50% - 59px);width:130px;height:130px}
 .vtile:hover .vplay,.vtile:focus-visible .vplay{transform:scale(1.08)}
@@ -268,8 +268,8 @@ figure{margin:0}
     </div>
     <div class="vrow">
       <figure class="mfig rv" style="--dl:0.75s;--du:0.7s;--y:50px">
-        <div class="vtile still"><video class="loopvid" muted loop playsinline preload="none" poster="assets/logo-poster.webp" aria-label="Kadiwa Formal 3D logo intro"><source src="assets/logo.mp4" type="video/mp4"></video></div>
-        <figcaption class="cap inv">3D logo intro · 1920 × 1080 · 8 seconds</figcaption>
+        <a class="vtile" href="assets/minsan-full.mp4" target="_blank" rel="noopener" data-src="assets/minsan-full.mp4" data-poster="assets/minsan-poster.webp" data-title="Minsan Lang Kitang Iibigin, lyric video (motion only)" aria-label="Play Minsan Lang Kitang Iibigin lyric video"><video class="loopvid" muted loop playsinline preload="none" poster="assets/minsan-poster.webp" aria-label="Minsan Lang Kitang Iibigin lyric video preview"><source src="assets/minsan.mp4" type="video/mp4"></video><img class="vplay" src="assets/play.svg" alt=""><span class="vlabel">Watch full video ↗</span></a>
+        <figcaption class="cap inv">Minsan Lang Kitang Iibigin · lyric video, motion only · 3 minutes 25 seconds</figcaption>
       </figure>
       <figure class="mfig rv" style="--dl:1.05s;--du:0.7s;--y:50px">
         <a class="vtile" href="assets/recap-full.mp4" target="_blank" rel="noopener" data-src="assets/recap-full.mp4" data-poster="assets/recap-poster.webp" data-title="Event recap, full-song video" aria-label="Play Event recap, full-song video"><video class="loopvid" muted loop playsinline preload="none" poster="assets/recap-poster.webp" aria-label="Event recap preview"><source src="assets/recap.mp4" type="video/mp4"></video><img class="vplay" src="assets/play.svg" alt=""><span class="vlabel">Watch full video ↗</span></a>
