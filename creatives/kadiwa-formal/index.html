@@ -105,6 +105,8 @@ figure{margin:0}
 /* PLAYABLE VIDEO TILES — muted loop preview; the play button opens the full video */
 .vtile{position:relative;display:block;overflow:hidden;border-radius:8px;cursor:pointer}
 .vtile .loopvid{border-radius:0}
+.frame .vtile{border-radius:4px}
+.vtile.still{cursor:default}
 .vplay{position:absolute;left:calc(50% - 42px);top:calc(50% - 36px);width:84px;height:84px;max-width:none;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .vtile.big .vplay{left:calc(50% - 65px);top:calc(50% - 59px);width:130px;height:130px}
 .vtile:hover .vplay,.vtile:focus-visible .vplay{transform:scale(1.08)}
@@ -256,8 +258,8 @@ figure{margin:0}
     </figure>
     <div class="mrow">
       <figure class="mfig rv" style="--dl:0.45s;--du:0.7s;--y:50px">
-        <div class="frame p10"><video class="loopvid" muted loop playsinline preload="none" poster="assets/logo-poster.webp" aria-label="Kadiwa Formal 3D logo intro"><source src="assets/logo.mp4" type="video/mp4"></video></div>
-        <figcaption class="cap inv">3D logo intro · 1920 × 1080 · 8 seconds</figcaption>
+        <div class="frame p10"><a class="vtile" href="assets/lyric-full.mp4" target="_blank" rel="noopener" data-src="assets/lyric-full.mp4" data-poster="assets/lyric-poster.webp" data-title="Kadiwa lyric video" aria-label="Play Kadiwa lyric video"><video class="loopvid" muted loop playsinline preload="none" poster="assets/lyric-poster.webp" aria-label="Kadiwa lyric video preview"><source src="assets/lyric.mp4" type="video/mp4"></video><img class="vplay" src="assets/play.svg" alt=""><span class="vlabel">Watch full video ↗</span></a></div>
+        <figcaption class="cap inv">Kadiwa lyric video · 1920 × 1080 · 1 minute 56 seconds</figcaption>
       </figure>
       <figure class="mfig day1 rv" style="--dl:0.6s;--du:0.7s;--y:50px">
         <div class="mphone"><video class="loopvid tall" muted loop playsinline preload="none" poster="assets/day1-poster.webp" aria-label="1 Day To Go motion story"><source src="assets/day1.mp4" type="video/mp4"></video></div>
@@ -266,8 +268,8 @@ figure{margin:0}
     </div>
     <div class="vrow">
       <figure class="mfig rv" style="--dl:0.75s;--du:0.7s;--y:50px">
-        <a class="vtile" href="https://drive.google.com/file/d/1ny09cBH90anpGg5mL-mMeBRoMMDdmuha/view" target="_blank" rel="noopener" data-drive="1ny09cBH90anpGg5mL-mMeBRoMMDdmuha" data-title="Kadiwa lyric video" aria-label="Play Kadiwa lyric video"><video class="loopvid" muted loop playsinline preload="none" poster="assets/lyric-poster.webp" aria-label="Kadiwa lyric video preview"><source src="assets/lyric.mp4" type="video/mp4"></video><img class="vplay" src="assets/play.svg" alt=""><span class="vlabel">Watch full video ↗</span></a>
-        <figcaption class="cap inv">Kadiwa lyric video · about 2 minutes</figcaption>
+        <div class="vtile still"><video class="loopvid" muted loop playsinline preload="none" poster="assets/logo-poster.webp" aria-label="Kadiwa Formal 3D logo intro"><source src="assets/logo.mp4" type="video/mp4"></video></div>
+        <figcaption class="cap inv">3D logo intro · 1920 × 1080 · 8 seconds</figcaption>
       </figure>
       <figure class="mfig rv" style="--dl:1.05s;--du:0.7s;--y:50px">
         <a class="vtile" href="assets/recap-full.mp4" target="_blank" rel="noopener" data-src="assets/recap-full.mp4" data-poster="assets/recap-poster.webp" data-title="Event recap, full-song video" aria-label="Play Event recap, full-song video"><video class="loopvid" muted loop playsinline preload="none" poster="assets/recap-poster.webp" aria-label="Event recap preview"><source src="assets/recap.mp4" type="video/mp4"></video><img class="vplay" src="assets/play.svg" alt=""><span class="vlabel">Watch full video ↗</span></a>
