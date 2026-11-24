@@ -105,44 +105,32 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 
 .projects{display:flex;flex-direction:column;align-items:center;padding:0 40px 160px}
 .projects-in{display:flex;flex-direction:column;align-items:center;width:100%;max-width:1360px}
-.projects h2{position:relative;z-index:2;font-weight:600;font-size:min(15.278vw,220px);line-height:.9;letter-spacing:-.05em;text-align:center;white-space:nowrap;margin-bottom:-.059em}
-/* PROJECT TOWER — every project image is a card in one 3D stack, tilted back in perspective.
-   The stack pulls back into view, drifts as you scroll, and the hovered card swings upright. */
-.tower{--cw:min(540px,40vw);position:relative;width:100%;height:calc(100svh + 70svh);margin-top:-2vw}
-.tw-stage{position:sticky;top:0;height:100svh;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 9%);mask-image:linear-gradient(to bottom,transparent 0,#000 9%);perspective:1500px;perspective-origin:50% -10%}
-.tw-stack{position:absolute;left:50%;bottom:12svh;width:var(--cw);aspect-ratio:16/10;transform-style:preserve-3d;transform-origin:50% 100%;
-  transition:transform 1.3s cubic-bezier(.16,.84,.24,1)}
-.tower:not(.in) .tw-stack{transform:translate(-50%,var(--ty,0)) scale(1.75) translateY(22%)}
-.tower.in .tw-stack{transform:translate(-50%,var(--ty,0))}
-.tower.scrolling .tw-stack{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-.tw-card{position:absolute;inset:0;display:block;border-radius:10px;overflow:hidden;background:#0b0b0b;transform-origin:50% 100%;
-  box-shadow:0 -14px 40px rgba(0,0,0,.18);transition:transform .75s cubic-bezier(.2,.75,.2,1),filter .75s,box-shadow .75s;backface-visibility:hidden;will-change:transform}
-.tw-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.tw-card .scene{width:112.404%}
-.tw-card.on{box-shadow:0 18px 40px rgba(0,0,0,.28)}
-.tw-card:focus-visible{outline:3px solid #3b82f6;outline-offset:4px}
-.tw-side{position:absolute;top:50%;z-index:5;display:flex;flex-direction:column;gap:4px;transform:translateY(-50%);pointer-events:none}
-.tw-l{left:0}.tw-r{right:0;align-items:flex-end;text-align:right}
-.tw-small{font-size:12px;color:var(--text-secondary);font-variant-numeric:tabular-nums}
-.tw-big{font-size:22px;letter-spacing:-.01em;transition:opacity .3s}
-.tw-all{position:absolute;right:0;bottom:4svh;z-index:5;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--bg-inverse);color:var(--text-inverse);font-size:13px}
-.tw-all:hover{background:#2a2a2c}
-.tw-hint{position:absolute;left:0;bottom:4svh;z-index:5;font-size:12px;color:var(--text-secondary);max-width:180px}
+.projects h2{font-weight:600;font-size:min(15.278vw,220px);line-height:.9;letter-spacing:-.05em;text-align:center;white-space:nowrap;margin-bottom:-.059em}
+.project-list{--gap:120px;--head:76px;--ease:cubic-bezier(.2,.7,.2,1);container-type:inline-size;display:flex;flex-direction:column;gap:var(--gap);width:100%}
+/* stacked deck: card 01 in front, the others tucked behind it and raised so their header row
+   (number, name, category) shows above card 01; hovering (or focusing) the deck opens it into the full list.
+   The list keeps a top padding the height of the raised headers so card 01 never moves. */
+.project-list{padding-top:calc(var(--head) * var(--extra,1))}
+.project-list .card{z-index:calc(10 - var(--i,0))}
+.project-list .card + .card{transform-origin:50% 0;transition:margin-top .8s var(--ease),transform .8s var(--ease)}
+.project-list:not(.open) .card + .card{margin-top:calc(-1 * (var(--head) + 56.25cqw + var(--gap)));transform:translateY(calc(-1 * var(--i) * var(--head) * (1 - var(--i) * .045))) scale(calc(1 - var(--i) * .045))}
+.project-list:not(.open) .card + .card .card-media{opacity:.55}
+.project-list:not(.open) .card + .card .card-head{opacity:.8}
+.project-list .card + .card .card-media,.project-list .card + .card .card-head{transition:opacity .8s var(--ease)}
+.card{position:relative;display:flex;flex-direction:column;overflow:hidden;border-radius:16px;background:var(--bg-inverse);box-shadow:0 -10px 36px rgba(0,0,0,.28)}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px;padding:0 28px;white-space:nowrap}
+.card-title{display:flex;align-items:center;gap:14px;min-width:0}
+.card-num,.card-cat{font-size:14px;color:var(--text-inverse-secondary)}
+.card-name{font-size:22px;letter-spacing:-.01em;color:var(--text-inverse);overflow:hidden;text-overflow:ellipsis}
+.card-media{position:relative;aspect-ratio:16/9;overflow:hidden}
 .scene{position:absolute;left:50%;top:50%;width:112.404%;aspect-ratio:1528.695/976.932;transform:translate(-50%,-50%);transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.card:hover .scene{transform:translate(-50%,-50%) scale(1.03)}
 .scene-img{position:absolute;inset:0;overflow:hidden}
 .scene-img img{position:absolute;left:0;top:6.01%;width:107%;height:107.01%;max-width:none}
 .scene-vig{position:absolute;inset:0;background:radial-gradient(ellipse 58.93% 58.93% at 50% 41.07%,rgba(0,0,0,0),rgba(0,0,0,.6))}
+.media-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+a.card:hover .media-img{transform:scale(1.03)}
 .scene-wm{position:absolute;left:25.155%;top:23.918%;width:49.69%;height:52.164%;max-width:none;object-fit:cover;mix-blend-mode:plus-lighter}
-
-@media (max-width:759px){
-  .tower{--cw:72vw;height:calc(100svh + 50svh)}
-  .tw-stage{perspective:900px}
-  .tw-stack{bottom:26svh}
-  .tw-side{top:auto;bottom:calc(4svh + 52px);transform:none}
-  .tw-big{font-size:17px}
-  .tw-hint{display:none}
-}
-@media (prefers-reduced-motion:reduce){.tw-stack,.tw-card{transition:none!important}.tower:not(.in) .tw-stack{transform:translate(-50%,0)}}
 
 /* ============ FOOTER ============ */
 .footer{display:flex;flex-direction:column;align-items:center;padding:120px 40px 40px;background:var(--bg-inverse);color:var(--text-inverse)}
@@ -171,6 +159,9 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
 .video-close{position:absolute;right:0;top:-44px;padding:8px 4px;font-size:14px;color:#f4f4f2}
 
 /* ============ MOTION ============ */
+/* touch screens have no hover, so the deck is shown open there */
+@media (hover:none){.project-list{padding-top:0}.project-list .card + .card{margin-top:0!important;transform:none!important}.project-list .card + .card .card-media,.project-list .card + .card .card-head{opacity:1!important}}
+@media (prefers-reduced-motion:reduce){.project-list .card + .card,.project-list .card-media,.project-list .card-head{transition:none!important}}
 @media (prefers-reduced-motion:no-preference){
   .tile{opacity:0;transform:scale(1.02);animation:tileIn .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i) * 70ms)}
   @keyframes tileIn{to{opacity:1;transform:none}}
@@ -188,6 +179,7 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
   .intro{padding:120px 32px 110px}
   .services{padding:0 32px 120px}
   .projects{padding:0 24px 120px}
+  .project-list{--gap:80px}
   .service{font-size:16px}
   .contact{flex-direction:column;align-items:flex-start;gap:64px}
   .footer{padding:96px 32px 32px}
@@ -210,6 +202,11 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
   .service-row{display:grid;grid-template-columns:1fr 1fr;gap:20px 12px}
   .service{font-size:15px}
   .projects{padding:0 14px 96px}
+  .project-list{--gap:48px;--head:60px}
+  .card{border-radius:12px}
+  .card-head{height:60px;padding:0 18px}
+  .card-name{font-size:17px}
+  .card-num,.card-cat{font-size:12px}
   .footer{padding:72px 20px 28px}
   .detail{gap:12px}
   .detail dt{width:76px;font-size:13px}
@@ -366,23 +363,37 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
   <section class="projects" id="projects">
     <div class="projects-in">
       <h2 class="rv">Projects</h2>
-      <div class="tower" id="tower">
-        <div class="tw-stage">
-          <div class="tw-side tw-l" aria-hidden="true"><span class="tw-small" id="twNum">03 projects</span><span class="tw-big" id="twName">Selected work</span></div>
-          <div class="tw-side tw-r" aria-hidden="true"><span class="tw-small" id="twCat">Hover a card</span><span class="tw-big">9 works</span></div>
-          <div class="tw-stack" id="twStack">
-          <a class="tw-card" href="formulation-factory/" data-num="01" data-name="Formulation Factory" data-cat="Health Supplements" aria-label="Formulation Factory — Health Supplements. Open the project."><div class="scene"><div class="scene-img"><img src="assets/ff-scene.webp" alt="" loading="lazy"></div><div class="scene-vig"></div><img class="scene-wm" src="assets/ff-wordmark.webp" alt="" loading="lazy"></div></a>
-          <a class="tw-card" href="formulation-factory/" data-num="01" data-name="Formulation Factory" data-cat="Health Supplements" aria-label="Formulation Factory — Health Supplements. Open the project."><img src="formulation-factory/assets/screen-website-home.webp" alt="Formulation Factory website home page" loading="lazy"></a>
-          <a class="tw-card" href="formulation-factory/" data-num="01" data-name="Formulation Factory" data-cat="Health Supplements" aria-label="Formulation Factory — Health Supplements. Open the project."><img src="formulation-factory/assets/banner-youtube-0.webp" alt="Formulation Factory YouTube channel banner" loading="lazy"></a>
-          <a class="tw-card" href="formulation-factory/" data-num="01" data-name="Formulation Factory" data-cat="Health Supplements" aria-label="Formulation Factory — Health Supplements. Open the project."><img src="formulation-factory/assets/home-3211.webp" alt="Formulation Factory hero direction" loading="lazy"></a>
-          <a class="tw-card" href="kadiwa-formal/" data-num="02" data-name="Kadiwa Formal" data-cat="Event Branding" aria-label="Kadiwa Formal — Event Branding. Open the project."><img src="assets/kadiwa-banner.webp" alt="Kadiwa Formal concert banner" loading="lazy"></a>
-          <a class="tw-card" href="kadiwa-formal/" data-num="02" data-name="Kadiwa Formal" data-cat="Event Branding" aria-label="Kadiwa Formal — Event Branding. Open the project."><img src="kadiwa-formal/assets/intro-poster.webp" alt="Kadiwa Formal 3D intro" loading="lazy"></a>
-          <a class="tw-card" href="kadiwa-formal/" data-num="02" data-name="Kadiwa Formal" data-cat="Event Branding" aria-label="Kadiwa Formal — Event Branding. Open the project."><img src="kadiwa-formal/assets/recap-poster.webp" alt="Kadiwa Formal event recap" loading="lazy"></a>
-          <a class="tw-card" href="kadiwa-formal/" data-num="02" data-name="Kadiwa Formal" data-cat="Event Branding" aria-label="Kadiwa Formal — Event Branding. Open the project."><img src="kadiwa-formal/assets/completion-card.webp" alt="Kadiwa Formal completion card" loading="lazy"></a>
-          <div class="tw-card" data-num="03" data-name="GAINSWave" data-cat="Healthcare Brand &amp; Marketing" role="img" aria-label="GAINSWave — Healthcare Brand &amp; Marketing (case study coming soon)"><img src="assets/gw-cover.svg" alt="GAINSWave wordmark on a dark slate background with wave arcs" loading="lazy"></div>
+      <div class="project-list rv" id="deck">
+        <a class="card" style="--i:0" href="formulation-factory/" aria-label="Formulation Factory — Health Supplements. Open the project.">
+          <div class="card-head">
+            <div class="card-title"><span class="card-num">01</span><span class="card-name">Formulation Factory</span></div>
+            <span class="card-cat">Health Supplements</span>
           </div>
-          <p class="tw-hint">Filed by project. Hover to look closer, click to open.</p>
-          <a class="tw-all" href="projects/">↳ View all works</a>
+          <div class="card-media">
+            <div class="scene">
+              <div class="scene-img"><img src="assets/ff-scene.webp" alt="Formulation Factory supplement range" loading="lazy"></div>
+              <div class="scene-vig"></div>
+              <img class="scene-wm" src="assets/ff-wordmark.webp" alt="" loading="lazy">
+            </div>
+          </div>
+        </a>
+        <a class="card" style="--i:1" href="kadiwa-formal/" aria-label="Kadiwa Formal — Event Branding. Open the project.">
+          <div class="card-head">
+            <div class="card-title"><span class="card-num">02</span><span class="card-name">Kadiwa Formal</span></div>
+            <span class="card-cat">Event Branding</span>
+          </div>
+          <div class="card-media">
+            <img class="media-img" src="assets/kadiwa-banner.webp" alt="Kadiwa Formal concert banner" loading="lazy">
+          </div>
+        </a>
+        <div class="card" style="--i:2" role="group" aria-label="GAINSWave — Healthcare Brand &amp; Marketing">
+          <div class="card-head">
+            <div class="card-title"><span class="card-num">03</span><span class="card-name">GAINSWave</span></div>
+            <span class="card-cat">Healthcare Brand &amp; Marketing</span>
+          </div>
+          <div class="card-media">
+            <img class="media-img" src="assets/gw-cover.svg" alt="GAINSWave wordmark on a dark slate background with wave arcs" loading="lazy">
+          </div>
         </div>
       </div>
     </div>
@@ -434,61 +445,22 @@ dialog.video video{display:block;width:100%;max-height:84vh;border-radius:12px;b
     els.forEach(function(el){ io.observe(el); });
   } else { els.forEach(function(el){ el.classList.add('in'); }); }
 
-  /* project tower: cards stacked back in 3D. Front card (index 0) is lowest and nearest.
-     Hover (or keyboard focus, or the card nearest the middle on touch screens) swings a card upright. */
-  var tower=document.getElementById('tower');
-  if(tower){
-    var stack=document.getElementById('twStack'), cards=[].slice.call(stack.children), active=-1;
-    var nNum=document.getElementById('twNum'), nName=document.getElementById('twName'), nCat=document.getElementById('twCat');
-    var touch=matchMedia('(hover:none)').matches && ('ontouchstart' in window), reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(touch) nCat.textContent='Tap a card';
-    function layout(){
-      var h=stack.offsetHeight, mob=innerWidth<760;
-      var step=h*(mob?.24:.2), depth=h*(mob?.16:.15), tilt=mob?64:66, lift=h*.12, push=h*(mob?.36:.3);
-      cards.forEach(function(c,i){
-        var y=-i*step, z=-i*depth, rx=tilt, s=1;
-        if(active>=0){
-          if(i===active){ rx=0; z+=lift; s=1; }
-          else if(i<active){ y+=push; }
-        }
-        c.style.transform='translate3d(0,'+y.toFixed(1)+'px,'+z.toFixed(1)+'px) rotateX('+rx+'deg) scale('+s+')';
-        c.style.zIndex=String(100-i);
-        c.classList.toggle('on',i===active);
-        c.style.filter=(active>=0&&i!==active)?'brightness(.82)':'none';
-      });
-    }
-    function setActive(i){
-      if(i===active) return; active=i; layout();
-      var c=cards[i];
-      if(c){ nNum.textContent=c.dataset.num+' / 03'; nName.textContent=c.dataset.name; nCat.textContent=c.dataset.cat; }
-      else { nNum.textContent='03 projects'; nName.textContent='Selected work'; nCat.textContent=touch?'Tap a card':'Hover a card'; }
-    }
-    cards.forEach(function(c,i){
-      c.addEventListener('mouseenter',function(){ if(!touch) setActive(i); });
-      c.addEventListener('focus',function(){ setActive(i); });
+  /* project deck: opens on hover/focus. It re-stacks when the pointer leaves only if the
+     top card is still on screen, so the page never jumps while someone is looking further down. */
+  var deck=document.getElementById('deck');
+  if(deck){
+    deck.style.setProperty('--extra', Math.max(deck.children.length-1,0));
+    var t;
+    function open(){ clearTimeout(t); deck.classList.add('open'); }
+    deck.addEventListener('mouseenter',open);
+    deck.addEventListener('focusin',open);
+    deck.addEventListener('mouseleave',function(){
+      clearTimeout(t);
+      t=setTimeout(function(){
+        var r=deck.getBoundingClientRect();
+        if(r.top>=0 && r.top<innerHeight*0.6 && !deck.contains(document.activeElement)) deck.classList.remove('open');
+      },350);
     });
-    stack.addEventListener('mouseleave',function(){ if(!touch) setActive(-1); });
-    /* intro: the stack pulls back into view once */
-    if('IntersectionObserver' in window && !reduce){
-      var tio=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ tower.classList.add('in'); setTimeout(function(){ tower.classList.add('scrolling'); },1400); tio.disconnect(); } }); },{threshold:.25});
-      tio.observe(tower);
-    } else tower.classList.add('in','scrolling');
-    /* scroll: the stack drifts up through the sticky stage; on touch screens the middle card opens */
-    var ticking=false;
-    function onScroll(){
-      ticking=false;
-      var r=tower.getBoundingClientRect(), span=r.height-innerHeight;
-      var p=Math.min(1,Math.max(0,-r.top/Math.max(1,span)));
-      if(!reduce) stack.style.setProperty('--ty',((0.5-p)*stack.offsetHeight*0.5).toFixed(1)+'px');
-      if(touch && r.top<innerHeight*.2 && r.bottom>innerHeight*.8){
-        var mid=innerHeight*.5, best=-1, bd=1e9;
-        cards.forEach(function(c,i){ var b=c.getBoundingClientRect(), d=Math.abs((b.top+b.bottom)/2-mid); if(d<bd){ bd=d; best=i; } });
-        setActive(best);
-      } else if(touch) setActive(-1);
-    }
-    addEventListener('scroll',function(){ if(!ticking){ ticking=true; requestAnimationFrame(onScroll); } },{passive:true});
-    addEventListener('resize',function(){ layout(); onScroll(); });
-    layout(); onScroll();
   }
 
   /* Play video */
